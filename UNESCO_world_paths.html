@@ -15,7 +15,15 @@
 			var h = 1160;
 
 			//Define default path generator
-			var path = d3.geo.path();
+	
+
+			var projection = d3.geo.mercator()
+    			.scale((w + 1) / 2 / Math.PI)
+    			.translate([w / 2, h / 2])
+    			.precision(.1);
+
+			var path = d3.geo.path()
+    			.projection(projection);
 
 			//Create SVG element
 			var svg = d3.select("body")
