@@ -37,31 +37,35 @@
 
 			d3.json("ROFST_1_CP.json", function(rate) {
 				//Set input domain for color scale
+
 				color.domain([
-					d3.min(rate, function(d) { return d.indicators.value; }), 
-					d3.max(rate, function(d) { return d.indicators.value; })
+					d3.min(rate.Indicators, function(d,i) { return d.Value; }), 
+					d3.max(rate.Indicators, function(d,i) { return d.Value; })
 				]);
 
 			//Load in GeoJSON data
 			d3.json("world-countries.json", function(json) {
-
-				for (var i = 0; i < json.length; i++) {
-				
-						//Grab state name
-						var rateCountry = rate.indicators[i].properties.country;
+				console.log(rate.Indicators.length);
+				for (var i = 0; i < rate.Indicators.length; i++) {
+						
+						//Grab country code
+						var rateCountry = rate.Indicators[i].Country;
 						
 						//Grab data value, and convert from string to float
-						var rateValue = parseFloat(rate.indicators[i].value);
+						var rateValue = parseFloat(rate.Indicators[i].Value);
 				
-						//Find the corresponding state inside the GeoJSON
+						//Find the corresponding country inside the GeoJSON
 						for (var j = 0; j < json.features.length; j++) {
 						
-							var mapCountry = json.features[j].properties.name;
+							var mapCountry = json.features[j].id;
+
+							// console.log(rateCountry)
+							// console.log(mapCountry);
 				
 							if (rateCountry == mapCountry) {
 						
 								//Copy the data value into the JSON
-								json.features[j].properties.value = dataValue;
+								json.features[j].properties.value = rateValue;
 								
 								//Stop looking through the JSON
 								break;
@@ -78,6 +82,7 @@
 				   .attr("d", path)
 				    .style("fill", function(d) {
 					   		//Get data value
+					   		console.log(d)
 					   		var value = d.properties.value;
 					   		
 					   		if (value) {
