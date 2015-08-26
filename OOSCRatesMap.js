@@ -8,7 +8,8 @@ var w = 1000;
 var h = 1000;
 
 // for mouseover later on
-var div = d3.select("body").append("div")
+//Place this div function here, so that the .on mouseover function can reference it later
+var div = d3.select("body").append("div") 
 	.attr("class", "tooltip")
 	.style("opacity", 1e-6);
 
@@ -35,17 +36,19 @@ d3.json("ROFST_1_CP.json", function(rate) {
 		.attr("height", h);
 
 
-	var color = d3.scale.quantize()
-		.range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
-
+	var color = d3.scale.threshold()
+		color.domain([9.9,19.9,29.9,100]);	
+		// .range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
+		color.range(["#33B874","#ABE2C6","#959CC7","#5561A6"]);
 	//Set input domain for color scale
-	color.domain([
-		d3.min(rate.Indicators, function(d,i) { return d.Value; }), 
-		d3.max(rate.Indicators, function(d,i) { return d.Value; })
-	]);
+		
+		// ([
+		// d3.min(rate.Indicators, function(d,i) { return d.Value; }), 
+		// d3.max(rate.Indicators, function(d,i) { return d.Value; })
+		// ]);
+		
 
-
-			//Load in GeoJSON data
+	//Load in GeoJSON data
 	d3.json("world-countries.json", function(json) {
 		// mapD = json;
 		// console.log(mapD);
@@ -78,10 +81,6 @@ d3.json("ROFST_1_CP.json", function(rate) {
 	
 				}
 
-
-
-
-
 				
 		//Bind data and create one path per GeoJSON feature
 		 svg.selectAll("path")
@@ -89,6 +88,7 @@ d3.json("ROFST_1_CP.json", function(rate) {
 			.enter()
 			.append("path")
 			.attr("d", path)
+			.style("stroke", "#333333")
 			.style("fill", function(d) {
 				//Get data value
 				// console.log(d)
@@ -98,9 +98,9 @@ d3.json("ROFST_1_CP.json", function(rate) {
 					return color(value);
 				} else {
 				 //If value is undefined…
-					return "#ccc";
+					return "#f7f7f7";
 				}
-			})
+			}) //Important, allows addition of .on to work
 
 			// set up on mouseover events
 			.on("mouseover", function(d) {
@@ -129,9 +129,7 @@ d3.json("ROFST_1_CP.json", function(rate) {
 			     .duration(250)
 			     .style("opacity", 1e-6);
 			});
-
-
-	   		//End to Rollover Code
+	   		//End to mouseover code
  
-	});
-});
+	}); //End of D3.json geojson function + data bind
+}); //End to D3.json Rates function

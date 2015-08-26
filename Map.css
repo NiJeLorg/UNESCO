@@ -2,7 +2,7 @@
 /* Tooltop CSS */
 .tooltip { 
     position: absolute;
-    text-align: left;
+    text-align: right;
     width: 230px;
     height: auto;
     padding: 8px;
