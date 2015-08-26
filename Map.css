@@ -1,4 +1,3 @@
-
 /* Tooltop CSS */
 .tooltip { 
     position: absolute;
@@ -17,7 +16,7 @@
 
 .tooltip:after, .tooltip:before { 
 	right: 100%; 
-	top: 25%; 
+	top: 50%; 
 	border: solid transparent; 
 	content: " "; 
 	height: 0; 
