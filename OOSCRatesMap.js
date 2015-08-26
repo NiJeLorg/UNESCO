@@ -4,8 +4,15 @@
 
 
 //Width and height
-var w = 960;
-var h = 1160;
+var w = 1000;
+var h = 1000;
+
+// for mouseover later on
+var div = d3.select("body").append("div")
+	.attr("class", "tooltip")
+	.style("opacity", 1e-6);
+
+console.log(div);
 
 d3.json("ROFST_1_CP.json", function(rate) {
 	// rofst = rate;
@@ -29,13 +36,13 @@ d3.json("ROFST_1_CP.json", function(rate) {
 
 
 	var color = d3.scale.quantize()
-			.range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"
-				]);		
+		.range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
+
 	//Set input domain for color scale
 	color.domain([
 		d3.min(rate.Indicators, function(d,i) { return d.Value; }), 
 		d3.max(rate.Indicators, function(d,i) { return d.Value; })
-		]);
+	]);
 
 
 			//Load in GeoJSON data
@@ -72,6 +79,9 @@ d3.json("ROFST_1_CP.json", function(rate) {
 				}
 
 
+
+
+
 				
 		//Bind data and create one path per GeoJSON feature
 		 svg.selectAll("path")
@@ -82,49 +92,46 @@ d3.json("ROFST_1_CP.json", function(rate) {
 			.style("fill", function(d) {
 				//Get data value
 				// console.log(d)
-				var value = d.properties.value;
-							   		
-					if (value) {
-						//If value exists…
-						return color(value);
-							} else {
-							 //If value is undefined…
-								return "#ccc";
+				var value = d.properties.value;					   		
+				if (value) {
+					//If value exists…
+					return color(value);
+				} else {
+				 //If value is undefined…
+					return "#ccc";
+				}
+			})
 
-										  }
+			// set up on mouseover events
+			.on("mouseover", function(d) {
+				console.log(d);
 
-			// // set up on mouseover events
-			//      .on("mouseover", function(d) {
-			//         // console.log(d);
+				div.transition()
+				  .duration(250)
+				  .style("opacity", 1);
+				  
+				div.html(
+				  '<h4 class="text-left">' + d.properties.name + '</h4>' +
+				  '<p class="text-left">' + d.properties.value +'</p>'
+				  )  
+				  .style("left", (d3.event.pageX + 18) + "px")     //play around with these to get spacing better
+				  .style("top", (d3.event.pageY - 60) + "px");
+			})
 
-			//         div.transition()
-			//           .duration(250)
-			//           .style("opacity", 1);
-			          
-			//          div.html(
-			//           '<h4 class="text-left">' + d.properties.name + '</h4>' +
-			//           '<p class="text-leftr">' + d.properties.value +'</p>'
-			//           )  
-			//           .style("left", (d3.event.pageX + 18) + "px")     //play around with these to get spaceing better
-			//           .style("top", (d3.event.pageY - 60) + "px")
-			//       })
+			.on("mousemove", function(d) {
+				div.style("left", (d3.event.pageX + 18) + "px")
+				   .style("top", (d3.event.pageY - 60) + "px");
+				  
+			})
 
-			//       .on("mouseout", function() {
-			//          div.transition()
-			//              .duration(250)
-			//              .style("opacity", 1e-6);
-	  //   		  });
-
-			// var div = d3.select("body").append("tooltip")
-			// 		.attr("class", "barchartTooltip")
-			// 		.style("opacity", 1e-6)
-
-	  //  		//End to Rollover Code
-
-	    		
+			.on("mouseout", function() {
+				div.transition()
+			     .duration(250)
+			     .style("opacity", 1e-6);
+			});
 
 
-
-		});	 
+	   		//End to Rollover Code
+ 
 	});
 });

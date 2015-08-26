@@ -1,0 +1,41 @@
+
+/* Tooltop CSS */
+.tooltip { 
+    position: absolute;
+    text-align: left;
+    width: 230px;
+    height: auto;
+    padding: 8px;
+    color: #6D6E70;
+    background: #fff;
+    font-weight: 400;
+    border: solid 2px #ccc;
+    border-radius: 4px;
+    pointer-events: none;
+	z-index: 1031;
+} 
+
+.tooltip:after, .tooltip:before { 
+	right: 100%; 
+	top: 25%; 
+	border: solid transparent; 
+	content: " "; 
+	height: 0; 
+	width: 0; 
+	position: absolute; 
+	pointer-events: none; 
+} 
+
+.tooltip:after { 
+	border-color: rgba(255, 255, 255, 0); 
+	border-right-color: #fff; 
+	border-width: 15px; 
+	margin-top: -15px; 
+} 
+
+.tooltip:before { 
+	border-color: rgba(109, 110, 112, 0); 
+	border-right-color: #ccc; 
+	border-width: 18px; 
+	margin-top: -18px; 
+}
