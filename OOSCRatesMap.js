@@ -122,20 +122,17 @@ d3.json("ROFST_1_CP.json", function(rate) {
 				  .style("top", (d3.event.pageY - 60) + "px");
 			})
 
-			.on("mousemover", function(d) {
+			.on("mousemove", function(d) {
 				div.style("left", (d3.event.pageX + 18) + "px")
 				   .style("top", (d3.event.pageY - 60) + "px");
 				  
 			})
-
-			.on("mouseout", function(d) {
+			
+			.on("mouseout", function() {
 				d3.select(this)
     				.path("active", false)
-					.style("stroke-width", function(d) { return "1px"; })
-			})
-			
+					.style("stroke-width", function(d) { return "1px"; });
 
-			.on("mouseout", function() {
 				div.transition()
 			     .duration(250)
 			     .style("opacity", 1e-6);
