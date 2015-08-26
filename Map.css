@@ -2,21 +2,21 @@
 .tooltip { 
     position: absolute;
     text-align: right;
-    width: 230px;
+    width: 125px;
     height: auto;
     padding: 8px;
     color: #6D6E70;
     background: #fff;
     font-weight: 400;
-    border: solid 2px #ccc;
-    border-radius: 4px;
+    border: solid 4px #666666; /*Changes border width and color of box*/
+    border-radius: 0px; /*changes curve of border corner*/
     pointer-events: none;
 	z-index: 1031;
 } 
 
 .tooltip:after, .tooltip:before { 
 	right: 100%; 
-	top: 50%; 
+	top: 50%; /* Changes placement of tooltip point along specified side */
 	border: solid transparent; 
 	content: " "; 
 	height: 0; 
@@ -27,14 +27,14 @@
 
 .tooltip:after { 
 	border-color: rgba(255, 255, 255, 0); 
-	border-right-color: #fff; 
-	border-width: 15px; 
-	margin-top: -15px; 
+	border-right-color: #fff; /*Changes Tooltip point's background color*/
+	border-width: 15px; /*changes size of Tooltip point's bottom background*/
+	margin-top: -15px; /*changes size of Tooltip point's top background*/
 } 
 
 .tooltip:before { 
 	border-color: rgba(109, 110, 112, 0); 
-	border-right-color: #ccc; 
-	border-width: 18px; 
-	margin-top: -18px; 
+	border-right-color: #666666; /*Changes Tooltip point's border color*/
+	border-width: 20px; /*changes width of Tooltip point's bottom border*/
+	margin-top: -20px; /*changes width of Tooltip point's top border*/
 }

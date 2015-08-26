@@ -88,7 +88,8 @@ d3.json("ROFST_1_CP.json", function(rate) {
 			.enter()
 			.append("path")
 			.attr("d", path)
-			.style("stroke", "#333333")
+			.style("stroke", "#4d4d4d")
+			.style("stroke-width", "1px")
 			.style("fill", function(d) {
 				//Get data value
 				// console.log(d)
@@ -104,7 +105,10 @@ d3.json("ROFST_1_CP.json", function(rate) {
 
 			// set up on mouseover events
 			.on("mouseover", function(d) {
-				console.log(d);
+				// console.log(d);
+
+				d3.select(this)
+					.style("stroke-width", "3px");
 
 				div.transition()
 				  .duration(250)
@@ -112,23 +116,31 @@ d3.json("ROFST_1_CP.json", function(rate) {
 				  
 				div.html(
 				  '<h4 class="text-left">' + d.properties.name + '</h4>' +
-				  '<p class="text-left">' + d.properties.value +'</p>'
+				  '<p class="text-left">' + "Rate of children out of school: " + d.properties.value + "%" +'</p>'
 				  )  
 				  .style("left", (d3.event.pageX + 18) + "px")     //play around with these to get spacing better
 				  .style("top", (d3.event.pageY - 60) + "px");
 			})
 
-			.on("mousemove", function(d) {
+			.on("mousemover", function(d) {
 				div.style("left", (d3.event.pageX + 18) + "px")
 				   .style("top", (d3.event.pageY - 60) + "px");
 				  
 			})
+
+			.on("mouseout", function(d) {
+				d3.select(this)
+    				.path("active", false)
+					.style("stroke-width", function(d) { return "1px"; })
+			})
+			
 
 			.on("mouseout", function() {
 				div.transition()
 			     .duration(250)
 			     .style("opacity", 1e-6);
 			});
+
 	   		//End to mouseover code
  
 	}); //End of D3.json geojson function + data bind
