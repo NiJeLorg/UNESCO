@@ -130,7 +130,6 @@ d3.json("ROFST_1_CP.json", function(rate) {
 			
 			.on("mouseout", function() {
 				d3.select(this)
-    				.path("active", false)
 					.style("stroke-width", function(d) { return "1px"; });
 
 				div.transition()
