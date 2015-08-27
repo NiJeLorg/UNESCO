@@ -5,7 +5,7 @@
 
 //Width and height
 var w = 1000;
-var h = 500;
+var h = 600;
 
 // for mouseover later on
 //Place this div function here, so that the .on mouseover function can reference it later
