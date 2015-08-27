@@ -5,7 +5,7 @@
 
 //Width and height
 var w = 1000;
-var h = 1000;
+var h = 500;
 
 // for mouseover later on
 //Place this div function here, so that the .on mouseover function can reference it later
@@ -27,7 +27,7 @@ d3.json("ROFST_1_CP.json", function(rate) {
 	    .precision(.1);
 	*/
 	var projection = d3.geo.equirectangular()
-		.scale(153)
+		.scale((w + 1) / 2 / Math.PI)
 		.translate([w / 2, h / 2])
 		.precision(.1);
 
