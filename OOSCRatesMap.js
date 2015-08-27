@@ -19,13 +19,19 @@ d3.json("ROFST_1_CP.json", function(rate) {
 	// rofst = rate;
 	// console.log(rate);	
 
-	//Define default path generator
+	//Define projection
+	/*
 	var projection = d3.geo.mercator()
 	    .scale((w + 1) / 2 / Math.PI)
 	    .translate([w / 2, h / 2])
 	    .precision(.1);
+	*/
+	var projection = d3.geo.equirectangular()
+		.scale((w + 1) / 2 / Math.PI)
+		.translate([w / 2, h / 2])
+		.precision(.1);
 
-	//Define projection
+	//Define path generator
 	var path = d3.geo.path()
 	    .projection(projection);
 
