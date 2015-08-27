@@ -27,7 +27,7 @@ d3.json("ROFST_1_CP.json", function(rate) {
 	    .precision(.1);
 	*/
 	var projection = d3.geo.equirectangular()
-		.scale((w + 1) / 2 / Math.PI)
+		.scale(153)
 		.translate([w / 2, h / 2])
 		.precision(.1);
 
