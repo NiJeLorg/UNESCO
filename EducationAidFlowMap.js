@@ -74,14 +74,16 @@ var h = 600;
       .csv('nodes', 'OECD_Nodes.csv')
       .csv('flows', 'OECD_Edges.csv')
       .onload(function(data) {
-        console.log();
 
         d3.select("#loading").attr("visibility", "hidden");
 
         var nodeDataByCode = {}, links = [];
-        var year = '2008';
         var maxMagnitude =
-          d3.max(data.flows, function(d) { return parseFloat(d[year])});
+          d3.max(data.flows, function(d) { 
+          	d.Total = d.Total.replace(/,/g , '');
+          	return parseFloat(d.Total);
+          });
+        console.log(maxMagnitude);
         var magnitudeFormat = d3.format(",.0f");
 
         var arcWidth = d3.scale.linear().domain([1, maxMagnitude]).range([.1, 7]);
@@ -107,15 +109,16 @@ var h = 600;
         data.nodes.forEach(function(node) {
           node.coords = nodeCoords(node);
           node.projection = node.coords ? projection(node.coords) : undefined;
-          nodeDataByCode[node.Code] = node;
+          nodeDataByCode[node.Country_Code] = node;
         });
 
         //data.flows = data.flows.filter(function(d) { return (d.Origin == 'IDN' && d.Dest == 'USA') ||  (d.Origin == 'LBR'  &&  d.Dest == 'NZL' );  });
 
         data.flows.forEach(function(flow) {
-          var o = nodeDataByCode[flow.Origin], co = o.coords, po = o.projection;
-          var d = nodeDataByCode[flow.Dest], cd = d.coords, pd = d.projection;
-          var magnitude = parseFloat(flow[year]);
+          var o = nodeDataByCode[flow.UIS_Source_Code], co = o.coords, po = o.projection;
+          var d = nodeDataByCode[flow.UIS_Target_Code], cd = d.coords, pd = d.projection;
+          flow.Total = flow.Total.replace(/,/g , '');
+          var magnitude = parseFloat(flow.Total);
           if (co  &&  cd  &&  !isNaN(magnitude)) {
             links.push({
               source: co, target: cd,
@@ -137,7 +140,7 @@ var h = 600;
           .attr("opacity", 0.5)
           ;
 
-          var strokeFun = function(d) { return arcColor(d.magnitude); };
+        var strokeFun = function(d) { return arcColor(d.magnitude); };
 
         function splitPath(path) {
           var avgd = 0, i, d;
@@ -166,8 +169,8 @@ var h = 600;
           }
           return newpath.join("");
         }
-
-        var gradientNameFun = function(d) { return "grd"+d.origin.Code+d.dest.Code; };
+        
+        var gradientNameFun = function(d) { return "grd"+d.origin.Country_Code+d.dest.Country_Code; };
         var gradientRefNameFun = function(d) { return "url(#"+gradientNameFun(d)+")"; };
 
         var defs = svg.append("svg:defs");
@@ -257,7 +260,7 @@ var h = 600;
         arcNodes.append("svg:title")
           .text(function(d) {
             return d.origin.Name+" -> "+d.dest.Name+"\n"+
-                   "Refugees in " +year+": " +magnitudeFormat(d.magnitude); 
+                   "Refugees in: " +magnitudeFormat(d.magnitude); 
         })
         ;
 

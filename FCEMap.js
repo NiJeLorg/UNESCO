@@ -13,8 +13,6 @@ var div = d3.select("body").append("div")
 	.attr("class", "tooltip")
 	.style("opacity", 1e-6);
 
-console.log(div);
-
 d3.csv("FCE-data.csv", function(data) {
 	// rofst = rate;
 	// console.log(rate);	
@@ -64,20 +62,24 @@ d3.csv("FCE-data.csv", function(data) {
 					var eduCountry = data[i].CountryName;
 						
 					//Grab data value, and convert from string to float
-					var eduValue = parseFloat(data[i]."Duration compulsory education");
+					if ((data[i].Duration_compulsory_education != 'a' || data[i].Duration_compulsory_education != 'm') && !isNaN(data[i].Duration_compulsory_education) ) {
+						var eduValue = parseFloat(data[i].Duration_compulsory_education);
+					} else {
+						var eduValue = -99;
+					}
 				
 					//Find the corresponding country inside the GeoJSON
 					for (var j = 0; j < json.features.length; j++) {
 						
 						var mapCountry = json.features[j].id;
 
-						// console.log(rateCountry)
-						// console.log(mapCountry);
+						 console.log(eduCountry)
+						 console.log(mapCountry);
 				
-						if (rateCountry == mapCountry) {
+						if (eduCountry == mapCountry) {
 						
 							//Copy the data value into the JSON
-							json.features[j].properties.value = rateValue;
+							json.features[j].properties.value = eduValue;
 								
 							//Stop looking through the JSON
 							break;
@@ -98,7 +100,7 @@ d3.csv("FCE-data.csv", function(data) {
 			.style("stroke-width", "1px")
 			.style("fill", function(d) {
 				//Get data value
-				// console.log(d)
+				 console.log(d)
 				var value = d.properties.value;					   		
 				if (value) {
 					//If value exists…
