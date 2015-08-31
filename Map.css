@@ -16,7 +16,7 @@
 
 .tooltip:after, .tooltip:before { 
 	right: 100%; 
-	top: 50%; /* Changes placement of tooltip point along specified side */
+	top: 35%; /* Changes placement of tooltip point along specified side */
 	border: solid transparent; 
 	content: " "; 
 	height: 0; 

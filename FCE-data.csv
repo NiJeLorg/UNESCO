@@ -1,4 +1,4 @@
-,,Year,Duration compulsory education,Start age compulsory education,"End age, compulsory education",Duration free education,Start age free education,"End age, free education"
+CoID,CountryName,Year,Duration compulsory education,Start age compulsory education,"End age, compulsory education",Duration free education,Start age free education,"End age, free education"
 40,Afghanistan,2014,9,7,15,18,3,20
 80,Albania,2014,9,6,14,a,a,a
 120,Algeria,2014,10,6,15,20,3,22
