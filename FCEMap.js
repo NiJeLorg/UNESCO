@@ -41,9 +41,9 @@ d3.csv("FCE-data.csv", function(data) {
 
 
 	var color = d3.scale.threshold()
-		color.domain([-99,6,9,12,100]);	
+		color.domain([-99,1,6,9,12,100]);	
 		// .range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
-		color.range(["#fff","#f7941e","#fbc98e","#71af87","#7fd3ce","39bbb3"]);
+		color.range(["#fff","#f7941e","#fbc98e","#71af87","#7fd3ce","#39bbb3"]);
 	//Set input domain for color scale
 		
 		// ([
