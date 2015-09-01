@@ -2,6 +2,12 @@
 // var rofstCP; //Global Variable for data
 // var mapD; //Global Variable for data
 
+// prototype function to fake moving moused over obejcts to the front
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function(){
+  	this.parentNode.appendChild(this);
+  });
+};
 
 //Width and height
 var w = 1000;
@@ -13,11 +19,9 @@ var div = d3.select("body").append("div")
 	.attr("class", "tooltip")
 	.style("opacity", 1e-6);
 
-console.log(div);
-
-d3.json("ROFST_1_CP.json", function(rate) {
+$.getJSON("http://www.uis.unesco.org/das/api/countries/?code=ALL&category=EDULIT_DS&indicators=ROFST_1_CP&fromyear=2009&toyear=2015&mostrecent=true&fullprecision=false&callback=?", function (rate) {
 	// rofst = rate;
-	// console.log(rate);	
+	//console.log(rate);	
 
 	//Define projection
 	/*
@@ -112,9 +116,9 @@ d3.json("ROFST_1_CP.json", function(rate) {
 			// set up on mouseover events
 			.on("mouseover", function(d) {
 				// console.log(d);
-
-				d3.select(this)
-					.style("stroke-width", "3px");
+				var sel = d3.select(this);
+      			sel.moveToFront();
+      			sel.style("stroke-width", "3px");
 
 				div.transition()
 				  .duration(250)
