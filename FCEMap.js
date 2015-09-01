@@ -41,9 +41,9 @@ d3.csv("FCE-data.csv", function(data) {
 
 
 	var color = d3.scale.threshold()
-		color.domain([9.9,19.9,29.9,100]);	
+		color.domain([0.9,5.9,8.9,11.9,99]);	
 		// .range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
-		color.range(["#33B874","#ABE2C6","#959CC7","#5561A6"]);
+		color.range(["#33B874","#ABE2C6","#959CC7","#5561A6","f7f7f"]);
 	//Set input domain for color scale
 		
 		// ([
@@ -59,7 +59,7 @@ d3.csv("FCE-data.csv", function(data) {
 				for (var i = 0; i < data.length; i++) {
 						
 					//Grab country code
-					var eduCountry = data[i].CountryName;
+					var eduCountry = data[i].Code;
 						
 					//Grab data value, and convert from string to float
 					if ((data[i].Duration_compulsory_education != 'a' || data[i].Duration_compulsory_education != 'm') && !isNaN(data[i].Duration_compulsory_education) ) {
@@ -67,14 +67,14 @@ d3.csv("FCE-data.csv", function(data) {
 					} else {
 						var eduValue = -99;
 					}
-				
+					
 					//Find the corresponding country inside the GeoJSON
 					for (var j = 0; j < json.features.length; j++) {
 						
 						var mapCountry = json.features[j].id;
 
-						 console.log(eduCountry)
-						 console.log(mapCountry);
+						 // console.log(eduCountry)
+						 // console.log(mapCountry);
 				
 						if (eduCountry == mapCountry) {
 						
@@ -107,7 +107,7 @@ d3.csv("FCE-data.csv", function(data) {
 					return color(value);
 				} else {
 				 //If value is undefined…
-					return "#f7f7f7";
+					return "#fff";
 				}
 			}) //Important, allows addition of .on to work
 
@@ -124,7 +124,7 @@ d3.csv("FCE-data.csv", function(data) {
 				  
 				div.html(
 				  '<h4 class="text-left">' + d.properties.name + '</h4>' +
-				  '<p class="text-left">' + "Rate of children out of school: " + d.properties.value + "%" +'</p>'
+				  '<p class="text-left">' + "Years of compulsory education: " + d.properties.value + '</p>'
 				  )  
 				  .style("left", (d3.event.pageX + 18) + "px")     //play around with these to get spacing better
 				  .style("top", (d3.event.pageY - 60) + "px");
