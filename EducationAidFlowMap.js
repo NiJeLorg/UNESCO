@@ -90,10 +90,9 @@ d3.loadData()
       });
     var magnitudeFormat = d3.format(",.0f");
 
-    var arcWidth = d3.scale.linear().domain([1, maxMagnitude]).range([.1, 7]);
+    var arcWidth = d3.scale.linear().domain([1, maxMagnitude]).range([0.5, 10]);
     var minColor = '#f0f0f0', maxColor = 'rgb(8, 48, 107)';
     var arcColor = d3.scale.log().domain([1, maxMagnitude]).range([minColor, maxColor]);
-    var arcOpacity = d3.scale.log().domain([1, maxMagnitude]).range([0.3, 1]);
 
     // function to parse raw node lat lons to array
     function nodeCoords(node) { 
@@ -106,6 +105,27 @@ d3.loadData()
       //construct lon,lat array for each node and pass to nodeDataByCode
       node.coords = nodeCoords(node);
       node.projection = node.coords ? projection(node.coords) : undefined;
+      node.Total = 0;
+      // total the amounts from flows for each node
+      for (var i = 0; i < data.flows.length; i++) {
+        if (node.Donor_or_Recipient == 'Donor') {
+          if (node.OECD_Country_Code == data.flows[i].ISO_Source_Code) {
+            var total = data.flows[i].Total.replace(/,/g , '');
+            total = parseFloat(total);
+            if (!isNaN(total)) {
+              node.Total = node.Total + total; 
+            } 
+          }
+        } else {
+          if (node.OECD_Country_Code == data.flows[i].ISO_Target_Code) {
+            var total = data.flows[i].Total.replace(/,/g , '');
+            total = parseFloat(total);
+            if (!isNaN(total)) {
+              node.Total = node.Total + total; 
+            } 
+          }
+        }
+      } 
       nodeDataByCode[node.Country_Code] = node;
 
     });
@@ -179,6 +199,7 @@ d3.loadData()
         }
       });
 
+      // here we can attach an on click that highlights the connected countries, brign forward the connections...
 
 
     centroids.selectAll("circle")
@@ -186,10 +207,52 @@ d3.loadData()
       .enter().append("circle")
       .attr("cx", function(d) { return d.projection[0] } )
       .attr("cy", function(d) { return d.projection[1] } )
-      .attr("r", 1)
-      .attr("fill", "#000")
-      .attr("opacity", 0.5)
-      ;
+      .attr("r", 100)
+      .attr("fill", "#fff")
+      .attr("stroke", "#4d4d4d")
+      .attr("stroke-width", 3)
+      .attr("opacity", 0);
+
+    centroids.selectAll(".countryName")
+      .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
+      .enter().append("text")
+      .attr("class", "countryName")
+      .attr("font-size", "18px")
+      .attr("font-weight", 600)
+      .attr("font-family", "Helvetica")
+      .attr("dx", function(d) { return d.projection[0] } )
+      .attr("dy", function(d) { return d.projection[1] - 18} )
+      .attr("text-anchor", "middle")
+      .text(function(d) {
+        return d.Name_of_Country;
+      })
+      .attr("opacity", 0);
+
+    var bubbleText = centroids.selectAll(".bubbleText")
+      .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
+      .enter().append("text")
+      .attr("class", "bubbleText")
+      .attr("text-anchor", "middle")
+      .attr("opacity", 0);
+
+    bubbleText.append('tspan')
+      .attr("x", function(d) { return d.projection[0] } )
+      .attr("y", function(d) { return d.projection[1] } )
+      .text(function(d) {
+        if (d.Donor_or_Recipient == 'Donor') {
+          return "Contributed total of:";
+        } else {
+          return "Received total of:";
+        }
+      });
+
+    bubbleText.append('tspan')
+      .attr("x", function(d) { return d.projection[0] } )
+      .attr("y", function(d) { return d.projection[1] + 15 } )
+      .text(function(d) {
+        return "$" + magnitudeFormat(d.Total);
+      });
+
 
     var strokeFun = function(d) { return arcColor(d.magnitude); };
 
@@ -221,8 +284,6 @@ d3.loadData()
       return newpath.join("");
     }
     
-    var gradientNameFun = function(d) { return "grd"+d.origin.Country_Code+d.dest.Country_Code; };
-    var gradientRefNameFun = function(d) { return "url(#"+gradientNameFun(d)+")"; };
 
     var defs = svg2.append("svg:defs");
 
@@ -244,51 +305,23 @@ d3.loadData()
       ;
 
 
-    var gradient = defs.selectAll("linearGradient")
-      .data(links)
-    .enter()
-      .append("svg:linearGradient")
-        .attr("id", gradientNameFun)
-        .attr("gradientUnits", "userSpaceOnUse")
-        .attr("x1", function(d) { return d.originp[0]; })
-        .attr("y1", function(d) { return d.originp[1]; })
-        .attr("x2", function(d) { return d.destp[0]; })
-        .attr("y2", function(d) { return d.destp[1]; })
-        ;
-
-    gradient.append("svg:stop")
-        .attr("offset", "0%")
-        .attr("stop-color", minColor)
-        .attr("stop-opacity", .0);
-    gradient.append("svg:stop")
-        .attr("offset", "80%")
-        .attr("stop-color", strokeFun)
-        .attr("stop-opacity", 1.0);
-    gradient.append("svg:stop")
-        .attr("offset", "100%")
-        .attr("stop-color", strokeFun)
-        .attr("stop-opacity", 1.0);
-
-
 
     var arcNodes = arcs.selectAll("path")
       .data(links)
     .enter().append("path")
-      //.attr("visibility", function(d) { return d.magnitude > 500 ? "visible" : "hidden"})
-      .attr("stroke", gradientRefNameFun)
-      //.attr("stroke", "red")
-      //.attr("opacity", function(d) { return arcOpacity(d.magnitude); })
-      //.attr("stroke", strokeFun)
+      .attr("stroke", '#111')
+      .attr("opacity", 0) //all lines totally trasparent, then change opacity with country click
       .attr("stroke-linecap", "round")
       .attr("stroke-width", function(d) { return arcWidth(d.magnitude); })
       .attr("d", function(d) { 
-        if (useGreatCircles)
+        if (useGreatCircles) {
           return splitPath(path(arc(d)));
-        else 
+        } else {
           return path({
             type: "LineString",
             coordinates: [d.source, d.target]
           });
+        }
       })
       .sort(function(a, b) {
         var a = a.magnitude, b = b.magnitude;
@@ -296,6 +329,7 @@ d3.loadData()
         return d3.ascending(a, b); 
       });
     arcNodes.on("mouseover", function(d) { 
+      console.log(d);
       d3.select(this)
         .attr("stroke", "red")
         .attr("marker-end", "url(#arrowHead)");
@@ -303,15 +337,9 @@ d3.loadData()
     arcNodes.on("mouseout", function(d) {
         d3.select(this)
           .attr("marker-end", "none")
-          .attr("stroke", gradientRefNameFun); })
-    ;
+          .attr("stroke", '#111'); 
+    });
 
 
-    arcNodes.append("svg:title")
-      .text(function(d) {
-        return d.origin.Name+" -> "+d.dest.Name+"\n"+
-               "Refugees in: " +magnitudeFormat(d.magnitude); 
-    })
-    ;
 
   });
