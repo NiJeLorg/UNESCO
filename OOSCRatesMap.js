@@ -193,22 +193,22 @@ function updateOOSCMap() {
 				  .style("opacity", 1);
 
 				if (activeLayer == 'ROFST_1_CP') {
-					if (d.properties.rate_ROFST_1_CP_Value) {
+					if (d.properties.OFST_1_F_CP_Value && d.properties.OFST_1_M_CP_Value) {
 						var girls = commaFormat(d.properties.OFST_1_F_CP_Value) + " primary school age girls out of school.";
 						var boys = commaFormat(d.properties.OFST_1_M_CP_Value) + " primary school age boys out of school.";
 						var year = d.properties.rate_ROFST_1_CP_Year;
 					} else {
-						var girls = "No data for out of school children of primary school age.";
+						var girls = "Data showing gender differnces for out of school children of primary school age not available.";
 						var boys = '';
 						var year = '';
 					}	
 				} else {
-					if (d.properties.rate_ROFST_2_CP_Value) {
+					if (d.properties.OFST_2_F_CP_Value && d.properties.OFST_2_M_CP_Value) {
 						var girls = commaFormat(d.properties.OFST_2_F_CP_Value) + " lower secondary school age girls out of school.";
 						var boys = commaFormat(d.properties.OFST_2_M_CP_Value) + " lower secondary school age age boys out of school.";
 						var year = d.properties.rate_ROFST_2_CP_Year;
 					} else {
-						var girls = "No data for out of school adolescents of lower secondary school age.";
+						var girls = "Data showing gender differnces for out of school adolescents of lower secondary school age not available.";
 						var boys = '';
 						var year = '';
 					}
