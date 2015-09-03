@@ -15,7 +15,7 @@ d3.csv("../data/FCE-data.csv", function(data) {
 
 
 	var color = d3.scale.threshold()
-		color.domain([-99,1,6,9,12,100]);	
+		color.domain([0,6,9,12,13,100]);	
 		color.range(["#fff","#f7941e","#fcd7aa","#a6e0dd","#39bbb3","#6aa07c"]);		
 
 	//Load in GeoJSON data
@@ -57,16 +57,21 @@ d3.csv("../data/FCE-data.csv", function(data) {
 
 				
 		//Bind data and create one path per GeoJSON feature
-		 svg1.selectAll("path")
-			.data(json.features)
-			.enter()
-			.append("path")
+		// initial selection
+		var paths = svg1.selectAll('.countryPaths')
+			.data(json.features);
+			
+		// entering new stuff
+		var pathEnter = paths.enter().append("g")
+			.attr("class", "countryPaths");
+
+		// append paths and set things that will always be the same
+		pathEnter.append('path')
 			.attr("d", path)
 			.style("stroke", "#4d4d4d")
 			.style("stroke-width", "1px")
 			.style("fill", function(d) {
 				//Get data value
-				 console.log(d)
 				var value = d.properties.value;					   		
 				if (value) {
 					//If value exists…
@@ -79,18 +84,40 @@ d3.csv("../data/FCE-data.csv", function(data) {
 
 			// set up on mouseover events
 			.on("mouseover", function(d) {
-				// console.log(d);
 
-				d3.select(this)
-					.style("stroke-width", "3px");
+				// background all that aren't selected
+	  			paths.selectAll('path')
+	  				.transition()
+				  	.duration(250)
+	  				.style("stroke-width", function(j) {
+	  					if (j == d) {
+	  						return "3px";
+	  					} else {
+	  						return "0px";
+	  					}
+					})
+					.style("fill-opacity", function(j) {
+	  					if (j == d) {
+	  						return "1";
+	  					} else {
+	  						return "0.5";
+	  					}
+					});
 
 				div.transition()
 				  .duration(250)
 				  .style("opacity", 1);
+
+				// conditional statements for text
+				if (d.properties.value && d.properties.value != -99) {
+					var text = "Years of compulsory education: " + d.properties.value;
+				} else {
+					var text = "No data for this country.";
+				}
 				  
 				div.html(
 				  '<h4 class="text-left">' + d.properties.name + '</h4>' +
-				  '<p class="text-left">' + "Years of compulsory education: " + d.properties.value + '</p>'
+				  '<p class="text-left">' + text + '</p>'
 				  )  
 				  .style("left", (d3.event.pageX + 18) + "px")     //play around with these to get spacing better
 				  .style("top", (d3.event.pageY - 60) + "px");
@@ -103,8 +130,11 @@ d3.csv("../data/FCE-data.csv", function(data) {
 			})
 			
 			.on("mouseout", function() {
-				d3.select(this)
-					.style("stroke-width", function(d) { return "1px"; });
+				paths.selectAll('path')
+	  				.transition()
+				  	.duration(250)
+					.style("stroke-width", "1px")
+					.style("fill-opacity", 1);
 
 				div.transition()
 			     .duration(250)

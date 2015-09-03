@@ -149,32 +149,31 @@ function updateOOSCMap() {
 
 		// set up on mouseover events
 		.on("mouseover", function(d) {
-			// only act on mouseover if data are available
-			if ((activeLayer == 'ROFST_1_CP' && d.properties.rate_ROFST_1_CP_Value) || (activeLayer == 'ROFST_2_CP' && d.properties.rate_ROFST_2_CP_Value)) {
-				// background all that aren't selected
-	  			paths.selectAll('path')
-	  				.transition()
-				  	.duration(250)
-	  				.style("stroke-width", function(j) {
-	  					if (j == d) {
-	  						return "3px";
-	  					} else {
-	  						return "0px";
-	  					}
-					})
-					.style("fill-opacity", function(j) {
-	  					if (j == d) {
-	  						return "1";
-	  					} else {
-	  						return "0.5";
-	  					}
-					})
+			// background all that aren't selected
+  			paths.selectAll('path')
+  				.transition()
+			  	.duration(250)
+  				.style("stroke-width", function(j) {
+  					if (j == d) {
+  						return "3px";
+  					} else {
+  						return "0px";
+  					}
+				})
+				.style("fill-opacity", function(j) {
+  					if (j == d) {
+  						return "1";
+  					} else {
+  						return "0.5";
+  					}
+				});
 
-				div.transition()
-				  .duration(250)
-				  .style("opacity", 1);
+			div.transition()
+			  .duration(250)
+			  .style("opacity", 1);
 
-				if (activeLayer == 'ROFST_1_CP') {
+			if (activeLayer == 'ROFST_1_CP') {
+				if (d.properties.rate_ROFST_1_CP_Value) {
 					if (d.properties.OFST_1_F_CP_Value && d.properties.OFST_1_M_CP_Value) {
 						var girls = commaFormat(d.properties.OFST_1_F_CP_Value) + " primary school age girls out of school.";
 						var boys = commaFormat(d.properties.OFST_1_M_CP_Value) + " primary school age boys out of school.";
@@ -183,8 +182,14 @@ function updateOOSCMap() {
 						var girls = "Data showing gender differnces for out of school children of primary school age not available.";
 						var boys = '';
 						var year = '';
-					}	
+					}
 				} else {
+						var girls = "No data for this country.";
+						var boys = '';
+						var year = '';
+				}
+			} else {
+				if (d.properties.rate_ROFST_2_CP_Value) {
 					if (d.properties.OFST_2_F_CP_Value && d.properties.OFST_2_M_CP_Value) {
 						var girls = commaFormat(d.properties.OFST_2_F_CP_Value) + " lower secondary school age girls out of school.";
 						var boys = commaFormat(d.properties.OFST_2_M_CP_Value) + " lower secondary school age age boys out of school.";
@@ -194,18 +199,22 @@ function updateOOSCMap() {
 						var boys = '';
 						var year = '';
 					}
-					
+				} else {
+					var girls = "No data for this country.";
+					var boys = '';
+					var year = '';
 				}
-				  
-				div.html(
-				  '<h4 class="text-left">' + d.properties.name + '<br />' + year + '</h4>' +
-				  '<p class="text-left">' + girls + '</p>' +
-				  '<p class="text-left">' + boys + '</p>'
-				  )  
-				  .style("left", (d3.event.pageX + 18) + "px")     //play around with these to get spacing better
-				  .style("top", (d3.event.pageY - 60) + "px");
-
+				
 			}
+			  
+			div.html(
+			  '<h4 class="text-left">' + d.properties.name + '<br />' + year + '</h4>' +
+			  '<p class="text-left">' + girls + '</p>' +
+			  '<p class="text-left">' + boys + '</p>'
+			  )  
+			  .style("left", (d3.event.pageX + 18) + "px")     //play around with these to get spacing better
+			  .style("top", (d3.event.pageY - 60) + "px");
+
 			
 		});
 
