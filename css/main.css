@@ -1,3 +1,18 @@
+/* Global CSS for Education 2030 */
+.header {
+	margin: 20px 0px 50px 0px;
+}
+
+/* Bootstrap Overrides CSS */
+.carousel-control {
+	width: 3%;
+}
+
+.carousel-control.right, .carousel-control.left {
+	background-image: none;
+}
+
+
 /* Tooltop CSS */
 .tooltip { 
     position: absolute;

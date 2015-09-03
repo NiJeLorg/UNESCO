@@ -1,59 +1,25 @@
+/**
+ * FCEMap.js: Javascript to draw the FCE Map
+ */
 
-// var rofstCP; //Global Variable for data
-// var mapD; //Global Variable for data
 
-
-//Width and height
-var w = 1000;
-var h = 600;
-
-// for mouseover later on
-//Place this div function here, so that the .on mouseover function can reference it later
-var div = d3.select("body").append("div") 
-	.attr("class", "tooltip")
-	.style("opacity", 1e-6);
-
-d3.csv("FCE-data.csv", function(data) {
-	// rofst = rate;
-	// console.log(rate);	
-
-	//Define projection
-	/*
-	var projection = d3.geo.mercator()
-	    .scale((w + 1) / 2 / Math.PI)
-	    .translate([w / 2, h / 2])
-	    .precision(.1);
-	*/
-	var projection = d3.geo.equirectangular()
-		.scale((w + 1) / 2 / Math.PI)
-		.translate([w / 2, h / 2])
-		.precision(.1);
-
-	//Define path generator
-	var path = d3.geo.path()
-	    .projection(projection);
+d3.csv("../data/FCE-data.csv", function(data) {
 
 	//Create SVG element
-	var svg = d3.select("body")
+	var svg1 = d3.select("#FCEMap")
 		.append("svg")
-		.attr("width", w)
-		.attr("height", h);
+		.attr("width", w + margin.left + margin.right)
+		.attr("height", h + margin.top + margin.bottom)
+		.append("g")
+    	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
 	var color = d3.scale.threshold()
 		color.domain([-99,1,6,9,12,100]);	
-		// .range(["rgb(237,248,233)","rgb(186,228,179)","rgb(116,196,118)","rgb(49,163,84)","rgb(0,109,44)"]);
-		color.range(["#fff","#f7941e","#fcd7aa","#a6e0dd","#39bbb3","#6aa07c"]);
-	//Set input domain for color scale
-		
-		// ([
-		// d3.min(rate.Indicators, function(d,i) { return d.Value; }), 
-		// d3.max(rate.Indicators, function(d,i) { return d.Value; })
-		// ]);
-		
+		color.range(["#fff","#f7941e","#fcd7aa","#a6e0dd","#39bbb3","#6aa07c"]);		
 
 	//Load in GeoJSON data
-	d3.json("world-countries.json", function(json) {
+	d3.json("../data/world-countries.json", function(json) {
 		// mapD = json;
 		// console.log(mapD);
 				for (var i = 0; i < data.length; i++) {
@@ -91,7 +57,7 @@ d3.csv("FCE-data.csv", function(data) {
 
 				
 		//Bind data and create one path per GeoJSON feature
-		 svg.selectAll("path")
+		 svg1.selectAll("path")
 			.data(json.features)
 			.enter()
 			.append("path")

@@ -2,34 +2,16 @@
  * OOSCRatesMap.js: Javascript to draw the OOSC map
  */
 
-
-//set up variables
-var w = 1000;
-var h = 600;
-
-//Place this div function here, so that the .on mouseover function can reference it later
-var div = d3.select("body").append("div") 
-	.attr("class", "tooltip")
-	.style("opacity", 1e-6);
-
-//Define projection
-var projection = d3.geo.equirectangular()
-	.scale((w + 1) / 2 / Math.PI)
-	.translate([w / 2, h / 2])
-	.precision(.1);
+//Create SVG element
+var svg2 = d3.select("#OOSCRatesMap")
+	.append("svg")
+	.attr("width", w + margin.left + margin.right)
+	.attr("height", h + margin.top + margin.bottom)
+	.append("g")
+	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 // define comma format
 var commaFormat = d3.format(",.0f");
-
-//Define path generator
-var path = d3.geo.path()
-    .projection(projection);
-
-//Create SVG element
-var svg1 = d3.select("body")
-	.append("svg")
-	.attr("width", w)
-	.attr("height", h);
 
 var color_ROFST_1_CP = d3.scale.threshold()
 	color_ROFST_1_CP.domain([9.9,19.9,29.9,100]);	
@@ -61,7 +43,7 @@ function getApiData() {
 // function to attach datasets to geojson
 function attachData() {
 	//Load in GeoJSON data
-	d3.json("world-countries.json", function(json) {
+	d3.json("../data/world-countries.json", function(json) {
 		geojson = json;
 		// add ROFST_1_CP to geojson
 		for (var i = 0; i < apidata.Indicators.length; i++) {
@@ -104,7 +86,7 @@ function attachData() {
 
 function drawOOSCMap() {
 	// initial selection
-	paths = svg1.selectAll('.countryPaths')
+	paths = svg2.selectAll('.countryPaths')
 		.data(geojson.features);
 		
 	// entering new stuff
