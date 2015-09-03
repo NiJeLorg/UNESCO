@@ -7,7 +7,7 @@ var rl_margin = $('.carousel-inner').width()*0.03;
 var margin = {top: 0, right: rl_margin, bottom: 0, left: rl_margin};
 
 var w = $('.carousel-inner').width() - margin.left - margin.right,
-    h = 600 - margin.top - margin.bottom;
+    h = (w*0.5) - margin.top - margin.bottom;
 
 // Place this div function here, so that the .on mouseover function can reference it later
 var div = d3.select("body").append("div") 

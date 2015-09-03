@@ -1,23 +1,6 @@
 /*
- * Globals
+ * cover.css: Cover page stylesheet
  */
-
-/* Links */
-a,
-a:focus,
-a:hover {
-  color: #00a79d;
-}
-
-/* Custom default button */
-.btn-default,
-.btn-default:hover,
-.btn-default:focus {
-  color: #636363;
-  text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
-}
 
 
 /*
@@ -34,6 +17,13 @@ body {
   text-align: left;
 }
 
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #636363;
+}
+
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
   display: table;
@@ -45,16 +35,15 @@ body {
   display: table-cell;
   vertical-align: top;
 }
-.cover-container {
-  margin-right: auto;
-  margin-left: auto;
-}
 
 /* Padding for spacing */
 .inner {
   padding: 30px;
 }
 
+.cover-heading {
+  margin-left: 10px;
+}
 
 /*
  * Header
@@ -69,9 +58,6 @@ body {
   .masthead-brand {
     float: left;
   }
-  .masthead-nav {
-    float: right;
-  }
 }
 
 
@@ -82,10 +68,6 @@ body {
 .cover {
   padding: 0 20px;
 }
-.cover .btn-lg {
-  padding: 10px 20px;
-  font-weight: bold;
-}
 
 .highlight {
   padding: 5px 0px;
@@ -93,7 +75,11 @@ body {
   color: #fff;
   line-height: 50px;
   display: inline;
-  box-shadow: 4px 0 0 #00a79d, -4px 0 0 #00a79d;
+  box-shadow: 5px 0 0 #00a79d, -5px 0 0 #00a79d;
+}
+
+.highlight-wrapper {
+  margin-left: 15px;
 }
 
 
@@ -103,25 +89,8 @@ body {
  */
 
 @media (min-width: 768px) {
-  /* Pull out the header and footer */
-  .masthead {
-    position: fixed;
-    top: 0;
-  }
   /* Start the vertical centering */
   .site-wrapper-inner {
     vertical-align: middle;
-  }
-  /* Handle the widths */
-  .masthead,
-  .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
-  }
-}
-
-@media (min-width: 992px) {
-  .masthead,
-  .cover-container {
-    width: 700px;
   }
 }
