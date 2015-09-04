@@ -23,4 +23,3 @@ var projection = d3.geo.equirectangular()
 //global path generator
 var path = d3.geo.path()
     .projection(projection);
-
