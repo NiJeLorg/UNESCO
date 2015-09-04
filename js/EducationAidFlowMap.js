@@ -17,12 +17,12 @@ var centroids = svg3.append("g").attr("id", "centroids");
 var arcs = svg3.append("g").attr("id", "arcs");
 
 var color_donor = d3.scale.threshold()
-    color_donor.domain([10000,100000,1000000,1000000000]); 
-    color_donor.range(["#33B874","#ABE2C6","#959CC7","#5561A6"]);
+    color_donor.domain([9.9,19.9,29.9,100]); 
+    color_donor.range(["#d2e3f2","#a4c8e4","#77acd7","#4991c9", "#1c75bc"]);
 
 var color_recipient = d3.scale.threshold()
-    color_recipient.domain([10000,100000,1000000,1000000000]); 
-    color_recipient.range(["#33B874","#ABE2C6","#959CC7","#5561A6"]);
+    color_recipient.domain([9.9,19.9,29.9,100]); 
+    color_recipient.range(["#fcded4","#f9bda9","#f79c7f","#f47b54","#ef4136"]);
 
 
 d3.loadData = function() {
