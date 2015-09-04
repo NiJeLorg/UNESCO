@@ -99,8 +99,8 @@ function drawOOSCMap() {
 		.style("stroke", "#4d4d4d")
 		.style("stroke-width", "1px")
 		.on("mousemove", function(d) {
-			div.style("left", (d3.event.pageX + 18) + "px")
-			   .style("top", (d3.event.pageY - 60) + "px");
+			div.style("left", (d3.event.pageX + 25) + "px")
+			   .style("top", (d3.event.pageY - 55) + "px");
 			  
 		})
 		.on("mouseout", function() {
@@ -212,8 +212,8 @@ function updateOOSCMap() {
 			  '<p class="text-left">' + girls + '</p>' +
 			  '<p class="text-left">' + boys + '</p>'
 			  )  
-			  .style("left", (d3.event.pageX + 18) + "px")     //play around with these to get spacing better
-			  .style("top", (d3.event.pageY - 60) + "px");
+			  .style("left", (d3.event.pageX + 25) + "px")     //play around with these to get spacing better
+			  .style("top", (d3.event.pageY - 55) + "px");
 
 			
 		});

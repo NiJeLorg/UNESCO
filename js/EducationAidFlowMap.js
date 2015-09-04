@@ -13,8 +13,8 @@ var svg3 = d3.select("#EducationAidFlowMap")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var countries = svg3.append("g").attr("id", "countries");
-var centroids = svg3.append("g").attr("id", "centroids");
 var arcs = svg3.append("g").attr("id", "arcs");
+var centroids = svg3.append("g").attr("id", "centroids");
 
 var color_donor = d3.scale.threshold()
     color_donor.domain([9.9,19.9,29.9,100]); 
@@ -78,7 +78,7 @@ d3.loadData()
       });
     var magnitudeFormat = d3.format(",.0f");
 
-    var arcWidth = d3.scale.linear().domain([1, maxMagnitude]).range([0.5, 10]);
+    var arcWidth = d3.scale.linear().domain([1, maxMagnitude]).range([1, 100]);
     var minColor = '#f0f0f0', maxColor = 'rgb(8, 48, 107)';
     var arcColor = d3.scale.log().domain([1, maxMagnitude]).range([minColor, maxColor]);
 
@@ -149,6 +149,8 @@ d3.loadData()
 
       // set Total for each conuntry = 0 before summing
       feature.properties.Total = 0;
+      feature.properties.Donates_To = [];
+      feature.properties.Receives_From = [];
       // append total from flows   
       for (var i = 0; i < data.flows.length; i++) {
         if (feature.properties.Donor_or_Recipient == 'Donor') {
@@ -158,6 +160,8 @@ d3.loadData()
             if (!isNaN(total)) {
               feature.properties.Total = feature.properties.Total + total; 
             } 
+            // push Receipients into Donates_To
+            feature.properties.Donates_To.push(data.flows[i].ISO_Target_Code)
           }
         } else {
           if (feature.id == data.flows[i].ISO_Target_Code) {
@@ -166,6 +170,8 @@ d3.loadData()
             if (!isNaN(total)) {
               feature.properties.Total = feature.properties.Total + total; 
             } 
+            // push Receipients into Donates_To
+            feature.properties.Receives_From.push(data.flows[i].ISO_Source_Code)
           }
         }
       } 
@@ -185,63 +191,120 @@ d3.loadData()
         } else {
           return color_recipient(d.properties.Total);
         }
-      });
-
-      // here we can attach an on click that highlights the connected countries, brign forward the connections...
-
-
-    centroids.selectAll("circle")
-      .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
-      .enter().append("circle")
-      .attr("cx", function(d) { return d.projection[0] } )
-      .attr("cy", function(d) { return d.projection[1] } )
-      .attr("r", 100)
-      .attr("fill", "#fff")
-      .attr("stroke", "#4d4d4d")
-      .attr("stroke-width", 3)
-      .attr("opacity", 0);
-
-    centroids.selectAll(".countryName")
-      .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
-      .enter().append("text")
-      .attr("class", "countryName")
-      .attr("font-size", "18px")
-      .attr("font-weight", 600)
-      .attr("font-family", "Helvetica")
-      .attr("dx", function(d) { return d.projection[0] } )
-      .attr("dy", function(d) { return d.projection[1] - 18} )
-      .attr("text-anchor", "middle")
-      .text(function(d) {
-        return d.Name_of_Country;
       })
-      .attr("opacity", 0);
+      .on("click", function(d) {
+        // show circle of selected
+        centroids.selectAll('circle')
+          .transition()
+          .duration(250)
+          .attr("display", function(j) {
+              if (j.OECD_Country_Code == d.id) {
+                return "block";
+              } else {
+                return "none";
+              }
+          });
 
-    var bubbleText = centroids.selectAll(".bubbleText")
-      .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
-      .enter().append("text")
-      .attr("class", "bubbleText")
-      .attr("text-anchor", "middle")
-      .attr("opacity", 0);
+        // show country name of selected
+        centroids.selectAll(".countryName")
+          .transition()
+          .duration(250)
+          .attr("display", function(j) {
+              if (j.OECD_Country_Code == d.id) {
+                return "block";
+              } else {
+                return "none";
+              }
+          });
 
-    bubbleText.append('tspan')
-      .attr("x", function(d) { return d.projection[0] } )
-      .attr("y", function(d) { return d.projection[1] } )
-      .text(function(d) {
-        if (d.Donor_or_Recipient == 'Donor') {
-          return "Contributed total of:";
-        } else {
-          return "Received total of:";
-        }
+        // show bubble text of selected
+        centroids.selectAll(".bubbleText")
+          .transition()
+          .duration(250)
+          .attr("display", function(j) {
+              if (j.OECD_Country_Code == d.id) {
+                return "block";
+              } else {
+                return "none";
+              }
+          });
+
+        // show arcs of countries that are in source or target
+        arcs.selectAll("path")
+          .transition()
+          .duration(0)
+          .attr("stroke", function(j) {
+              if (d.properties.Donor_or_Recipient == 'Donor') {
+                if (j.origin.OECD_Country_Code == d.id) {
+                  return "#44509d";
+                } else {
+                  return "#111";
+                }
+              } else {
+                if (j.dest.OECD_Country_Code == d.id) {
+                  return "#f36d42";
+                } else {
+                  return "#111";
+                }                
+              }
+          })
+          .attr("display", function(j) {
+              if (d.properties.Donor_or_Recipient == 'Donor') {
+                if (j.origin.OECD_Country_Code == d.id) {
+                  return "block";
+                } else {
+                  return "none";
+                }
+              } else {
+                if (j.dest.OECD_Country_Code == d.id) {
+                  return "block";
+                } else {
+                  return "none";
+                }                
+              }
+          });
+
+          //highlight the countries that are donors or recipients
+          countries.selectAll("path")
+            .transition()
+            .duration(250)
+            .style("stroke-width", function(j) {
+              // loop through links to highlight countries in the source or target list
+              if (d.properties.Donor_or_Recipient == 'Donor') {
+                if ($.inArray( j.id, d.properties.Donates_To ) != -1) {
+                  return "3px";
+                } else {
+                  return "0px";
+                }
+              } else {
+                if ($.inArray( j.id, d.properties.Receives_From ) != -1) {
+                  return "3px";
+                } else {
+                  return "0px";
+                }                    
+              }
+            })
+            .style("fill-opacity", function(j) {
+              if (d.properties.Donor_or_Recipient == 'Donor') {
+                if ($.inArray( j.id, d.properties.Donates_To ) != -1) {
+                  return "1";
+                } else {
+                  return "0.5";
+                }
+              } else {
+                if ($.inArray( j.id, d.properties.Receives_From ) != -1) {
+                  return "1";
+                } else {
+                  return "0.5";
+                }                    
+              }
+            });
+
+
+
       });
 
-    bubbleText.append('tspan')
-      .attr("x", function(d) { return d.projection[0] } )
-      .attr("y", function(d) { return d.projection[1] + 15 } )
-      .text(function(d) {
-        return "$" + magnitudeFormat(d.Total);
-      });
-
-
+    // draw flows between countries
     var strokeFun = function(d) { return arcColor(d.magnitude); };
 
     function splitPath(path) {
@@ -282,23 +345,20 @@ d3.loadData()
       .attr("refX", 10)
       .attr("refY", 5)
       .attr("orient", "auto")
-      //.attr("markerUnits", "strokeWidth")
       .attr("markerUnits", "userSpaceOnUse")
       .attr("markerWidth", 4*2)
       .attr("markerHeight", 3*2)
     .append("polyline")
       .attr("points", "0,0 10,5 0,10 1,5")
-      .attr("fill", maxColor)
-      //.attr("opacity", 0.5)
-      ;
+      .attr("fill", maxColor);
 
 
 
     var arcNodes = arcs.selectAll("path")
       .data(links)
     .enter().append("path")
+      .attr("display", "none") // set display none until country clicked
       .attr("stroke", '#111')
-      .attr("opacity", 0) //all lines totally trasparent, then change opacity with country click
       .attr("stroke-linecap", "round")
       .attr("stroke-width", function(d) { return arcWidth(d.magnitude); })
       .attr("d", function(d) { 
@@ -316,17 +376,93 @@ d3.loadData()
         if (isNaN(a)) if (isNaN(b)) return 0; else return -1; if (isNaN(b)) return 1;
         return d3.ascending(a, b); 
       });
+      
     arcNodes.on("mouseover", function(d) { 
-      console.log(d);
       d3.select(this)
-        .attr("stroke", "red")
         .attr("marker-end", "url(#arrowHead)");
-    })
+
+      div.transition()
+        .duration(250)
+        .style("opacity", 1);
+
+      var text = "Receives $" + magnitudeFormat(d.magnitude) + " from " + d.origin.Name_of_Country + " and $" + magnitudeFormat(d.dest.Total) + " in multilateral aid."
+        
+      div.html(
+        '<h4 class="text-left">' + d.dest.Name_of_Country + '</h4>' +
+        '<p class="text-left">' + text + '</p>'
+        )  
+        .style("left", (d3.event.pageX + 25) + "px")     //play around with these to get spacing better
+        .style("top", (d3.event.pageY - 55) + "px");
+
+    });
+    arcNodes.on("mousemove", function(d) {
+        div.style("left", (d3.event.pageX + 25) + "px")
+           .style("top", (d3.event.pageY - 55) + "px");
+          
+    });
     arcNodes.on("mouseout", function(d) {
         d3.select(this)
-          .attr("marker-end", "none")
-          .attr("stroke", '#111'); 
+          .attr("marker-end", "none");
+
+        div.transition()
+           .duration(250)
+           .style("opacity", 1e-6);
+
     });
+    
+
+    centroids.selectAll("circle")
+      .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
+      .enter().append("circle")
+      .attr("cx", function(d) { return d.projection[0] } )
+      .attr("cy", function(d) { return d.projection[1] } )
+      .attr("r", 50)
+      .attr("fill", "#fff")
+      .attr("stroke", "#4d4d4d")
+      .attr("stroke-width", 3)
+      .attr("display", "none");
+
+    centroids.selectAll(".countryName")
+      .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
+      .enter().append("text")
+      .attr("class", "countryName")
+      .attr("font-size", "12px")
+      .attr("font-weight", 600)
+      .attr("dx", function(d) { return d.projection[0] } )
+      .attr("dy", function(d) { return d.projection[1] - 10} )
+      .attr("text-anchor", "middle")
+      .text(function(d) {
+        return d.Name_of_Country;
+      })
+      .attr("display", "none");
+
+    var bubbleText = centroids.selectAll(".bubbleText")
+      .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
+      .enter().append("text")
+      .attr("class", "bubbleText")
+      .attr("font-size", "10px")
+      .attr("text-anchor", "middle")
+      .attr("display", "none");
+
+    bubbleText.append('tspan')
+      .attr("x", function(d) { return d.projection[0] } )
+      .attr("y", function(d) { return d.projection[1] + 4 } )
+      .text(function(d) {
+        if (d.Donor_or_Recipient == 'Donor') {
+          return "Contributed total of:";
+        } else {
+          return "Received total of:";
+        }
+      });
+
+    bubbleText.append('tspan')
+      .attr("x", function(d) { return d.projection[0] } )
+      .attr("y", function(d) { return d.projection[1] + 16 } )
+      .text(function(d) {
+        return "$" + magnitudeFormat(d.Total);
+      });
+
+
 
 
 

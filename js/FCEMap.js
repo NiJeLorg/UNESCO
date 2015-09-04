@@ -119,13 +119,13 @@ d3.csv("../data/FCE-data.csv", function(data) {
 				  '<h4 class="text-left">' + d.properties.name + '</h4>' +
 				  '<p class="text-left">' + text + '</p>'
 				  )  
-				  .style("left", (d3.event.pageX + 18) + "px")     //play around with these to get spacing better
-				  .style("top", (d3.event.pageY - 60) + "px");
+				  .style("left", (d3.event.pageX + 25) + "px")     //play around with these to get spacing better
+				  .style("top", (d3.event.pageY - 55) + "px");
 			})
 
 			.on("mousemove", function(d) {
-				div.style("left", (d3.event.pageX + 18) + "px")
-				   .style("top", (d3.event.pageY - 60) + "px");
+				div.style("left", (d3.event.pageX + 25) + "px")
+				   .style("top", (d3.event.pageY - 55) + "px");
 				  
 			})
 			
