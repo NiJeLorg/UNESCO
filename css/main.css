@@ -54,6 +54,62 @@
 	margin-top: -20px; /*changes width of Tooltip point's top border*/
 }
 
+/* Legend container */
+.legend {
+	width: 300px;
+}
+
+@media (min-width: 768px) { 
+	.legend {
+		width: 180px;
+		position: fixed;
+		bottom: 0;
+		left: 30px;
+	}
+}
+
+@media (min-width: 992px) { 
+	.legend {
+		width: 240px;
+		position: fixed;
+		bottom: 0;
+		left: 30px;
+	}
+
+}
+
+@media (min-width: 1200px) { 
+	.legend {
+		width: 300px;
+		position: fixed;
+		bottom: 0;
+		left: 30px;
+	}
+}
+
+/* Toggle switch */
+.toggle {
+	cursor: pointer;
+	position: fixed;
+	bottom: 0;
+	right: 0px;
+	width: 200px;
+}
+
+#leftToggleText {
+    position: absolute;	
+    top: -38px;
+	left: -60px;
+}
+
+#rightToggleText {
+    position: absolute;	
+    top: -38px;
+	left: 70px;
+	color: #d1d2d3;
+}
+
+
 
 /* Flow map arcs */
 #arcs path {
