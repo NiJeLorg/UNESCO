@@ -27,7 +27,7 @@ Country_Code,Name_of_Country,Lat,Lon,Donor_or_Recipient,OECD_Country_Code
 7560,Switzerland,46.757811,8.328122,Donor,CHE
 1520,Chile,-37.616333,-72.198999,Recipient,CHL
 1560,China,35.703649,107.400296,Recipient,CHN
-3840,C�te d'Ivoire,7.369096,-5.551019,Recipient,CIV
+3840,Côte d'Ivoire,7.369096,-5.551019,Recipient,CIV
 1200,Cameroon,6.626626,13.030155,Recipient,CMR
 8920,Democratic Republic of the Congo,-4.015587,23.376716,Recipient,COD
 1780,Congo,-0.924188,14.768154,Recipient,COG
