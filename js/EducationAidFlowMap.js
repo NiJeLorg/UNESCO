@@ -16,11 +16,11 @@ function createEducationAidFlowMap() {
 
   var color_donor = d3.scale.threshold()
       color_donor.domain([9.9,19.9,29.9,100]); 
-      color_donor.range(["#d2e3f2","#a4c8e4","#77acd7","#4991c9", "#1c75bc"]);
+      color_donor.range(["#a4c8e4","#77acd7","#4991c9", "#1c75bc"]);
 
   var color_recipient = d3.scale.threshold()
       color_recipient.domain([9.9,19.9,29.9,100]); 
-      color_recipient.range(["#fcded4","#f9bda9","#f79c7f","#f47b54","#ef4136"]);
+      color_recipient.range(["#f9bda9","#f79c7f","#f47b54","#ef4136"]);
 
 
   // draw a rectagle the size of the svg container under everything that resets the style
