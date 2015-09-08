@@ -73,8 +73,8 @@ function createFCEMap() {
 				.style("stroke-width", "1px")
 				.style("fill", function(d) {
 					//Get data value
-					var value = d.properties.value;					   		
-					if (value) {
+					var value = d.properties.value;	
+					if (typeof value !== "undefined") {
 						//If value exists…
 						return color(value);
 					} else {
@@ -110,7 +110,7 @@ function createFCEMap() {
 					  .style("opacity", 1);
 
 					// conditional statements for text
-					if (d.properties.value && d.properties.value != -99) {
+					if (typeof d.properties.value !== "undefined" && d.properties.value != -99) {
 						var text = "Years of compulsory education: " + d.properties.value;
 					} else {
 						var text = "No data for this country.";
