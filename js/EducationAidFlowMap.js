@@ -185,7 +185,7 @@ function createEducationAidFlowMap() {
         // append "Donor" or "Recipient" to data.countries.features.properties
         for (var i = 0; i < data.nodes.length; i++) {
           //compare node and features -- add to properties if the same country    
-          if (feature.id == data.nodes[i].OECD_Country_Code) {
+          if (feature.properties.adm0_a3 == data.nodes[i].OECD_Country_Code) {
             //Copy the data value into the JSON
             feature.properties.Donor_or_Recipient = data.nodes[i].Donor_or_Recipient;  
             //Stop looking through the JSON
@@ -200,7 +200,7 @@ function createEducationAidFlowMap() {
         // append total from flows   
         for (var i = 0; i < data.flows.length; i++) {
           if (feature.properties.Donor_or_Recipient == 'Donor') {
-            if (feature.id == data.flows[i].ISO_Source_Code) {
+            if (feature.properties.adm0_a3 == data.flows[i].ISO_Source_Code) {
               var total = data.flows[i].Total.replace(/,/g , '');
               total = parseFloat(total);
               if (!isNaN(total)) {
@@ -210,7 +210,7 @@ function createEducationAidFlowMap() {
               feature.properties.Donates_To.push(data.flows[i].ISO_Target_Code)
             }
           } else {
-            if (feature.id == data.flows[i].ISO_Target_Code) {
+            if (feature.properties.adm0_a3 == data.flows[i].ISO_Target_Code) {
               var total = data.flows[i].Total.replace(/,/g , '');
               total = parseFloat(total);
               if (!isNaN(total)) {
@@ -229,7 +229,7 @@ function createEducationAidFlowMap() {
           //Grab data value, and convert from string to float
           var value = parseFloat(apidata.Indicators[i].Value);
           //Find the corresponding country inside the GeoJSON
-          var mapCountry = feature.id;
+          var mapCountry = feature.properties.adm0_a3;
           if (apidataCountry == mapCountry) {
             // drop the indicator into the proper spot in the geojson
             if (apidata.Indicators[i].Indicator == 'ROFST_1_CP') {
@@ -284,7 +284,7 @@ function createEducationAidFlowMap() {
             .transition()
             .duration(250)
             .attr("display", function(j) {
-                if (j.OECD_Country_Code == d.id) {
+                if (j.OECD_Country_Code == d.properties.adm0_a3) {
                   return "block";
                 } else {
                   return "none";
@@ -296,7 +296,7 @@ function createEducationAidFlowMap() {
             .transition()
             .duration(250)
             .attr("display", function(j) {
-                if (j.OECD_Country_Code == d.id) {
+                if (j.OECD_Country_Code == d.properties.adm0_a3) {
                   return "block";
                 } else {
                   return "none";
@@ -308,7 +308,7 @@ function createEducationAidFlowMap() {
             .transition()
             .duration(250)
             .attr("display", function(j) {
-                if (j.OECD_Country_Code == d.id) {
+                if (j.OECD_Country_Code == d.properties.adm0_a3) {
                   return "block";
                 } else {
                   return "none";
@@ -321,13 +321,13 @@ function createEducationAidFlowMap() {
             .duration(0)
             .attr("stroke", function(j) {
                 if (d.properties.Donor_or_Recipient == 'Donor') {
-                  if (j.origin.OECD_Country_Code == d.id) {
+                  if (j.origin.OECD_Country_Code == d.properties.adm0_a3) {
                     return "#44509d";
                   } else {
                     return "#111";
                   }
                 } else {
-                  if (j.dest.OECD_Country_Code == d.id) {
+                  if (j.dest.OECD_Country_Code == d.properties.adm0_a3) {
                     return "#f36d42";
                   } else {
                     return "#111";
@@ -336,13 +336,13 @@ function createEducationAidFlowMap() {
             })
             .attr("display", function(j) {
                 if (d.properties.Donor_or_Recipient == 'Donor') {
-                  if (j.origin.OECD_Country_Code == d.id) {
+                  if (j.origin.OECD_Country_Code == d.properties.adm0_a3) {
                     return "block";
                   } else {
                     return "none";
                   }
                 } else {
-                  if (j.dest.OECD_Country_Code == d.id) {
+                  if (j.dest.OECD_Country_Code == d.properties.adm0_a3) {
                     return "block";
                   } else {
                     return "none";
@@ -359,7 +359,7 @@ function createEducationAidFlowMap() {
                 if (d.properties.Donor_or_Recipient == 'Donor') {
                   if (d.properties.Donates_To.length == 0) {
                     return "1px";
-                  } else if ($.inArray( j.id, d.properties.Donates_To ) != -1) {
+                  } else if ($.inArray( j.properties.adm0_a3, d.properties.Donates_To ) != -1) {
                     return "3px";
                   } else {
                     return "0px";
@@ -367,7 +367,7 @@ function createEducationAidFlowMap() {
                 } else {
                   if (d.properties.Receives_From.length == 0) {
                     return "1px";
-                  } else if ($.inArray( j.id, d.properties.Receives_From ) != -1) {
+                  } else if ($.inArray( j.properties.adm0_a3, d.properties.Receives_From ) != -1) {
                     return "3px";
                   } else {
                     return "0px";
@@ -378,7 +378,7 @@ function createEducationAidFlowMap() {
                 if (d.properties.Donor_or_Recipient == 'Donor') {
                   if (d.properties.Donates_To.length == 0) {
                     return "1";
-                  } else if ($.inArray( j.id, d.properties.Donates_To ) != -1) {
+                  } else if ($.inArray( j.properties.adm0_a3, d.properties.Donates_To ) != -1) {
                     return "1";
                   } else {
                     return "0.5";
@@ -386,7 +386,7 @@ function createEducationAidFlowMap() {
                 } else {
                   if (d.properties.Receives_From.length == 0) {
                     return "1";
-                  } else if ($.inArray( j.id, d.properties.Receives_From ) != -1) {
+                  } else if ($.inArray( j.properties.adm0_a3, d.properties.Receives_From ) != -1) {
                     return "1";
                   } else {
                     return "0.5";

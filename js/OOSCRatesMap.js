@@ -40,7 +40,7 @@ function createOOSCRatesMap() {
 			var value = parseFloat(apidata.Indicators[i].Value);
 			//Find the corresponding country inside the GeoJSON
 			for (var j = 0; j < geojson.features.length; j++) {	
-				var mapCountry = geojson.features[j].id;
+				var mapCountry = geojson.features[j].properties.adm0_a3;
 				if (apidataCountry == mapCountry) {
 					// drop the indicator into the proper spot in the geojson
 					if (apidata.Indicators[i].Indicator == 'ROFST_1_CP') {

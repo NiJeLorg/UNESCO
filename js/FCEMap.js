@@ -38,7 +38,7 @@ function createFCEMap() {
 						//Find the corresponding country inside the GeoJSON
 						for (var j = 0; j < json.features.length; j++) {
 							
-							var mapCountry = json.features[j].id;
+							var mapCountry = json.features[j].properties.adm0_a3;
 
 							 // console.log(eduCountry)
 							 // console.log(mapCountry);
