@@ -7,11 +7,25 @@
  * Base structure
  */
 
-html,
-body {
+html, body {
   height: 100%;
-  background-color: #fff;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
+
+/* full screen background image */
+#full-screen-background-image {
+  z-index: -999;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 body {
   color: #00a79d;
   text-align: left;

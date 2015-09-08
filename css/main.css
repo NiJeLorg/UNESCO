@@ -1,9 +1,33 @@
 /* Global CSS for Education 2030 */
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* full screen background image */
+#full-screen-background-image {
+  z-index: -999;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
 .header {
 	margin: 20px 0px;
 }
 
 /* Bootstrap Overrides CSS */
+.carousel {
+	border: 1px solid grey;
+	background-color: #fff;
+}
+
 .carousel-control {
 	width: 3%;
 }
@@ -11,6 +35,50 @@
 .carousel-control.right, .carousel-control.left {
 	background-image: none;
 }
+
+
+/* Titles */
+.titleImage {
+	margin: 2px 30px;
+}
+
+.titleText {
+	position: absolute;
+	top: -8px;
+    left: 40px;
+	color: #fff;
+}
+
+.titleSubText {
+	position: absolute;
+	color: #fff;
+}
+
+.textPosition1 {
+	top: 20px;
+	left: 460px;
+	width: 500px;	
+}
+
+.textPosition2 {
+	top: 20px;
+    left: 475px;
+    width: 370px;	
+}
+
+.textPosition3 {
+	top: 20px;
+    left: 400px;
+    width: 550px;	
+}
+
+.textPosition4 {
+	top: 20px;
+	left: 320px;
+	width: 600px;	
+}
+
+
 
 
 /* Tooltop CSS */

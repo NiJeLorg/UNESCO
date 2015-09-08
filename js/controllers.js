@@ -5,6 +5,21 @@
 
 $( document ).ready(function() {
 
+	// swap out the header image when carosel is changed
+	$('#carousel').on('slid.bs.carousel', function () {
+	/*
+	  if ($('div.active').index() == 0) {
+	  	$("#header-image").attr("src", 'css/images/Education2030Logo_Small1.png');
+	  } else if ($('div.active').index() == 1) {
+	  	$("#header-image").attr("src", 'css/images/Education2030Logo_Small2.png');	  	
+	  } else if ($('div.active').index() == 2) {
+	  	$("#header-image").attr("src", 'css/images/Education2030Logo_Small3.png');	  	
+	  } else if ($('div.active').index() == 3) {
+	  	$("#header-image").attr("src", 'css/images/Education2030Logo_Small4.png');	  	
+	  }
+	*/
+	});
+
 	// toggle map layer listeners
 	$(".toggle").click(function() {
 		console.log($("#OOSCRatesMapToggleImage").attr("src"));
