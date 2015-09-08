@@ -1,6 +1,6 @@
 CoID,CountryName,Code,Year,Duration_compulsory_education,Start_age_compulsory_education,End_age_compulsory_education,Duration free education,Start_age_free_education,End_age_free_education
 40,Afghanistan,AFG,2014,9,7,15,18,3,20
-80,Albania,ALB,2014,9,6,14,,a,a
+80,Albania,ALB,2014,9,6,14,0,a,a
 120,Algeria,DZA,2014,10,6,15,20,3,22
 200,Andorra,AND,2014,10,6,15,10,6,15
 240,Angola,AGO,2014,6,6,11,6,6,11
