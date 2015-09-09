@@ -5,6 +5,16 @@
 
 $( document ).ready(function() {
 
+	// roll over menu items
+	$(".explore-swatch").mouseenter(function() {
+		$(this).find(".explore-swatch-element").removeClass("hidden");
+
+	});
+	$(".explore-swatch").mouseleave(function() {
+		$(this).find(".swatch2").addClass("hidden");
+		$(this).find(".swatchText").addClass("hidden");
+	});
+
 	// swap out the header image when carosel is changed
 	$('#carousel').on('slid.bs.carousel', function () {
 	/*
