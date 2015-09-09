@@ -22,16 +22,67 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="js/jquery-1.11.3.min.js"></script>
   </head>
 
   <body>
 
   <img alt="background image" src="css/images/BackgroundImage.png" id="full-screen-background-image" /> 
 
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand header-image" href="explore.html">
+          <img id="header-image" src="css/images/Education2030Logo_Small1.png" />
+        </a>
+        <div class="nav navbar-left paddingTop15">
+          <div class="explore-swatch highlighted" id="GlobalEducationGoals">
+            <img class="explore-swatch-element swatch1" src="css/images/SmallMenu1_1.png" />
+            <img class="explore-swatch-element swatch2 hidden" src="css/images/SmallMenu1_2.png" />
+            <p class="explore-swatch-element swatchText">&gt; Global Education Goals</p>    
+          </div>
+          <div class="explore-swatch" id="OutofSchoolChildren">
+            <img class="explore-swatch-element swatch1" src="css/images/SmallMenu2_1.png" />
+            <img class="explore-swatch-element swatch2 hidden" src="css/images/SmallMenu2_2.png" />
+            <p class="explore-swatch-element swatchText">&gt; Out of School Children</p>    
+          </div>
+          <div class="explore-swatch" id="FlowofEducationAid">
+            <img class="explore-swatch-element swatch1" src="css/images/SmallMenu3_1.png" />
+            <img class="explore-swatch-element swatch2 hidden" src="css/images/SmallMenu3_2.png" />
+            <p class="explore-swatch-element swatchText">&gt; Flow of Education Aid</p>    
+          </div>
+          <div class="explore-swatch" id="TakeAction">
+            <img class="explore-swatch-element swatch1" src="css/images/SmallMenu4_1.png" />
+            <img class="explore-swatch-element swatch2 hidden" src="css/images/SmallMenu4_2.png" />
+            <p class="explore-swatch-element swatchText">&gt; Take Action</p>    
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#">French</a></li>
+          <li class="active"><a href="#">Spanish</a></li>
+          <li class="active"><a href="#">English</a></li>
+          <li class="active"><a href="#" data-toggle="modal" data-target="#aboutModal">About</a></li>
+          <li class="nav-image"><a href="#"><img src="css/images/SMButton_facebook.png" /></a></li>
+          <li class="nav-image"><a href="#"><img src="css/images/SMButton_Twitter.png" /></a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
   <div class="container">
-    <div class="header clearfix">
-      <div class="header-image"><img id="header-image" src="css/images/Education2030Logo_Small1.png" /></div>
-    </div>
 
     <div id="carousel" class="carousel slide" data-interval="false">
 
@@ -100,11 +151,33 @@
 
   </div>
 
+    <!-- ajax loading page modal -->
+    <div class="loading-modal"></div>
+
+    <!-- About Modal -->
+    <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">About</h4>
+          </div>
+          <div class="modal-body">
+            <p>About text here.</p>
+          </div>
+        </div><!-- /.modal-content -->
+      </div>
+    </div>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+      //add loading class to body
+      $("body").addClass("loading");
+    </script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
     <script src="js/d3.min.js"></script>
     <script src="js/globals.js"></script>
     <script src="js/FCEMap.js"></script>

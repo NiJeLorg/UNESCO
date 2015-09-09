@@ -5,15 +5,69 @@
 
 $( document ).ready(function() {
 
+	// functions for roll over menu items
+	function highlight(sel) {
+		$(sel).find(".explore-swatch-element").removeClass("hidden");
+		$(sel).find(".swatchText").css("left", "70px");
+	}
+
+	function removeHighlight(sel) {
+		$(sel).find(".swatch2").addClass("hidden");
+		$(sel).find(".swatchText").css("left", "50px");		
+	}
+
 	// roll over menu items
 	$(".explore-swatch").mouseenter(function() {
-		$(this).find(".explore-swatch-element").removeClass("hidden");
-
+		highlight(this);
 	});
 	$(".explore-swatch").mouseleave(function() {
-		$(this).find(".swatch2").addClass("hidden");
-		$(this).find(".swatchText").addClass("hidden");
+		if (!$(this).hasClass("highlighted")) {
+			removeHighlight(this);
+		}
 	});
+	$(".explore-swatch").click(function() {
+		// remove all highlighted classes, and add back to the one clicked
+		$(".explore-swatch").removeClass("highlighted");
+		$(this).addClass("highlighted");
+
+		// remove all menu highlights
+		removeHighlight(".explore-swatch");
+
+		// add highlight to this one clicked
+		highlight(this);
+
+		// set session cookie for next page
+		if ($(this).attr('id') == "GlobalEducationGoals") {
+			$('#carousel').carousel(0);
+		} else if ($(this).attr('id') == "OutofSchoolChildren") {
+			$('#carousel').carousel(1);
+		} else if ($(this).attr('id') == "FlowofEducationAid") {
+			$('#carousel').carousel(2);	
+		} else if ($(this).attr('id') == "TakeAction") {
+			$('#carousel').carousel(3);		
+		}
+	});
+
+	// rotate carousel based on selection
+	if ($.cookie('visSelected') == "GlobalEducationGoals") {
+		$('#carousel').carousel(0);
+		highlight("#GlobalEducationGoals");
+		$("#GlobalEducationGoals").addClass("highlighted");
+	} else if ($.cookie('visSelected') == "OutofSchoolChildren") {
+		$('#carousel').carousel(1);
+		highlight("#OutofSchoolChildren");
+		$("#OutofSchoolChildren").addClass("highlighted");
+	} else if ($.cookie('visSelected') == "FlowofEducationAid") {
+		$('#carousel').carousel(2);	
+		highlight("#FlowofEducationAid");
+		$("#FlowofEducationAid").addClass("highlighted");
+	} else if ($.cookie('visSelected') == "TakeAction") {
+		$('#carousel').carousel(3);		
+		highlight("#TakeAction");
+		$("#TakeAction").addClass("highlighted");
+	}
+
+	
 
 	// swap out the header image when carosel is changed
 	$('#carousel').on('slid.bs.carousel', function () {
