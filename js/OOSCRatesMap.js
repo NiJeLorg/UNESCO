@@ -15,7 +15,7 @@ var commaFormat = d3.format(",.0f");
 
 var color_ROFST_1_CP = d3.scale.threshold()
 	color_ROFST_1_CP.domain([9.9,19.9,29.9,100]);	
-	color_ROFST_1_CP.range(["#d0d8f7","#91acbc","#3b6a8f","#262262"]);
+	color_ROFST_1_CP.range(["#d0d8f7","#a2ce5b","#00a651","#262262"]);
 
 var color_ROFST_2_CP = d3.scale.threshold()
 	color_ROFST_2_CP.domain([9.9,19.9,29.9,100]);	
