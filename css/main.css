@@ -183,7 +183,7 @@ body.loading .loading-modal {
     color: #6D6E70;
     background: #fff;
     font-weight: 400;
-    border: solid 4px #666666; /*Changes border width and color of box*/
+    border: solid 2px #666666; /*Changes border width and color of box*/
     border-radius: 0px; /*changes curve of border corner*/
     pointer-events: none;
 	z-index: 1031;
@@ -210,8 +210,8 @@ body.loading .loading-modal {
 .tooltip:before { 
 	border-color: rgba(109, 110, 112, 0); 
 	border-right-color: #666666; /*Changes Tooltip point's border color*/
-	border-width: 20px; /*changes width of Tooltip point's bottom border*/
-	margin-top: -20px; /*changes width of Tooltip point's top border*/
+	border-width: 18px; /*changes width of Tooltip point's bottom border*/
+	margin-top: -18px; /*changes width of Tooltip point's top border*/
 }
 
 /* Legend container */
