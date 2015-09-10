@@ -145,7 +145,7 @@ function updateOOSCMap() {
 			  	.duration(250)
   				.style("stroke-width", function(j) {
   					if (j == d) {
-  						return "3px";
+  						return "2px";
   					} else {
   						return "0px";
   					}

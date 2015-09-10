@@ -375,7 +375,7 @@ function createEducationAidFlowMap() {
                   if (d.properties.Donates_To.length == 0) {
                     return "1px";
                   } else if ($.inArray( j.properties.adm0_a3, d.properties.Donates_To ) != -1) {
-                    return "3px";
+                    return "2px";
                   } else {
                     return "0px";
                   }
@@ -383,7 +383,7 @@ function createEducationAidFlowMap() {
                   if (d.properties.Receives_From.length == 0) {
                     return "1px";
                   } else if ($.inArray( j.properties.adm0_a3, d.properties.Receives_From ) != -1) {
-                    return "3px";
+                    return "2px";
                   } else {
                     return "0px";
                   }                    
