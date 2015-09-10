@@ -223,7 +223,7 @@ body.loading .loading-modal {
 	.legend {
 		width: 180px;
 		position: fixed;
-		bottom: 0;
+		bottom: 50px;
 		left: 30px;
 	}
 }
@@ -232,7 +232,7 @@ body.loading .loading-modal {
 	.legend {
 		width: 240px;
 		position: fixed;
-		bottom: 0;
+		bottom: 50px;
 		left: 30px;
 	}
 
@@ -242,7 +242,7 @@ body.loading .loading-modal {
 	.legend {
 		width: 300px;
 		position: fixed;
-		bottom: 0;
+		bottom: 50px;
 		left: 30px;
 	}
 }
