@@ -269,10 +269,3 @@ body.loading .loading-modal {
 	color: #d1d2d3;
 }
 
-
-
-/* Flow map arcs */
-#arcs path {
-	fill: none;
-	stroke-opacity: .9;
-}

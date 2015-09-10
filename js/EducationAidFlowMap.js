@@ -4,8 +4,7 @@
 
 function createEducationAidFlowMap() {
 
-  var useGreatCircles = true;
-  var arc = d3.geo.greatArc().precision(3);
+  var highlighted;
 
   var svg3 = d3.select("#EducationAidFlowMap")
       .append("svg")
@@ -56,6 +55,9 @@ function createEducationAidFlowMap() {
       arcs.selectAll("path")
         .transition()
         .duration(0)
+        .attr("fill", "#111")
+        .attr("fill-opacity", 0.75)
+        .attr("stroke-opacity", 0.75)
         .attr("stroke", "#111")
         .attr("display", "none");
 
@@ -125,9 +127,7 @@ function createEducationAidFlowMap() {
         });
       var magnitudeFormat = d3.format(",.3s");
 
-      var arcWidth = d3.scale.linear().domain([1, maxMagnitude]).range([1, 100]);
-      var minColor = '#f0f0f0', maxColor = 'rgb(8, 48, 107)';
-      var arcColor = d3.scale.log().domain([1, maxMagnitude]).range([minColor, maxColor]);
+      var arcWidth = d3.scale.linear().domain([1, maxMagnitude]).range([1, 20]);
 
       // function to parse raw node lat lons to array
       function nodeCoords(node) { 
@@ -275,6 +275,8 @@ function createEducationAidFlowMap() {
           }
         })
         .on("click", function(d) {
+          // set clicked for later
+          highlighted = d;
           // show circle of selected
           centroids.selectAll('circle')
             .transition()
@@ -315,6 +317,23 @@ function createEducationAidFlowMap() {
           arcs.selectAll("path")
             .transition()
             .duration(0)
+            .attr("fill-opacity", 0.75)
+            .attr("stroke-opacity", 0.75)
+            .attr("fill", function(j) {
+                if (d.properties.Donor_or_Recipient == 'Donor') {
+                  if (j.origin.OECD_Country_Code == d.properties.adm0_a3) {
+                    return "#44509d";
+                  } else {
+                    return "#111";
+                  }
+                } else {
+                  if (j.dest.OECD_Country_Code == d.properties.adm0_a3) {
+                    return "#f36d42";
+                  } else {
+                    return "#111";
+                  }                
+                }
+            })
             .attr("stroke", function(j) {
                 if (d.properties.Donor_or_Recipient == 'Donor') {
                   if (j.origin.OECD_Country_Code == d.properties.adm0_a3) {
@@ -395,8 +414,6 @@ function createEducationAidFlowMap() {
         });
 
       // draw flows between countries
-      var strokeFun = function(d) { return arcColor(d.magnitude); };
-
       function splitPath(path) {
         var avgd = 0, i, d;
         var c, pc, dx, dy;
@@ -424,42 +441,90 @@ function createEducationAidFlowMap() {
         }
         return newpath.join("");
       }
+
+      // alternative flow drawing tool from -- http://www.uis.unesco.org/Documents/Student%20flow%20map%20viz/uis.flowmapC.js
+      function elliptarrow(d,inflow, width) {
+        var src = projection(d.source);
+        var trg = projection(d.target);
+        var mag = width;//Math.min(7,2+ width/10);
+                //Math.min(15,2+ width/100); //d.magnitude/2/100);
+        arrowOffset = mag;// mag //offset of arrow base
+
+        if (inflow){
+          var src = projection(d.target);
+          var trg = projection(d.source);
+          arrowOffset = -arrowOffset
+        }
+
+        dx = trg[0] - src[0]; //distance between src and trg
+        dy = trg[1] - src[1];
+        cx = (src[0]+trg[0])/2; //center of the line
+        cy = (src[1]+trg[1])/2;
+
+        ra = Math.sqrt(dx * dx + dy * dy);
+        er = ra / (Math.abs(dx / h))*1.3; //ellipse radius
+            
+        var arcSide = (dx < 0) ? " 0 0,0 " : " 1 0,1 ";
+        var arcSideb = (dx < 0) ? " 1 0,1 " : " 0 0,0 ";
+          
+        var main = "M " + src[0] + "," + src[1] + " A " + er + "," + er + arcSide + trg[0] + "," + trg[1];
+
+        cx = (src[0]+trg[0])/2; //center of the line
+        cy = (src[1]+trg[1])/2;
+
+        //calculating control point according to er
+        lineangle = Math.atan(dy/dx); //angle of the line between src and trg
+        erangle = Math.asin((ra/2)/er); // angle of the arc
+        rc = Math.tan(erangle)*(ra/2); // distance between direct line and control point
+
+        cpx = Math.cos(lineangle-(Math.PI/2))*rc; // absolute coordinates of the ctrl point
+        cpy = Math.sin(lineangle-(Math.PI/2))*rc;
+        
+        ctrx = cpx+cx; //coords of ctrl point relative to direct line
+        ctry = cpy+cy;          
+
+        trgangle = Math.atan((ctrx-trg[0])/(ctry-trg[1]));
+
+        angle= Math.PI/2; // set the angle so its always bending upwards
+        if(trg[0]-src[0] < 0){
+          angle = -Math.PI/2;
+          if(trgangle < 0){arrowOffset = -arrowOffset;}
+        }
+        if(trg[0]-src[0] > 0){
+          if(trgangle > 0){arrowOffset = -arrowOffset;}
+        }
+        
+        dTrgX = trg[0]+Math.sin(trgangle)*arrowOffset;
+        dTrgY = trg[1]+Math.cos(trgangle)*arrowOffset;
+        
+        TinX = dTrgX+(Math.sin(trgangle+angle)*mag);
+        TinY = dTrgY+(Math.cos(trgangle+angle)*mag);
+        ToutX = dTrgX+(Math.sin(trgangle-angle)*mag);
+        ToutY = dTrgY+(Math.cos(trgangle-angle)*mag);
+        
+        curveOut= 'M'+ TinX + "," +TinY+' Q'+ctrx+','+ctry+' '+src[0] + "," + src[1];
+        curveIn = ' Q'+ctrx+','+ctry+' '+ToutX + "," + ToutY;
+        arrowHead= ' L' +trg[0] + "," + trg[1]+ ' '+ TinX + "," +TinY;
+        
+        finalArrow = curveOut + curveIn + arrowHead;
+
+        return finalArrow;
+      }
       
-
-      var defs = svg3.append("svg:defs");
-
-      // see http://apike.ca/prog_svg_patterns.html
-      defs.append("marker")
-        .attr("id", "arrowHead")
-        .attr("viewBox", "0 0 10 10")
-        .attr("refX", 10)
-        .attr("refY", 5)
-        .attr("orient", "auto")
-        .attr("markerUnits", "userSpaceOnUse")
-        .attr("markerWidth", 4*2)
-        .attr("markerHeight", 3*2)
-      .append("polyline")
-        .attr("points", "0,0 10,5 0,10 1,5")
-        .attr("fill", maxColor);
-
-
 
       var arcNodes = arcs.selectAll("path")
         .data(links)
       .enter().append("path")
         .attr("display", "none") // set display none until country clicked
+        .attr("fill-opacity", 0.75)
+        .attr("stroke-opacity", 0.75)
         .attr("stroke", '#111')
-        .attr("stroke-linecap", "round")
-        .attr("stroke-width", function(d) { return arcWidth(d.magnitude); })
-        .attr("d", function(d) { 
-          if (useGreatCircles) {
-            return splitPath(path(arc(d)));
-          } else {
-            return path({
-              type: "LineString",
-              coordinates: [d.source, d.target]
-            });
-          }
+        .attr("stroke-width", '2px')
+        .attr("fill", '#111')
+        .attr("d", function(d) {
+             var width = arcWidth(d.magnitude);
+             var inflow = false;
+             return elliptarrow(d, inflow, width);
         })
         .sort(function(a, b) {
           var a = a.magnitude, b = b.magnitude;
@@ -468,8 +533,45 @@ function createEducationAidFlowMap() {
         });
         
       arcNodes.on("mouseover", function(d) { 
-        d3.select(this)
-          .attr("marker-end", "url(#arrowHead)");
+        arcs.selectAll("path")
+          .transition()
+          .duration(250)
+          .attr("fill-opacity", function(j) {
+              if (j == d) {
+                return 1;
+              } else {
+                return 0.1;
+              }
+          })
+          .attr("stroke-opacity", function(j) {
+              if (j == d) {
+                return 1;
+              } else {
+                return 0.1;
+              }
+          })
+          .attr("fill", function(j) {
+              if (j == d) {
+                if (highlighted.properties.Donor_or_Recipient == 'Donor') {
+                  return "#44509d";
+                } else {
+                  return "#f36d42";
+                }
+              } else {
+                return "#ccc";
+              }
+          })
+          .attr("stroke", function(j) {
+              if (j == d) {
+                if (highlighted.properties.Donor_or_Recipient == 'Donor') {
+                  return "#44509d";
+                } else {
+                  return "#f36d42";
+                }
+              } else {
+                return "#ccc";
+              }
+          });
 
         div.transition()
           .duration(250)
@@ -491,8 +593,25 @@ function createEducationAidFlowMap() {
             
       });
       arcNodes.on("mouseout", function(d) {
-          d3.select(this)
-            .attr("marker-end", "none");
+        arcs.selectAll("path")
+          .transition()
+          .duration(250)
+          .attr("fill-opacity", 0.75)
+          .attr("stroke-opacity", 0.75)
+          .attr("fill", function() {
+              if (highlighted.properties.Donor_or_Recipient == 'Donor') {
+                return "#44509d";
+              } else {
+                return "#f36d42";
+              }
+          })
+          .attr("stroke", function() {
+              if (highlighted.properties.Donor_or_Recipient == 'Donor') {
+                return "#44509d";
+              } else {
+                return "#f36d42";
+              }
+          });
 
           div.transition()
              .duration(250)
@@ -506,7 +625,7 @@ function createEducationAidFlowMap() {
         .enter().append("circle")
         .attr("cx", function(d) { return d.projection[0] } )
         .attr("cy", function(d) { return d.projection[1] } )
-        .attr("r", 55)
+        .attr("r", 60)
         .attr("fill", "#fff")
         .attr("stroke", "#4d4d4d")
         .attr("stroke-width", 3)
@@ -544,7 +663,7 @@ function createEducationAidFlowMap() {
         .attr("x", function(d) { return d.projection[0] } )
         .attr("y", function(d) { 
           if (d.Name_of_Country.length > 17) {
-            return d.projection[1] - 10;
+            return d.projection[1] - 8;
           } else {
             return d.projection[1];
           }

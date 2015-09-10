@@ -27,25 +27,30 @@ function createFCEMap() {
 						//Grab country code
 						var eduCountry = data[i].Code;
 
-						//Grab data value, and convert from string to float
+						//Grab data on Duration_compulsory_education, and convert from string to float
 						if ((data[i].Duration_compulsory_education != 'a' || data[i].Duration_compulsory_education != 'm') && !isNaN(data[i].Duration_compulsory_education) ) {
-							var eduValue = parseFloat(data[i].Duration_compulsory_education);
+							var Duration_compulsory_education = parseFloat(data[i].Duration_compulsory_education);
 						} else {
-							var eduValue = -99;
+							var Duration_compulsory_education = -99;
 						}
-						
+
+						//Grab data on Duration free education, and convert from string to float
+						if ((data[i].Duration_free_education != 'a' || data[i].Duration_free_education != 'm') && !isNaN(data[i].Duration_free_education) ) {
+							var Duration_free_education = parseFloat(data[i].Duration_free_education);
+						} else {
+							var Duration_free_education = -99;
+						}
+
 						//Find the corresponding country inside the GeoJSON
 						for (var j = 0; j < json.features.length; j++) {
 							
 							var mapCountry = json.features[j].properties.adm0_a3;
-
-							 // console.log(eduCountry)
-							 // console.log(mapCountry);
 					
 							if (eduCountry == mapCountry) {
 							
-								//Copy the data value into the JSON
-								json.features[j].properties.value = eduValue;
+								//Copy the data values into the JSON
+								json.features[j].properties.Duration_compulsory_education = Duration_compulsory_education;
+								json.features[j].properties.Duration_free_education = Duration_free_education;
 									
 								//Stop looking through the JSON
 								break;
@@ -72,7 +77,7 @@ function createFCEMap() {
 				.style("stroke-width", "1px")
 				.style("fill", function(d) {
 					//Get data value
-					var value = d.properties.value;	
+					var value = d.properties.Duration_compulsory_education;	
 					if (typeof value !== "undefined") {
 						//If value exists…
 						return color(value);
@@ -109,15 +114,22 @@ function createFCEMap() {
 					  .style("opacity", 1);
 
 					// conditional statements for text
-					if (typeof d.properties.value !== "undefined" && d.properties.value != -99) {
-						var text = "Years of compulsory education: " + d.properties.value;
+					if (typeof d.properties.Duration_compulsory_education !== "undefined" && d.properties.Duration_compulsory_education != -99) {
+						var DCE_text = "Years of compulsory education: " + d.properties.Duration_compulsory_education;
 					} else {
-						var text = "No data for this country.";
+						var DCE_text = "No data on duration of compulsory education in this country.";
+					}
+
+					if (typeof d.properties.Duration_free_education !== "undefined" && d.properties.Duration_free_education != -99) {
+						var DFE_text = "Years of free education: " + d.properties.Duration_free_education;
+					} else {
+						var DFE_text = "No data on duration of free education offered in this country.";
 					}
 					  
 					div.html(
 					  '<h4 class="text-left">' + d.properties.name + '</h4>' +
-					  '<p class="text-left">' + text + '</p>'
+					  '<p class="text-left">' + DCE_text + '</p>' +
+					  '<p class="text-left">' + DFE_text + '</p>'
 					  )  
 					  .style("left", (d3.event.pageX + 25) + "px")     //play around with these to get spacing better
 					  .style("top", (d3.event.pageY - 55) + "px");
