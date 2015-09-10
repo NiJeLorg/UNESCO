@@ -1,3 +1,4 @@
+
 /* Global CSS for Education 2030 */
 html, body {
   height: 100%;
@@ -124,7 +125,7 @@ body.loading .loading-modal {
   position: absolute;
   top: 4px;
   left: 50px;
-  color: #fff;
+  color: #ffffff;
   white-space: nowrap;
 }
 
@@ -137,12 +138,12 @@ body.loading .loading-modal {
 	position: absolute;
 	top: -8px;
     left: 40px;
-	color: #fff;
+	color: #ffffff;
 }
 
 .titleSubText {
 	position: absolute;
-	color: #fff;
+	color: #ffffff;
 }
 
 .textPosition1 {

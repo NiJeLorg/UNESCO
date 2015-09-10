@@ -35,7 +35,7 @@ body {
 a,
 a:focus,
 a:hover {
-  color: #636363;
+  color: #151515;
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -101,7 +101,7 @@ a:hover {
 }
 
 .explore-text {
-  color: #ccc;
+  color: #ffffff;
 }
 
 .explore-swatch {
@@ -130,7 +130,7 @@ a:hover {
   position: absolute;
   top: 110px;
   left: 140px;
-  color: #aaa;
+  color: #ffffff;
   white-space: nowrap;
 }
 
