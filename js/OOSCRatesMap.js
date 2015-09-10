@@ -19,7 +19,7 @@ var color_ROFST_1_CP = d3.scale.threshold()
 
 var color_ROFST_2_CP = d3.scale.threshold()
 	color_ROFST_2_CP.domain([9.9,19.9,29.9,100]);	
-	color_ROFST_2_CP.range(["#cbf7e9","#a2ce5b","#00a651","#262262"]);
+	color_ROFST_2_CP.range(["#d0d8f7","#a2ce5b","#00a651","#262262"]);
 
 // global variables for holding data
 var geojson;
