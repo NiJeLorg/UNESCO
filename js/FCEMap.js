@@ -17,17 +17,16 @@ function createFCEMap() {
 
 		var color = d3.scale.threshold()
 			color.domain([0,1,7,10,13]);	
-			color.range(["#fff","#de2d26","#fb6a4a","#fcae91","#bdc9e1","#67a9cf"]);		
+			color.range(["#fff","#ef4136","#f7941e","#f4d790","#73cfc9","#3b6a8f"]);		
 
 		//Load in GeoJSON data
 		d3.json("../data/world-countries.json", function(json) {
-			// mapD = json;
-			// console.log(mapD);
+
 					for (var i = 0; i < data.length; i++) {
 							
 						//Grab country code
 						var eduCountry = data[i].Code;
-							
+
 						//Grab data value, and convert from string to float
 						if ((data[i].Duration_compulsory_education != 'a' || data[i].Duration_compulsory_education != 'm') && !isNaN(data[i].Duration_compulsory_education) ) {
 							var eduValue = parseFloat(data[i].Duration_compulsory_education);

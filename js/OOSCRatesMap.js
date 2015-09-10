@@ -15,11 +15,11 @@ var commaFormat = d3.format(",.0f");
 
 var color_ROFST_1_CP = d3.scale.threshold()
 	color_ROFST_1_CP.domain([9.9,19.9,29.9,100]);	
-	color_ROFST_1_CP.range(["#fee5d9","#fcae91","#fb6a4a","#de2d26"]);
+	color_ROFST_1_CP.range(["#d0d8f7","#91acbc","#3b6a8f","#262262"]);
 
 var color_ROFST_2_CP = d3.scale.threshold()
 	color_ROFST_2_CP.domain([9.9,19.9,29.9,100]);	
-	color_ROFST_2_CP.range(["#bdc9e1","#67a9cf","#1c9099","#016c59"]);
+	color_ROFST_2_CP.range(["#cbf7e9","#a2ce5b","#00a651","#262262"]);
 
 // global variables for holding data
 var geojson;
