@@ -123,7 +123,7 @@ function createEducationAidFlowMap() {
           d.Total = d.Total.replace(/,/g , '');
           return parseFloat(d.Total);
         });
-      var magnitudeFormat = d3.format(",.0f");
+      var magnitudeFormat = d3.format(",.3s");
 
       var arcWidth = d3.scale.linear().domain([1, maxMagnitude]).range([1, 100]);
       var minColor = '#f0f0f0', maxColor = 'rgb(8, 48, 107)';
@@ -137,10 +137,17 @@ function createEducationAidFlowMap() {
       }
 
       data.nodes.forEach(function(node) {
+        //parse multilateral number
+        if (!node.Multilateral || node.Multilateral == 'a') {
+          node.Multilateral = -99;
+        } else {
+          node.Multilateral = Math.round(parseFloat(node.Multilateral) * 1000000);
+        }
         //construct lon,lat array for each node and pass to nodeDataByCode
         node.coords = nodeCoords(node);
         node.projection = node.coords ? projection(node.coords) : undefined;
-        node.Total = 0;
+        node.TotalContributedToCountries = 0;
+        node.TotalReceivedFromCountries = 0;
         // total the amounts from flows for each node
         for (var i = 0; i < data.flows.length; i++) {
           if (node.Donor_or_Recipient == 'Donor') {
@@ -148,7 +155,7 @@ function createEducationAidFlowMap() {
               var total = data.flows[i].Total.replace(/,/g , '');
               total = parseFloat(total);
               if (!isNaN(total)) {
-                node.Total = node.Total + total; 
+                node.TotalContributedToCountries = node.TotalContributedToCountries + total; 
               } 
             }
           } else {
@@ -156,7 +163,7 @@ function createEducationAidFlowMap() {
               var total = data.flows[i].Total.replace(/,/g , '');
               total = parseFloat(total);
               if (!isNaN(total)) {
-                node.Total = node.Total + total; 
+                node.TotalReceivedFromCountries = node.TotalReceivedFromCountries + total; 
               } 
             }
           }
@@ -181,43 +188,32 @@ function createEducationAidFlowMap() {
         }
       });
 
-      // add donor and recipient tag and magnitude to data.countries.features.properties
+      // add donor and recipient tag and multilateral number to data.countries.features.properties
       data.countries.features.forEach(function(feature){
         // append "Donor" or "Recipient" to data.countries.features.properties
         for (var i = 0; i < data.nodes.length; i++) {
           //compare node and features -- add to properties if the same country    
           if (feature.properties.adm0_a3 == data.nodes[i].OECD_Country_Code) {
             //Copy the data value into the JSON
-            feature.properties.Donor_or_Recipient = data.nodes[i].Donor_or_Recipient;  
+            feature.properties.Donor_or_Recipient = data.nodes[i].Donor_or_Recipient; 
+            feature.properties.multilateral = data.nodes[i].Multilateral;
             //Stop looking through the JSON
             break;      
           }
         } 
 
-        // set Total for each conuntry = 0 before summing
-        feature.properties.Total = 0;
         feature.properties.Donates_To = [];
         feature.properties.Receives_From = [];
-        // append total from flows   
+        // loop to create arrays of donor and recipient countries   
         for (var i = 0; i < data.flows.length; i++) {
           if (feature.properties.Donor_or_Recipient == 'Donor') {
             if (feature.properties.adm0_a3 == data.flows[i].ISO_Source_Code) {
-              var total = data.flows[i].Total.replace(/,/g , '');
-              total = parseFloat(total);
-              if (!isNaN(total)) {
-                feature.properties.Total = feature.properties.Total + total; 
-              } 
               // push Receipients into Donates_To
               feature.properties.Donates_To.push(data.flows[i].ISO_Target_Code)
             }
           } else {
             if (feature.properties.adm0_a3 == data.flows[i].ISO_Target_Code) {
-              var total = data.flows[i].Total.replace(/,/g , '');
-              total = parseFloat(total);
-              if (!isNaN(total)) {
-                feature.properties.Total = feature.properties.Total + total; 
-              } 
-              // push Receipients into Donates_To
+              // push Donors into Receives_From
               feature.properties.Receives_From.push(data.flows[i].ISO_Source_Code)
             }
           }
@@ -279,7 +275,6 @@ function createEducationAidFlowMap() {
           }
         })
         .on("click", function(d) {
-          console.log(d);
           // show circle of selected
           centroids.selectAll('circle')
             .transition()
@@ -480,7 +475,7 @@ function createEducationAidFlowMap() {
           .duration(250)
           .style("opacity", 1);
 
-        var text = "Receives $" + magnitudeFormat(d.magnitude) + " from " + d.origin.Name_of_Country + " and $" + magnitudeFormat(d.dest.Total) + " in multilateral aid."
+        var text = "Receives $" + magnitudeFormat(d.magnitude) + " from " + d.origin.Name_of_Country + " and $" + magnitudeFormat(d.dest.Multilateral) + " in multilateral aid."
           
         div.html(
           '<h4 class="text-left">' + d.dest.Name_of_Country + '</h4>' +
@@ -511,25 +506,60 @@ function createEducationAidFlowMap() {
         .enter().append("circle")
         .attr("cx", function(d) { return d.projection[0] } )
         .attr("cy", function(d) { return d.projection[1] } )
-        .attr("r", 50)
+        .attr("r", 55)
         .attr("fill", "#fff")
         .attr("stroke", "#4d4d4d")
         .attr("stroke-width", 3)
         .attr("display", "none");
 
-      centroids.selectAll(".countryName")
+      var countryNames = centroids.selectAll(".countryName")
         .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
         .enter().append("text")
         .attr("class", "countryName")
         .attr("font-size", "12px")
         .attr("font-weight", 600)
-        .attr("dx", function(d) { return d.projection[0] } )
-        .attr("dy", function(d) { return d.projection[1] - 10} )
         .attr("text-anchor", "middle")
-        .text(function(d) {
-          return d.Name_of_Country;
-        })
         .attr("display", "none");
+
+      countryNames.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { 
+          if (d.Name_of_Country.length > 17) {
+            return d.projection[1] - 22;
+          } else {
+            return d.projection[1] - 10;
+          }
+          
+        } )
+        .text(function(d) {
+          if (d.Name_of_Country.length > 17) {
+            var splitString = d.Name_of_Country.split(' ', 1);
+            return splitString[0];
+          } else {
+            return d.Name_of_Country
+          }
+        });
+
+      countryNames.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { 
+          if (d.Name_of_Country.length > 17) {
+            return d.projection[1] - 10;
+          } else {
+            return d.projection[1];
+          }
+          
+        } )
+        .text(function(d) {
+          if (d.Name_of_Country.length > 17) {
+            var splitString = d.Name_of_Country.split(' ');
+            // remove first word from array
+            splitString.splice(0, 1);
+            return splitString.join(' ');
+          } else {
+            return '';
+          }
+        });        
 
       var bubbleText = centroids.selectAll(".bubbleText")
         .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
@@ -544,9 +574,9 @@ function createEducationAidFlowMap() {
         .attr("y", function(d) { return d.projection[1] + 4 } )
         .text(function(d) {
           if (d.Donor_or_Recipient == 'Donor') {
-            return "Contributed total of:";
+            return "Aid to Education:";
           } else {
-            return "Received total of:";
+            return "Country Aid: $" + magnitudeFormat(d.TotalReceivedFromCountries);
           }
         });
 
@@ -554,7 +584,27 @@ function createEducationAidFlowMap() {
         .attr("x", function(d) { return d.projection[0] } )
         .attr("y", function(d) { return d.projection[1] + 16 } )
         .text(function(d) {
-          return "$" + magnitudeFormat(d.Total);
+          if (d.Donor_or_Recipient == 'Donor') {
+            return "$" + magnitudeFormat(d.TotalContributedToCountries);
+          }
+        });
+
+      bubbleText.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { return d.projection[1] + 16 } )
+        .text(function(d) {
+          if (d.Donor_or_Recipient == 'Recipient') {
+            return "Multilateral Aid:";
+          }
+        });
+
+      bubbleText.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { return d.projection[1] + 28 } )
+        .text(function(d) {
+          if (d.Donor_or_Recipient == 'Recipient') {
+            return "$" + magnitudeFormat(d.Multilateral);
+          }
         });
 
     });

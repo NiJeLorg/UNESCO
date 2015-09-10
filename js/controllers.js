@@ -69,7 +69,7 @@ $( document ).ready(function() {
 
 	
 
-	// swap out the header image when carosel is changed
+	// swap out the active menu when the carosel is changed
 	$('#carousel').on('slid.bs.carousel', function () {
 	/*
 	  if ($('div.active').index() == 0) {
@@ -82,6 +82,23 @@ $( document ).ready(function() {
 	  	$("#header-image").attr("src", 'css/images/Education2030Logo_Small4.png');	  	
 	  }
 	*/
+		// remove all menu highlights
+		removeHighlight(".explore-swatch");
+
+		if ($('div.active').index() == 0) {
+			highlight("#GlobalEducationGoals");
+			$("#GlobalEducationGoals").addClass("highlighted");
+		} else if ($('div.active').index() == 1) {
+			highlight("#OutofSchoolChildren");
+			$("#OutofSchoolChildren").addClass("highlighted");
+		} else if ($('div.active').index() == 2) {
+			highlight("#FlowofEducationAid");
+			$("#FlowofEducationAid").addClass("highlighted");
+		} else if ($('div.active').index() == 3) {
+			highlight("#TakeAction");
+			$("#TakeAction").addClass("highlighted");
+		}
+
 	});
 
 	// toggle map layer listeners
