@@ -85,6 +85,9 @@ $( document ).ready(function() {
 		// remove all menu highlights
 		removeHighlight(".explore-swatch");
 
+		$(".explore-swatch").removeClass("highlighted");
+
+
 		if ($('div.active').index() == 0) {
 			highlight("#GlobalEducationGoals");
 			$("#GlobalEducationGoals").addClass("highlighted");
