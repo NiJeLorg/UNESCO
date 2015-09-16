@@ -217,7 +217,7 @@ svg.svg-loaded {
 .tooltip { 
     position: absolute;
     text-align: right;
-    width: 150px;
+    width: 300px;
     height: auto;
     padding: 8px;
     color: #6D6E70;
@@ -257,7 +257,7 @@ svg.svg-loaded {
 .tooltip-onboard { 
     position: absolute;
     text-align: right;
-    width: 150px;
+    width: 300px;
     height: auto;
     padding: 8px;
     color: #6D6E70;
