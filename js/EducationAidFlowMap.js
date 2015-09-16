@@ -761,7 +761,7 @@ function createEducationAidFlowMap() {
           .style("top", "85px");
 
 
-      }, 1000);
+      }, 2000);
 
       // remove loading and opacity on drawings
       $("body").removeClass('loading');
