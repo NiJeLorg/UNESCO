@@ -170,12 +170,12 @@ function updateOOSCMap() {
 						var boys = commaFormat(d.properties.OFST_1_M_CP_Value) + " primary school age boys out of school.";
 						var year = d.properties.rate_ROFST_1_CP_Year;
 					} else {
-						var girls = "Data showing gender differnces for out of school children of primary school age not available.";
+						var girls = "Data showing gender differences not available.";
 						var boys = '';
 						var year = '';
 					}
 				} else {
-						var girls = "No data for this country.";
+						var girls = "No data.";
 						var boys = '';
 						var year = '';
 				}
