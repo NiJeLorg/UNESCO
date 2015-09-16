@@ -8,6 +8,7 @@ function createEducationAidFlowMap() {
 
   var svg3 = d3.select("#EducationAidFlowMap")
       .append("svg")
+      .attr("class", "svg-loading")
       .attr("width", w + margin.left + margin.right)
       .attr("height", h + margin.top + margin.bottom)
       .append("g")
@@ -36,19 +37,19 @@ function createEducationAidFlowMap() {
       // show circle of selected
       centroids.selectAll('circle')
         .transition()
-        .duration(250)
+        .duration(50)
         .attr("display", "none");
 
       // show country name of selected
       centroids.selectAll(".countryName")
         .transition()
-        .duration(250)
+        .duration(50)
         .attr("display", "none");
 
       // show bubble text of selected
       centroids.selectAll(".bubbleText")
         .transition()
-        .duration(250)
+        .duration(50)
         .attr("display", "none");
 
       // show arcs of countries that are in source or target
@@ -64,7 +65,7 @@ function createEducationAidFlowMap() {
         //highlight the countries that are donors or recipients
         countries.selectAll("path")
           .transition()
-          .duration(250)
+          .duration(50)
           .style("stroke-width", "1px")
           .style("fill-opacity", 1);
     });
@@ -274,13 +275,17 @@ function createEducationAidFlowMap() {
             }
           }
         })
-        .on("click", function(d) {
+        .on("click", click);
+
+      function click(d) {
+          clearTimeout(timeout);
           // set clicked for later
           highlighted = d;
+          console.log(highlighted);
           // show circle of selected
           centroids.selectAll('circle')
             .transition()
-            .duration(250)
+            .duration(50)
             .attr("display", function(j) {
                 if (j.OECD_Country_Code == d.properties.adm0_a3) {
                   return "block";
@@ -292,7 +297,7 @@ function createEducationAidFlowMap() {
           // show country name of selected
           centroids.selectAll(".countryName")
             .transition()
-            .duration(250)
+            .duration(50)
             .attr("display", function(j) {
                 if (j.OECD_Country_Code == d.properties.adm0_a3) {
                   return "block";
@@ -304,7 +309,7 @@ function createEducationAidFlowMap() {
           // show bubble text of selected
           centroids.selectAll(".bubbleText")
             .transition()
-            .duration(250)
+            .duration(50)
             .attr("display", function(j) {
                 if (j.OECD_Country_Code == d.properties.adm0_a3) {
                   return "block";
@@ -368,7 +373,7 @@ function createEducationAidFlowMap() {
             //highlight the countries that are donors or recipients
             countries.selectAll("path")
               .transition()
-              .duration(250)
+              .duration(50)
               .style("stroke-width", function(j) {
                 // loop through links to highlight countries in the source or target list
                 if (d.properties.Donor_or_Recipient == 'Donor') {
@@ -408,10 +413,7 @@ function createEducationAidFlowMap() {
                   }                    
                 }
               });
-
-
-
-        });
+      }
 
       // draw flows between countries
       function splitPath(path) {
@@ -535,7 +537,7 @@ function createEducationAidFlowMap() {
       arcNodes.on("mouseover", function(d) { 
         arcs.selectAll("path")
           .transition()
-          .duration(250)
+          .duration(50)
           .attr("fill-opacity", function(j) {
               if (j == d) {
                 return 1;
@@ -574,7 +576,7 @@ function createEducationAidFlowMap() {
           });
 
         div.transition()
-          .duration(250)
+          .duration(50)
           .style("opacity", 1);
 
         var text = "Receives $" + magnitudeFormat(d.magnitude) + " from " + d.origin.Name_of_Country + " and $" + magnitudeFormat(d.dest.Multilateral) + " in multilateral aid."
@@ -595,7 +597,7 @@ function createEducationAidFlowMap() {
       arcNodes.on("mouseout", function(d) {
         arcs.selectAll("path")
           .transition()
-          .duration(250)
+          .duration(50)
           .attr("fill-opacity", 0.75)
           .attr("stroke-opacity", 0.75)
           .attr("fill", function() {
@@ -614,7 +616,7 @@ function createEducationAidFlowMap() {
           });
 
           div.transition()
-             .duration(250)
+             .duration(50)
              .style("opacity", 1e-6);
 
       });
@@ -726,7 +728,39 @@ function createEducationAidFlowMap() {
           }
         });
 
-    });
+      // call click with random country
+      var randomNumber = Math.floor(Math.random() * data.countries.features.length);
+      for (var i = data.countries.features.length - 1; i >= 0; i--) {
+        if (i == randomNumber) {
+          var randCountry = data.countries.features[i];
+          break;
+        }        
+      };
 
+      console.log(randCountry);
+
+      var timeout = setTimeout(function() {
+        click(randCountry);
+
+        div.transition()
+          .duration(50)
+          .style("opacity", 1);
+
+        div.html(
+          '<p class="text-left">Click on any country to see the flows of education investment from country to country. Mouse over any flow to see the amount of eductation resources invested.</p>'
+          )  
+          .style("left", "100px")     //play around with these to get spacing better
+          .style("top", "300px");
+
+
+      }, 1000);
+
+      // remove loading and opacity on drawings
+      $("body").removeClass('loading');
+      d3.selectAll("svg").attr("class", "svg-loaded");
+      d3.selectAll(".loading-white-space").attr("class", "loaded-white-space");
+
+
+    });
 
 }

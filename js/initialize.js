@@ -16,7 +16,5 @@ function getApiData() {
 		// run EducationAidFlowMap
 		createEducationAidFlowMap();
 
-		// remove the loading modal when functions complete
-		$("body").removeClass("loading");
 	});
 }

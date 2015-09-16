@@ -87,7 +87,6 @@ $( document ).ready(function() {
 
 		$(".explore-swatch").removeClass("highlighted");
 
-
 		if ($('div.active').index() == 0) {
 			highlight("#GlobalEducationGoals");
 			$("#GlobalEducationGoals").addClass("highlighted");

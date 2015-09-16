@@ -5,6 +5,7 @@
 //Create SVG element
 var svg2 = d3.select("#OOSCRatesMap")
 	.append("svg")
+	.attr("class", "svg-loading")
 	.attr("width", w + margin.left + margin.right)
 	.attr("height", h + margin.top + margin.bottom)
 	.append("g")

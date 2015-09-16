@@ -39,11 +39,44 @@ body.loading .loading-modal {
     left:       0;
     height:     100%;
     width:      100%;
-    opacity:  .7;
+    opacity:  	0.9;
     background: url('images/spinner.gif') 
                 50% 50% 
                 no-repeat;
     background-color: #fff;
+}
+
+.loading-white-space {
+	z-index: 10000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #fff;
+}
+
+.loaded-white-space {
+	z-index: -10000;
+	height: 0;
+	width: 0;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+
+svg.svg-loading {
+	opacity: 0;
+}
+
+svg.svg-loaded {
+	opacity: 1;
+	-webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
 }
 
 

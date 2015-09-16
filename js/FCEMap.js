@@ -9,6 +9,7 @@ function createFCEMap() {
 		//Create SVG element
 		var svg1 = d3.select("#FCEMap")
 			.append("svg")
+			.attr("class", "svg-loading")
 			.attr("width", w + margin.left + margin.right)
 			.attr("height", h + margin.top + margin.bottom)
 			.append("g")
