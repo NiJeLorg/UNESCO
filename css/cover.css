@@ -63,12 +63,14 @@ a:hover {
   font-size:x-small;
   color: #ffffff;
   float: left;
+  padding-left: 10px;
 }
 
 .org-source {
   font-size:x-small;
   color: #151515;
   float: right;
+  padding-right: 5px;
 }
 
 
