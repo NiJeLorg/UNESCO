@@ -19,6 +19,8 @@ html, body {
   left: 0;
 }
 
+
+
 /*
 * loading screen modals
 */
@@ -30,6 +32,7 @@ body.loading {
 body.loading .loading-modal {
     display: block;
 }
+
 
 .loading-modal {
     display:    none;
