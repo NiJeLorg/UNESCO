@@ -14,6 +14,11 @@ var div = d3.select("body").append("div")
 	.attr("class", "tooltip")
 	.style("opacity", 1e-6);
 
+var divOnboarding = d3.select("#aidToEDU").append("div") 
+	.attr("class", "tooltip-onboard")
+	.style("opacity", 1e-6);
+
+
 // global map projection
 var projection = d3.geo.equirectangular()
 	.scale((w + 1) / 2 / Math.PI)

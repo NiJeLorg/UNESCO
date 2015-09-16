@@ -279,9 +279,13 @@ function createEducationAidFlowMap() {
 
       function click(d) {
           clearTimeout(timeout);
+          // remove onboarding
+          divOnboarding.transition()
+             .duration(50)
+             .style("opacity", 1e-6);
+
           // set clicked for later
           highlighted = d;
-          console.log(highlighted);
           // show circle of selected
           centroids.selectAll('circle')
             .transition()
@@ -575,6 +579,12 @@ function createEducationAidFlowMap() {
               }
           });
 
+        // remove onboarding
+        divOnboarding.transition()
+           .duration(50)
+           .style("opacity", 1e-6);
+
+
         div.transition()
           .duration(50)
           .style("opacity", 1);
@@ -737,20 +747,18 @@ function createEducationAidFlowMap() {
         }        
       };
 
-      console.log(randCountry);
-
       var timeout = setTimeout(function() {
         click(randCountry);
 
-        div.transition()
+        divOnboarding.transition()
           .duration(50)
           .style("opacity", 1);
 
-        div.html(
+        divOnboarding.html(
           '<p class="text-left">Click on any country to see the flows of education investment from country to country. Mouse over any flow to see the amount of eductation resources invested.</p>'
           )  
-          .style("left", "100px")     //play around with these to get spacing better
-          .style("top", "300px");
+          .style("left", "30px") 
+          .style("top", "85px");
 
 
       }, 1000);

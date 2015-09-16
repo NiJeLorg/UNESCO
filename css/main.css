@@ -247,6 +247,21 @@ svg.svg-loaded {
 	margin-top: -18px; /*changes width of Tooltip point's top border*/
 }
 
+.tooltip-onboard { 
+    position: absolute;
+    text-align: right;
+    width: 150px;
+    height: auto;
+    padding: 8px;
+    color: #6D6E70;
+    background: #fff;
+    font-weight: 400;
+    border: solid 2px #666666; /*Changes border width and color of box*/
+    border-radius: 0px; /*changes curve of border corner*/
+    pointer-events: none;
+	z-index: 1031;
+} 
+
 /* Legend container */
 .legend {
 	width: 300px;
