@@ -206,7 +206,11 @@ svg.svg-loaded {
 	width: 600px;	
 }
 
-
+.org-source {
+  font-size:x-small;
+  color: #151515;
+  padding-left: 10px;
+}
 
 
 /* Tooltop CSS */
