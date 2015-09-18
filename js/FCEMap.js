@@ -118,13 +118,13 @@ function createFCEMap() {
 					if (typeof d.properties.Duration_compulsory_education !== "undefined" && d.properties.Duration_compulsory_education != -99) {
 						var DCE_text = "Years of compulsory education: " + d.properties.Duration_compulsory_education;
 					} else {
-						var DCE_text = "No data on duration of compulsory education.";
+						var DCE_text = "No duration data on compulsory education.";
 					}
 
 					if (typeof d.properties.Duration_free_education !== "undefined" && d.properties.Duration_free_education != -99) {
 						var DFE_text = "Years of free education: " + d.properties.Duration_free_education;
 					} else {
-						var DFE_text = "No data on duration of free education.";
+						var DFE_text = "No duration data on free education.";
 					}
 					  
 					div.html(

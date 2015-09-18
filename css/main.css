@@ -293,11 +293,11 @@ svg.svg-loaded {
 
 }
 
-@media (min-width: 1200px) { 
+@media (min-width: 300px) { 
 	.legend {
-		width: 300px;
+		width: 900px;
 		position: fixed;
-		bottom: 50px;
+		bottom: 5px;
 		left: 30px;
 	}
 }
@@ -306,21 +306,23 @@ svg.svg-loaded {
 .toggle {
 	cursor: pointer;
 	position: fixed;
-	bottom: 0;
-	right: 0px;
+	bottom: 160px;
+	left: 30px;
 	width: 200px;
 }
 
 #leftToggleText {
     position: absolute;	
-    top: -38px;
-	left: -60px;
+    top: -27px;
+	left: -25px;
+	font-size:x-small;
 }
 
 #rightToggleText {
     position: absolute;	
-    top: -38px;
-	left: 70px;
+    top: -27px;
+	left: 38px;
 	color: #d1d2d3;
+	font-size:x-small;
 }
 
