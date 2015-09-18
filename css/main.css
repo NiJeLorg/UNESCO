@@ -8,17 +8,25 @@ html, body {
 }
 
 /* full screen background image */
-#full-screen-background-image {
-  z-index: -999;
-  min-height: 100%;
-  min-width: 1024px;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
+#background, #background li { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  background: url('images/BackgroundImage.png');
+  background-color: transparent; 
+  background-size: cover; 
+  background-position: center center; 
+  background-repeat: no-repeat; 
+  
 }
 
+#background { 
+  z-index: -1;
+  margin: 0; 
+  padding: 0; 
+}
 
 
 /*
