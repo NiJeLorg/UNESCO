@@ -127,11 +127,12 @@ svg.svg-loaded {
 }
 
 .carousel-control {
-	width: 3%;
+	width: 5%;
 }
 
 .carousel-control.right, .carousel-control.left {
 	background-image: none;
+	color: grey;
 }
 
 /* Top nav menu CSS */
