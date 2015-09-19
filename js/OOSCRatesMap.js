@@ -126,14 +126,14 @@ function updateOOSCMap() {
 				if (value) {
 					return color_ROFST_1_CP(value);
 				} else {
-					return "#f7f7f7";
+					return "#ffffff";
 				}
 			} else {
 				var value = d.properties.rate_ROFST_2_CP_Value;
 				if (value) {
 					return color_ROFST_2_CP(value);
 				} else {
-					return "#f7f7f7";
+					return "#ffffff";
 				}
 			}
 		})

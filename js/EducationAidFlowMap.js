@@ -264,14 +264,14 @@ function createEducationAidFlowMap() {
             if (value) {
               return color_donor(value);
             } else {
-              return "#f7f7f7";
+              return "#ffffff";
             }
           } else {
             var value = d.properties.rate_ROFST_1_CP_Value;
             if (value) {
               return color_recipient(value);
             } else {
-              return "#f7f7f7";
+              return "#ffffff";
             }
           }
         })

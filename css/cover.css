@@ -46,6 +46,7 @@ a,
 a:focus,
 a:hover {
   color: #151515;
+   /*-webkit-text-stroke: 0.15px white;*/
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
