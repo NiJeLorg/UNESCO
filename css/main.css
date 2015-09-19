@@ -321,8 +321,8 @@ svg.svg-loaded {
 .toggle {
 	cursor: pointer;
 	position: fixed;
-	bottom: 160px;
-	left: 30px;
+	bottom: 175px;
+	left: 60px;
 	width: 200px;
 }
 
