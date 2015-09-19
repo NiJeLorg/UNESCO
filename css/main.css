@@ -90,9 +90,11 @@ svg.svg-loaded {
 
 
 /* Bootstrap Overrides CSS */
+
 .navbar-default {
 	background-color: transparent;
 	border-color: transparent;
+	height: 125px;
 }
 
 .navbar-nav>li>a {
