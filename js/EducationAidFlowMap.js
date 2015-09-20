@@ -707,7 +707,7 @@ function createEducationAidFlowMap() {
           if (d.Donor_or_Recipient == 'Donor') {
             return "Aid to Education:";
           } else {
-            return "Country Aid: $" + magnitudeFormat(d.TotalReceivedFromCountries);
+            return "Bilateral: $" + magnitudeFormat(d.TotalReceivedFromCountries);
           }
         });
 
@@ -725,7 +725,7 @@ function createEducationAidFlowMap() {
         .attr("y", function(d) { return d.projection[1] + 16 } )
         .text(function(d) {
           if (d.Donor_or_Recipient == 'Recipient') {
-            return "Multilateral Aid:";
+            return "Multilateral:";
           }
         });
 
