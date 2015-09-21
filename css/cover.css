@@ -68,20 +68,21 @@ a:hover {
 
 .cover-heading {
   margin-left: 10px;
+  color: #ffffff;
 }
 
 .photo-source {
   font-size:x-small;
   color: #ffffff;
   float: left;
-  padding-left: 10px;
+  
 }
 
 .org-source {
   font-size:x-small;
   color: #151515;
   float: right;
-  padding-right: 5px;
+
 }
 
 
