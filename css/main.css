@@ -232,10 +232,10 @@ svg.svg-loaded {
 .tooltip { 
     position: absolute;
     text-align: right;
-    width: 300px;
+    width: 150px;
     height: auto;
     padding: 8px;
-    color: #6D6E70;
+    color: #111111;
     background: #fff;
     font-weight: 400;
     border: solid 2px #666666; /*Changes border width and color of box*/
@@ -275,7 +275,7 @@ svg.svg-loaded {
     width: 300px;
     height: auto;
     padding: 8px;
-    color: #6D6E70;
+    color: #111111;
     background: #fff;
     font-weight: 400;
     border: solid 2px #666666; /*Changes border width and color of box*/
