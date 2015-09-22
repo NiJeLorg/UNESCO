@@ -10,9 +10,14 @@ var w = $('.carousel-inner').width() - margin.left - margin.right,
     h = (w*0.5) - margin.top - margin.bottom;
 
 // Place this div function here, so that the .on mouseover function can reference it later
-var div = d3.select("body").append("div") 
+var divTooltipLeft = d3.select("body").append("div") 
 	.attr("class", "tooltip")
 	.style("opacity", 1e-6);
+
+var divTooltipRight = d3.select("body").append("div") 
+	.attr("class", "tooltip-right")
+	.style("opacity", 1e-6);
+
 
 var divOnboarding = d3.select("#aidToEDU").append("div") 
 	.attr("class", "tooltip-onboard")

@@ -233,6 +233,7 @@ svg.svg-loaded {
     position: absolute;
     width: 130px;
     height: auto;
+    min-height: 100px;
     padding: 8px;
     color: #111111;
     background: #fff;
@@ -265,6 +266,47 @@ svg.svg-loaded {
 .tooltip:before { 
 	border-color: rgba(109, 110, 112, 0); 
 	border-right-color: #666666; /*Changes Tooltip point's border color*/
+	border-width: 18px; /*changes width of Tooltip point's bottom border*/
+	margin-top: -18px; /*changes width of Tooltip point's top border*/
+}
+
+.tooltip-right { 
+    position: absolute;
+    width: 130px;
+    height: auto;
+    min-height: 100px;
+    padding: 8px;
+    color: #111111;
+    background: #fff;
+    font-size: 10px;
+    font-weight: 400;
+    border: solid 2px #666666; /*Changes border width and color of box*/
+    border-radius: 0px; /*changes curve of border corner*/
+    pointer-events: none;
+	z-index: 1031;
+} 
+
+.tooltip-right:after, .tooltip-right:before { 
+	left: 100%; 
+	top: 50px; /* Changes placement of tooltip point along specified side */
+	border: solid transparent; 
+	content: " "; 
+	height: 0; 
+	width: 0; 
+	position: absolute; 
+	pointer-events: none; 
+} 
+
+.tooltip-right:after { 
+	border-color: rgba(255, 255, 255, 0); 
+	border-left-color: #fff; /*Changes Tooltip point's background color*/
+	border-width: 15px; /*changes size of Tooltip point's bottom background*/
+	margin-top: -15px; /*changes size of Tooltip point's top background*/
+} 
+
+.tooltip-right:before { 
+	border-color: rgba(109, 110, 112, 0); 
+	border-left-color: #666666; /*Changes Tooltip point's border color*/
 	border-width: 18px; /*changes width of Tooltip point's bottom border*/
 	margin-top: -18px; /*changes width of Tooltip point's top border*/
 }

@@ -87,7 +87,15 @@ function drawOOSCMap() {
 		.style("stroke", "#4d4d4d")
 		.style("stroke-width", "1px")
 		.on("mousemove", function(d) {
-			div.style("left", (d3.event.pageX + 25) + "px")
+			if (d3.event.pageX >= w/2) {
+				var div = divTooltipRight;
+				var left = -150;
+			} else {
+				var div = divTooltipLeft;
+				var left = 25;
+			}
+
+			div.style("left", (d3.event.pageX + left) + "px")
 			   .style("top", (d3.event.pageY - 55) + "px");
 			  
 		})
@@ -98,7 +106,10 @@ function drawOOSCMap() {
 				.style("stroke-width", "1px")
 				.style("fill-opacity", 1);
 
-			div.transition()
+			divTooltipLeft.transition()
+		     .duration(250)
+		     .style("opacity", 1e-6);
+			divTooltipRight.transition()
 		     .duration(250)
 		     .style("opacity", 1e-6);
 		});
@@ -155,6 +166,14 @@ function updateOOSCMap() {
   						return "0.5";
   					}
 				});
+
+			if (d3.event.pageX >= w/2) {
+				var div = divTooltipRight;
+				var left = -150;
+			} else {
+				var div = divTooltipLeft;
+				var left = 25;
+			}
 
 			div.transition()
 			  .duration(250)
@@ -239,7 +258,7 @@ function updateOOSCMap() {
 			  '<p class="tooltip-text">' + girls + '</p>' +
 			  '<p class="tooltip-text">' + boys + '</p>'
 			  )  
-			  .style("left", (d3.event.pageX + 25) + "px")     //play around with these to get spacing better
+			  .style("left", (d3.event.pageX + left) + "px")     //play around with these to get spacing better
 			  .style("top", (d3.event.pageY - 55) + "px");
 
 			

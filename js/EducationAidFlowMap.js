@@ -5,6 +5,7 @@
 function createEducationAidFlowMap() {
 
   var highlighted;
+  var clicked = false;
 
   var svg3 = d3.select("#EducationAidFlowMap")
       .append("svg")
@@ -37,6 +38,7 @@ function createEducationAidFlowMap() {
     .style('stroke', '#fff')
     .style('stroke-width', 0)
     .on("click", function() {
+      clicked = false;
       // show circle of selected
       centroids.selectAll('circle')
         .transition()
@@ -206,18 +208,22 @@ function createEducationAidFlowMap() {
         } 
 
         feature.properties.Donates_To = [];
+        feature.properties.Total_Donated = 0;
         feature.properties.Receives_From = [];
+        feature.properties.Total_Received = 0;
         // loop to create arrays of donor and recipient countries   
         for (var i = 0; i < data.flows.length; i++) {
           if (feature.properties.Donor_or_Recipient == 'Donor') {
             if (feature.properties.adm0_a3 == data.flows[i].ISO_Source_Code) {
               // push Receipients into Donates_To
-              feature.properties.Donates_To.push(data.flows[i].ISO_Target_Code)
+              feature.properties.Donates_To.push(data.flows[i].ISO_Target_Code);
+              feature.properties.Total_Donated = feature.properties.Total_Donated + parseFloat(data.flows[i].Total);
             }
           } else {
             if (feature.properties.adm0_a3 == data.flows[i].ISO_Target_Code) {
               // push Donors into Receives_From
               feature.properties.Receives_From.push(data.flows[i].ISO_Source_Code)
+              feature.properties.Total_Received = feature.properties.Total_Received + parseFloat(data.flows[i].Total);
             }
           }
         }
@@ -277,7 +283,133 @@ function createEducationAidFlowMap() {
             }
           }
         })
-        .on("click", click);
+        .on("click", click)
+        .on("mouseover", function(d) {
+          if (!clicked) {
+            // background all that aren't selected
+            countries.selectAll('path')
+              .transition()
+              .duration(250)
+              .style("stroke-width", function(j) {
+                if (j == d) {
+                  return "2px";
+                } else {
+                  return "0px";
+                }
+            })
+            .style("fill-opacity", function(j) {
+                if (j == d) {
+                  return "1";
+                } else {
+                  return "0.5";
+                }
+            });
+
+            if (d3.event.pageX >= w/2) {
+              var div = divTooltipRight;
+              var left = -150;
+            } else {
+              var div = divTooltipLeft;
+              var left = 25;
+            }
+
+            div.transition()
+              .duration(250)
+              .style("opacity", 1);
+
+            // conditional statements for text
+            if (d.properties.Total_Donated > 0) {
+              var prefix = d3.formatPrefix(d.properties.Total_Donated);
+              if (prefix.symbol == 'k') {
+                var recSymbol = "";
+                var rec = commaFormat(prefix.scale(d.properties.Total_Donated));
+              } else if (prefix.symbol == 'M') {
+                var recSymbol = " million";
+                var rec = prefix.scale(d.properties.Total_Donated).toFixed(1);
+              } else if (prefix.symbol == 'G') {
+                var recSymbol = " billion";
+                var rec = prefix.scale(d.properties.Total_Donated).toFixed(1);
+              } else {
+                var recSymbol = "";             
+                var rec = commaFormat(prefix.scale(d.properties.Total_Donated));
+              } 
+              var text = "Aid to Education: $" + rec + recSymbol;
+            } else {
+              var prefix = d3.formatPrefix(d.properties.Total_Received);
+              if (prefix.symbol == 'k') {
+                var recSymbol = "";
+                var rec = commaFormat(prefix.scale(d.properties.Total_Received));
+              } else if (prefix.symbol == 'M') {
+                var recSymbol = " million";
+                var rec = prefix.scale(d.properties.Total_Received).toFixed(1);
+              } else if (prefix.symbol == 'G') {
+                var recSymbol = " billion";
+                var rec = prefix.scale(d.properties.Total_Received).toFixed(1);
+              } else {
+                var recSymbol = "";             
+                var rec = commaFormat(prefix.scale(d.properties.Total_Received));
+              }
+              var mprefix = d3.formatPrefix(d.properties.multilateral);
+              if (mprefix.symbol == 'k') {
+                var mrecSymbol = "";
+                var mrec = commaFormat(mprefix.scale(d.properties.multilateral));
+              } else if (mprefix.symbol == 'M') {
+                var mrecSymbol = " million";
+                var mrec = mprefix.scale(d.properties.multilateral).toFixed(1);
+              } else if (mprefix.symbol == 'G') {
+                var mrecSymbol = " billion";
+                var mrec = mprefix.scale(d.properties.multilateral).toFixed(1);
+              } else {
+                var mrecSymbol = "";             
+                var mrec = commaFormat(prefix.scale(d.properties.multilateral));
+              } 
+              var text = "Bilateral: $" + rec + recSymbol + "<br />Multilateral: $" + mrec + mrecSymbol;
+            }
+            
+              
+            div.html(
+              '<p class="tooltip-title">' + d.properties.name + '</p>' +
+              '<p class="tooltip-text">' + text + '</p>' +
+              '<p class="tooltip-text">Click on this country to see the flow of education aid.</p>' 
+              )  
+              .style("left", (d3.event.pageX + left) + "px")     //play around with these to get spacing better
+              .style("top", (d3.event.pageY - 55) + "px");
+
+          }
+
+        })
+        .on("mousemove", function(d) {
+          if (!clicked) {
+            if (d3.event.pageX >= w/2) {
+              var div = divTooltipRight;
+              var left = -150;
+            } else {
+              var div = divTooltipLeft;
+              var left = 25;
+            }
+
+            div.style("left", (d3.event.pageX + left) + "px")
+               .style("top", (d3.event.pageY - 55) + "px");            
+          }
+            
+        })
+        .on("mouseout", function() {
+          if (!clicked) {
+            countries.selectAll('path')
+                .transition()
+                .duration(250)
+              .style("stroke-width", "1px")
+              .style("fill-opacity", 1);
+
+            divTooltipLeft.transition()
+               .duration(250)
+               .style("opacity", 1e-6);
+            divTooltipRight.transition()
+               .duration(250)
+               .style("opacity", 1e-6);            
+          }
+        });
+
 
       function click(d) {
           clearTimeout(timeout);
@@ -286,8 +418,17 @@ function createEducationAidFlowMap() {
              .duration(50)
              .style("opacity", 1e-6);
 
+          // ensure tooltips are removed
+          divTooltipLeft.transition()
+             .duration(50)
+             .style("opacity", 1e-6);
+          divTooltipRight.transition()
+             .duration(50)
+             .style("opacity", 1e-6);
+
           // set clicked for later
           highlighted = d;
+          clicked = true;
           // show circle of selected
           centroids.selectAll('circle')
             .transition()
@@ -587,6 +728,14 @@ function createEducationAidFlowMap() {
            .style("opacity", 1e-6);
 
 
+        if (d3.event.pageX >= w/2) {
+          var div = divTooltipRight;
+          var left = -150;
+        } else {
+          var div = divTooltipLeft;
+          var left = 25;
+        }
+
         div.transition()
           .duration(50)
           .style("opacity", 1);
@@ -628,12 +777,20 @@ function createEducationAidFlowMap() {
           '<p class="tooltip-title">' + d.dest.Name_of_Country + '</p>' +
           '<p class="tooltip-text">' + text + '</p>'
           )  
-          .style("left", (d3.event.pageX + 25) + "px")     //play around with these to get spacing better
+          .style("left", (d3.event.pageX + left) + "px")     //play around with these to get spacing better
           .style("top", (d3.event.pageY - 55) + "px");
 
       });
       arcNodes.on("mousemove", function(d) {
-          div.style("left", (d3.event.pageX + 25) + "px")
+          if (d3.event.pageX >= w/2) {
+            var div = divTooltipRight;
+            var left = -150;
+          } else {
+            var div = divTooltipLeft;
+            var left = 25;
+          }
+
+          div.style("left", (d3.event.pageX + left) + "px")
              .style("top", (d3.event.pageY - 55) + "px");
             
       });
@@ -658,8 +815,11 @@ function createEducationAidFlowMap() {
               }
           });
 
-          div.transition()
-             .duration(50)
+          divTooltipLeft.transition()
+             .duration(250)
+             .style("opacity", 1e-6);
+          divTooltipRight.transition()
+             .duration(250)
              .style("opacity", 1e-6);
 
       });
