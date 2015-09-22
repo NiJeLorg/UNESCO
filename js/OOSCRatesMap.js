@@ -11,8 +11,6 @@ var svg2 = d3.select("#OOSCRatesMap")
 	.append("g")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// define comma format
-var commaFormat = d3.format(",.0f");
 
 var color_ROFST_1_CP = d3.scale.threshold()
 	color_ROFST_1_CP.domain([9.9,19.9,29.9,100]);	
@@ -75,7 +73,6 @@ function createOOSCRatesMap() {
 
 
 function drawOOSCMap() {
-	console.log('draw');
 	// initial selection
 	paths = svg2.selectAll('.countryPaths')
 		.data(geojson.features);
@@ -166,9 +163,29 @@ function updateOOSCMap() {
 			if (activeLayer == 'ROFST_1_CP') {
 				if (d.properties.rate_ROFST_1_CP_Value) {
 					if (d.properties.OFST_1_F_CP_Value && d.properties.OFST_1_M_CP_Value) {
-						var girls = commaFormat(d.properties.OFST_1_F_CP_Value) + " primary school age girls out of school.";
-						var boys = commaFormat(d.properties.OFST_1_M_CP_Value) + " primary school age boys out of school.";
-						var year = d.properties.rate_ROFST_1_CP_Year;
+						var girlsPrefix = d3.formatPrefix(d.properties.OFST_1_F_CP_Value);
+						var girlsCount = girlsPrefix.scale(d.properties.OFST_1_F_CP_Value).toFixed(1);
+						if (girlsPrefix.symbol == 'k') {
+							var girlsSymbol = " thousand";
+						} else if (girlsPrefix.symbol == 'M') {
+							var girlsSymbol = " million";
+						} else {
+							var girlsSymbol = "";							
+						}
+						var girls = "Female: " + girlsCount + girlsSymbol;
+
+						var boysPrefix = d3.formatPrefix(d.properties.OFST_1_M_CP_Value);
+						var boysCount = boysPrefix.scale(d.properties.OFST_1_M_CP_Value).toFixed(1);
+						if (boysPrefix.symbol == 'k') {
+							var boysSymbol = " thousand";
+						} else if (boysPrefix.symbol == 'M') {
+							var boysSymbol = " million";
+						} else {
+							var boysSymbol = "";							
+						}
+						var boys = "Male: " + boysCount + boysSymbol;
+
+						var year = " (" + d.properties.rate_ROFST_1_CP_Year + ")";
 					} else {
 						var girls = "Data showing gender differences not available.";
 						var boys = '';
@@ -182,11 +199,30 @@ function updateOOSCMap() {
 			} else {
 				if (d.properties.rate_ROFST_2_CP_Value) {
 					if (d.properties.OFST_2_F_CP_Value && d.properties.OFST_2_M_CP_Value) {
-						var girls = commaFormat(d.properties.OFST_2_F_CP_Value) + " lower secondary school age girls out of school.";
-						var boys = commaFormat(d.properties.OFST_2_M_CP_Value) + " lower secondary school age age boys out of school.";
-						var year = d.properties.rate_ROFST_2_CP_Year;
+						var girlsPrefix = d3.formatPrefix(d.properties.OFST_2_F_CP_Value);
+						var girlsCount = girlsPrefix.scale(d.properties.OFST_2_F_CP_Value).toFixed(1);
+						if (girlsPrefix.symbol == 'k') {
+							var girlsSymbol = " thousand";
+						} else if (girlsPrefix.symbol == 'M') {
+							var girlsSymbol = " million";
+						} else {
+							var girlsSymbol = "";							
+						}
+						var girls = "Female: " + girlsCount + girlsSymbol;
+
+						var boysPrefix = d3.formatPrefix(d.properties.OFST_2_M_CP_Value);
+						var boysCount = boysPrefix.scale(d.properties.OFST_2_M_CP_Value).toFixed(1);
+						if (boysPrefix.symbol == 'k') {
+							var boysSymbol = " thousand";
+						} else if (boysPrefix.symbol == 'M') {
+							var boysSymbol = " million";
+						} else {
+							var boysSymbol = "";							
+						}
+						var boys = "Male: " + boysCount + boysSymbol;
+						var year = " (" + d.properties.rate_ROFST_2_CP_Year + ")";
 					} else {
-						var girls = "Data showing gender differnces for out of school adolescents of lower secondary school age not available.";
+						var girls = "Data showing gender differences not available.";
 						var boys = '';
 						var year = '';
 					}
@@ -199,7 +235,7 @@ function updateOOSCMap() {
 			}
 			  
 			div.html(
-			  '<p class="tooltip-title">' + d.properties.name + '<br />' + year + '</p>' +
+			  '<p class="tooltip-title">' + d.properties.name + year +'</p>' +
 			  '<p class="tooltip-text">' + girls + '</p>' +
 			  '<p class="tooltip-text">' + boys + '</p>'
 			  )  

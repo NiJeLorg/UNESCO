@@ -14,6 +14,9 @@ function createEducationAidFlowMap() {
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  // comma number format
+  var commaFormat = d3.format(",.0");
+
   var color_donor = d3.scale.threshold()
       color_donor.domain([9.9,19.9,29.9,100]); 
       color_donor.range(["#bdc9e1","#67a9cf","#1c9099","#016c59"]);
@@ -126,7 +129,6 @@ function createEducationAidFlowMap() {
           d.Total = d.Total.replace(/,/g , '');
           return parseFloat(d.Total);
         });
-      var magnitudeFormat = d3.format(",.3s");
 
       var arcWidth = d3.scale.linear().domain([1, maxMagnitude]).range([1, 20]);
 
@@ -589,7 +591,38 @@ function createEducationAidFlowMap() {
           .duration(50)
           .style("opacity", 1);
 
-        var text = "Receives $" + magnitudeFormat(d.magnitude) + " from " + d.origin.Name_of_Country + " and $" + magnitudeFormat(d.dest.Multilateral) + " in multilateral aid."
+        // format dollar figures
+        var recPrefix = d3.formatPrefix(d.magnitude);
+        if (recPrefix.symbol == 'k') {
+          var recSymbol = "";
+          var rec = commaFormat(recPrefix.scale(d.magnitude));
+        } else if (recPrefix.symbol == 'M') {
+          var recSymbol = " million";
+          var rec = recPrefix.scale(d.magnitude).toFixed(1);
+        } else if (recPrefix.symbol == 'G') {
+          var recSymbol = " billion";
+          var rec = recPrefix.scale(d.magnitude).toFixed(1);
+        } else {
+          var recSymbol = "";             
+          var rec = commaFormat(recPrefix.scale(d.magnitude));
+        }
+
+        var multiPrefix = d3.formatPrefix(d.dest.Multilateral);
+        if (multiPrefix.symbol == 'k') {
+          var multiSymbol = "";
+          var multi = commaFormat(multiPrefix.scale(d.dest.Multilateral));
+        } else if (multiPrefix.symbol == 'M') {
+          var multiSymbol = " million";
+          var multi = multiPrefix.scale(d.dest.Multilateral).toFixed(1);
+        } else if (multiPrefix.symbol == 'G') {
+          var recSymbol = " billion";
+          var multi = multiPrefix.scale(d.dest.Multilateral).toFixed(1);
+        } else {
+          var multiSymbol = "";             
+          var multi = commaFormat(multiPrefix.scale(d.dest.Multilateral));
+        }
+  
+        var text = "Receives $" + rec + recSymbol + " from " + d.origin.Name_of_Country + " and $" + multi + multiSymbol + " in multilateral aid."
           
         div.html(
           '<p class="tooltip-title">' + d.dest.Name_of_Country + '</p>' +
@@ -707,7 +740,21 @@ function createEducationAidFlowMap() {
           if (d.Donor_or_Recipient == 'Donor') {
             return "Aid to Education:";
           } else {
-            return "Bilateral: $" + magnitudeFormat(d.TotalReceivedFromCountries);
+            var prefix = d3.formatPrefix(d.TotalReceivedFromCountries);
+            if (prefix.symbol == 'k') {
+              var recSymbol = "";
+              var rec = commaFormat(prefix.scale(d.TotalReceivedFromCountries));
+            } else if (prefix.symbol == 'M') {
+              var recSymbol = " million";
+              var rec = prefix.scale(d.TotalReceivedFromCountries).toFixed(1);
+            } else if (prefix.symbol == 'G') {
+              var recSymbol = " billion";
+              var rec = prefix.scale(d.TotalReceivedFromCountries).toFixed(1);
+            } else {
+              var recSymbol = "";             
+              var rec = commaFormat(prefix.scale(d.TotalReceivedFromCountries));
+            }            
+            return "Bilateral: $" + rec + recSymbol;
           }
         });
 
@@ -716,7 +763,21 @@ function createEducationAidFlowMap() {
         .attr("y", function(d) { return d.projection[1] + 16 } )
         .text(function(d) {
           if (d.Donor_or_Recipient == 'Donor') {
-            return "$" + magnitudeFormat(d.TotalContributedToCountries);
+            var prefix = d3.formatPrefix(d.TotalContributedToCountries);
+            if (prefix.symbol == 'k') {
+              var recSymbol = "";
+              var rec = commaFormat(prefix.scale(d.TotalContributedToCountries));
+            } else if (prefix.symbol == 'M') {
+              var recSymbol = " million";
+              var rec = prefix.scale(d.TotalContributedToCountries).toFixed(1);
+            } else if (prefix.symbol == 'G') {
+              var recSymbol = " billion";
+              var rec = prefix.scale(d.TotalContributedToCountries).toFixed(1);
+            } else {
+              var recSymbol = "";             
+              var rec = commaFormat(prefix.scale(d.TotalContributedToCountries));
+            }           
+            return "$" + rec + recSymbol;
           }
         });
 
@@ -734,7 +795,21 @@ function createEducationAidFlowMap() {
         .attr("y", function(d) { return d.projection[1] + 28 } )
         .text(function(d) {
           if (d.Donor_or_Recipient == 'Recipient') {
-            return "$" + magnitudeFormat(d.Multilateral);
+            var prefix = d3.formatPrefix(d.Multilateral);
+            if (prefix.symbol == 'k') {
+              var recSymbol = "";
+              var rec = commaFormat(prefix.scale(d.Multilateral));
+            } else if (prefix.symbol == 'M') {
+              var recSymbol = " million";
+              var rec = prefix.scale(d.Multilateral).toFixed(1);
+            } else if (prefix.symbol == 'G') {
+              var recSymbol = " billion";
+              var rec = prefix.scale(d.Multilateral).toFixed(1);
+            } else {
+              var recSymbol = "";             
+              var rec = commaFormat(prefix.scale(d.Multilateral));
+            }            
+            return "$" + rec + recSymbol;
           }
         });
 
@@ -755,7 +830,7 @@ function createEducationAidFlowMap() {
           .style("opacity", 1);
 
         divOnboarding.html(
-          '<p class="text-left">Click on any country to see the flows of education investment from country to country. Mouse over any flow to see the amount of eductation resources invested.</p>'
+          '<p class="tooltip-text">Click on any country to see the flows of education investment from country to country. Mouse over any flow to see the amount of eductation resources invested.</p>'
           )  
           .style("left", "30px") 
           .style("top", "85px");

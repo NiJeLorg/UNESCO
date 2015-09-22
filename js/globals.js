@@ -3,7 +3,7 @@
  */
 
 //width and height
-var rl_margin = $('.carousel-inner').width()*0.03;
+var rl_margin = $('.carousel-inner').width()*0.05;
 var margin = {top: 0, right: rl_margin, bottom: 0, left: rl_margin};
 
 var w = $('.carousel-inner').width() - margin.left - margin.right,

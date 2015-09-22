@@ -129,7 +129,7 @@ function createFCEMap() {
 					  
 					div.html(
 					  '<p class="tooltip-title">' + d.properties.name + '</p>' +
-					  '<p class="tooltip-text">' + DCE_text + '</p>' +
+					  '<p class="tooltip-text">' + DCE_text + '</p>' 
 					  )  
 					  .style("left", (d3.event.pageX + 25) + "px")     //play around with these to get spacing better
 					  .style("top", (d3.event.pageY - 55) + "px");
