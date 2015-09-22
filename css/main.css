@@ -222,7 +222,7 @@ svg.svg-loaded {
 .org-source {
  	font-size:x-small;
  	color: #151515;
-	position: fixed;
+	position: absolute;
 	bottom: -8px;
 	left: 6px;
 }
@@ -304,13 +304,13 @@ svg.svg-loaded {
 @media (min-width: 768px) { 
 	.legend {
 		width: 180px;
-		position: fixed;
+		position: absolute;
 		bottom: 5px;
 		left: 30px;
 	}
 	.legend-horiz {
 		width: 300px;
-		position: fixed;
+		position: absolute;
 		bottom: 5px;
 		left: 30px;
 	}
@@ -319,13 +319,13 @@ svg.svg-loaded {
 @media (min-width: 992px) { 
 	.legend {
 		width: 240px;
-		position: fixed;
+		position: absolute;
 		bottom: 5px;
 		left: 30px;
 	}
 	.legend-horiz {
 		width: 400px;
-		position: fixed;
+		position: absolute;
 		bottom: 5px;
 		left: 30px;
 	}
@@ -335,13 +335,13 @@ svg.svg-loaded {
 @media (min-width: 1200px) { 
 	.legend {
 		width: 300px;
-		position: fixed;
+		position: absolute;
 		bottom: 5px;
 		left: 30px;
 	}
 	.legend-horiz {
 		width: 500px;
-		position: fixed;
+		position: absolute;
 		bottom: 5px;
 		left: 30px;
 	}
@@ -351,7 +351,7 @@ svg.svg-loaded {
 /* Toggle switch */
 .toggle {
 	cursor: pointer;
-	position: fixed;
+	position: absolute;
 	bottom: 175px;
 	left: 60px;
 	width: 200px;
