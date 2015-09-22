@@ -199,9 +199,9 @@ function updateOOSCMap() {
 			}
 			  
 			div.html(
-			  '<h4 class="text-left">' + d.properties.name + '<br />' + year + '</h4>' +
-			  '<p class="text-left">' + girls + '</p>' +
-			  '<p class="text-left">' + boys + '</p>'
+			  '<p class="tooltip-title">' + d.properties.name + '<br />' + year + '</p>' +
+			  '<p class="tooltip-text">' + girls + '</p>' +
+			  '<p class="tooltip-text">' + boys + '</p>'
 			  )  
 			  .style("left", (d3.event.pageX + 25) + "px")     //play around with these to get spacing better
 			  .style("top", (d3.event.pageY - 55) + "px");

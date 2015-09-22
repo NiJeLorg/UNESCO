@@ -592,8 +592,8 @@ function createEducationAidFlowMap() {
         var text = "Receives $" + magnitudeFormat(d.magnitude) + " from " + d.origin.Name_of_Country + " and $" + magnitudeFormat(d.dest.Multilateral) + " in multilateral aid."
           
         div.html(
-          '<h4 class="text-left">' + d.dest.Name_of_Country + '</h4>' +
-          '<p class="text-left">' + text + '</p>'
+          '<p class="tooltip-title">' + d.dest.Name_of_Country + '</p>' +
+          '<p class="tooltip-text">' + text + '</p>'
           )  
           .style("left", (d3.event.pageX + 25) + "px")     //play around with these to get spacing better
           .style("top", (d3.event.pageY - 55) + "px");

@@ -231,12 +231,12 @@ svg.svg-loaded {
 /* Tooltop CSS */
 .tooltip { 
     position: absolute;
-    text-align: right;
-    width: 150px;
+    width: 120px;
     height: auto;
     padding: 8px;
     color: #111111;
     background: #fff;
+    font-size: 10px;
     font-weight: 400;
     border: solid 2px #666666; /*Changes border width and color of box*/
     border-radius: 0px; /*changes curve of border corner*/
@@ -267,6 +267,15 @@ svg.svg-loaded {
 	border-right-color: #666666; /*Changes Tooltip point's border color*/
 	border-width: 18px; /*changes width of Tooltip point's bottom border*/
 	margin-top: -18px; /*changes width of Tooltip point's top border*/
+}
+
+.tooltip-title {
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.tooltip-text {
+	font-size: 10px;
 }
 
 .tooltip-onboard { 
