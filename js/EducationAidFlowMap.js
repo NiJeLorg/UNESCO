@@ -779,7 +779,7 @@ function createEducationAidFlowMap() {
           var multi = commaFormat(d.dest.Multilateral2);
         }
   
-        var text = "Receives $" + rec + recSymbol + " from " + d.origin.Name_of_Country + " and $" + multi + multiSymbol + " in multilateral aid."
+        var text = "Receives $" + rec + recSymbol + " from " + d.origin.Name_of_Country + ".";
           
         div.html(
           '<p class="tooltip-title">' + d.dest.Name_of_Country + '</p>' +
