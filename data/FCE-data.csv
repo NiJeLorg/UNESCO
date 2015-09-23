@@ -21,22 +21,17 @@ CoID,CountryName,Code,Year,Duration_compulsory_education,Start_age_compulsory_ed
 580,Belize,BLZ,2014,8,5,12,14,3,16
 2040,Benin,BEN,2014,6,6,11,6,6,11
 600,Bermuda,BMU,2014,13,5,17,16,1,17
-640,Bhutan,BTN,2014,0,a,a,11,6,16
 680,Bolivia (Plurinational State of),BOL,2014,14,4,17,19,4,22
 570,Bosnia and Herzegovina,BIH,2014,9,6,14,9,6,14
-720,Botswana,BWA,2014,0,a,a,0,a,a
 760,Brazil,BRA,2014,14,4,17,m,m,m
 8690,British Virgin Islands,VGB,2014,12,5,16,m,m,m
 960,Brunei Darussalam,BRN,2014,9,6,14,0,a,a
 1000,Bulgaria,BGR,2014,11,5,15,16,3,18
 8540,Burkina Faso,BFA,2014,10,6,15,10,6,15
-1080,Burundi,BDI,2014,0,a,a,m,m,m
 1320,Cabo Verde,CPV,2014,10,6,15,8,6,13
-4060,Cambodia,KHM,2014,0,a,a,9,6,14
 1200,Cameroon,CMR,2014,6,6,11,6,6,11
 1240,Canada,CAN,2014,10,6,15,m,m,m
 1360,Cayman Islands,CYM,2014,12,4,15,14,3,16
-1400,Central African Republic,CAF,2014,0,a,a,21,3,23
 1480,Chad,TCD,2014,10,6,15,16,3,18
 1520,Chile,CHL,2014,13,5,17,13,5,17
 1560,China,CHN,2014,9,6,14,9,6,14
@@ -47,7 +42,6 @@ CoID,CountryName,Code,Year,Duration_compulsory_education,Start_age_compulsory_ed
 1780,Congo,COG,2014,10,6,15,21,3,23
 1840,Cook Islands,COK,2014,11,5,15,m,3,18
 1880,Costa Rica,CRI,2014,11,4,14,13,4,16
-3840,Côte d'Ivoire,CIV,2014,0,a,a,0,a,a
 1020,Croatia,HRV,2014,8,7,14,8,7,14
 1920,Cuba,CUB,2014,9,6,14,23,n,22
 1960,Cyprus,CYP,2014,9,6,14,9,6,17
@@ -62,10 +56,7 @@ CoID,CountryName,Code,Year,Duration_compulsory_education,Start_age_compulsory_ed
 2200,Egypt,EGY,2014,12,6,17,12,6,17
 2220,El Salvador,SLV,2014,12,4,15,12,4,15
 2260,Equatorial Guinea,GNQ,2014,6,7,12,6,7,12
-2270,Eritrea,ERI,2014,0,a,a,0,a,a
 2280,Estonia,EST,2014,9,7,15,16,3,18
-2300,Ethiopia,ETH,2014,0,a,a,0,a,a
-2420,Fiji,FJI,2014,0,a,a,0,a,a
 2460,Finland,FIN,2014,10,7,16,0,a,a
 2500,France,FRA,2014,11,6,16,m,m,m
 2660,Gabon,GAB,2014,10,6,15,10,6,15
@@ -108,38 +99,30 @@ CoID,CountryName,Code,Year,Duration_compulsory_education,Start_age_compulsory_ed
 4400,Lithuania,LTU,2014,9,7,15,11,7,17
 4420,Luxembourg,LUX,2014,12,4,15,15,4,18
 4500,Madagascar,MDG,2014,5,6,10,15,3,17
-4540,Malawi,MWI,2014,0,a,a,m,m,m
 4580,Malaysia,MYS,2014,6,6,11,7,6,12
-4620,Maldives,MDV,2014,0,a,a,12,6,17
 4660,Mali,MLI,2014,9,6,15,12,n,18
 4700,Malta,MLT,2014,11,5,15,22,3,24
 5840,Marshall Islands,MHL,2014,9,5,13,9,5,13
 4780,Mauritania,MRT,2014,6,6,11,0,a,a
 4800,Mauritius,MUS,2014,11,5,15,18,5,22
 4840,Mexico,MEX,2014,14,4,17,18,4,22
-4845,Micronesia (Federated States of),FSM,2014,0,a,a,8,6,13
 4960,Mongolia,MNG,2014,12,6,17,12,6,17
 4990,Montenegro,MNE,2014,9,6,14,9,6,14
 5000,Montserrat,MSR,2014,11,5,15,11,5,15
 5040,Morocco,MAR,2014,9,6,14,9,6,14
-5080,Mozambique,MOZ,2014,0,a,a,0,a,a
 1040,Myanmar,MMR,2014,5,5,9,5,5,9
 5160,Namibia,NAM,2014,7,7,13,7,7,13
 5200,Nauru,NRU,2014,14,4,17,14,4,17
-5240,Nepal,NPL,2014,0,a,a,8,5,12
 5280,Netherlands,NLD,2014,12,5,16,m,m,m
 5540,New Zealand,NZL,2014,10,6,15,15,5,19
 5580,Nicaragua,NIC,2014,7,5,11,9,6,14
-5620,Niger,NER,2014,0,a,a,0,a,a
 5660,Nigeria,NGA,2014,9,6,14,9,6,14
 5700,Niue,NIU,2014,11,5,15,13,4,16
 5780,Norway,NOR,2014,10,6,15,10,6,15
-5800,Oman,OMN,2014,0,a,a,12,6,17
 5860,Pakistan,PAK,2014,12,5,16,12,5,16
 955,Palau,PLW,2014,12,6,17,12,6,17
 5880,Palestine,PSE,2014,10,6,15,12,6,17
 5900,Panama,PAN,2014,11,4,14,14,4,17
-5980,Papua New Guinea,PNG,2014,0,a,a,0,a,a
 6000,Paraguay,PRY,2014,13,5,17,15,3,17
 6040,Peru,PER,2014,14,3,16,19,3,21
 6080,Philippines,PHL,2014,13,5,17,13,5,17
@@ -166,8 +149,6 @@ CoID,CountryName,Code,Year,Duration_compulsory_education,Start_age_compulsory_ed
 7020,Singapore,SGP,2014,6,6,11,0,a,a
 6720,Slovakia,SVK,2014,10,6,15,18,6,23
 6760,Slovenia,SVN,2014,9,6,14,9,6,14
-900,Solomon Islands,SLB,2014,0,a,a,0,a,a
-7060,Somalia,SOM,2014,0,a,a,0,a,a
 7100,South Africa,ZAF,2014,9,7,15,m,m,m
 7240,Spain,ESP,2014,10,6,15,10,6,15
 7340,Sri Lanka,LKA,2014,9,5,13,13,5,17
@@ -197,9 +178,7 @@ CoID,CountryName,Code,Year,Duration_compulsory_education,Start_age_compulsory_ed
 8400,United States of America,USA,2014,12,6,17,13,5,17
 8580,Uruguay,URY,2014,14,4,17,m,m,m
 8600,Uzbekistan,UZB,2014,11,7,17,11,7,17
-5480,Vanuatu,VUT,2014,0,a,a,0,a,a
 8620,Venezuela (Bolivarian Republic of),VEN,2014,15,n,16,22,n,21
 8680,Viet Nam,VNM,2014,10,5,14,10,5,14
 8850,Yemen,YEM,2014,9,6,14,9,6,14
-8940,Zambia,ZMB,2014,0,a,a,0,a,a
 7160,Zimbabwe,ZWE,2014,7,6,12,0,a,a

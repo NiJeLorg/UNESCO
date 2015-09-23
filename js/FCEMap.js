@@ -17,9 +17,9 @@ function createFCEMap() {
 
 
 		var color = d3.scale.threshold()
-			color.domain([0,1,7,10,13]);	
-			color.range(["#fff","#ef4136","#f7941e","#f4d790","#73cfc9","#3b6a8f"]);		
-
+			color.domain([0,7,10,13]);	
+			color.range(["#fff","#ef4136","#f7941e","#73cfc9","#3b6a8f"]);		
+			// "#f4d790", deleted light orange
 		//Load in GeoJSON data
 		d3.json("../data/world-countries.json", function(json) {
 
