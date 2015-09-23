@@ -998,7 +998,7 @@ function createEducationAidFlowMap() {
           .style("opacity", 1);
 
         divOnboarding.html(
-          '<p class="tooltip-text">Click on any country to see the flows of education investment from country to country. Mouse over any flow to see the amount of eductation resources invested.</p>'
+          '<p class="tooltip-text">Click any country to see the amount of bilateral and multilateral aid contributed or received. Mouse over an arrow to see the flow of bilateral aid between countries.</p>'
           )  
           .style("left", "30px") 
           .style("top", "85px");
