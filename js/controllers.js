@@ -128,4 +128,62 @@ $( document ).ready(function() {
 
 	});
 
+    // facebook and twitter link creation and appending nav bar on top
+    var app_id = '1519242675033424';
+    var fbcaption = 'The world has pledged 12 years of free education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps.';
+    var fblink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+    var fbUrl = 'https://www.facebook.com/dialog/feed?app_id=' + app_id + '&display=popup&caption='+ encodeURIComponent(fbcaption) + '&link=' + encodeURIComponent(fblink) + '&redirect_uri=' + encodeURIComponent(fblink);
+    $('#shareFacebook').attr("href", fbUrl);
+
+	var twitterlink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+    var via = 'UNESCOstat';
+    var twittercaption = 'Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
+    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+
+    // facebook and twitter link creation for take action page -- first image
+    var app_id = '1519242675033424';
+    var fbcaption = 'The world has pledged 12 years of free education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps.';
+    var fblink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+    var fbUrl = 'https://www.facebook.com/dialog/feed?app_id=' + app_id + '&display=popup&caption='+ encodeURIComponent(fbcaption) + '&link=' + encodeURIComponent(fblink) + '&redirect_uri=' + encodeURIComponent(fblink);
+    $('#takeactionFacebook1').attr("href", fbUrl);
+
+	var twitterlink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+    var via = 'UNESCOstat';
+    var twittercaption = 'Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
+    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + encodeURIComponent(twittercaption);
+    $('#takeactionTwitter1').attr("href", twitterUrl);
+
+
+    // facebook and twitter link creation for take action page -- second image
+    var app_id = '1519242675033424';
+    var fbcaption = 'The world has pledged 12 years of free education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps.';
+    var fblink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+    var fbUrl = 'https://www.facebook.com/dialog/feed?app_id=' + app_id + '&display=popup&caption='+ encodeURIComponent(fbcaption) + '&link=' + encodeURIComponent(fblink) + '&redirect_uri=' + encodeURIComponent(fblink);
+    $('#takeactionFacebook2').attr("href", fbUrl);
+
+	var twitterlink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+    var via = 'UNESCOstat';
+    var twittercaption = 'Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
+    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + encodeURIComponent(twittercaption);
+    $('#takeactionTwitter2').attr("href", twitterUrl);
+
+
+    // facebook and twitter link creation for take action page -- third image
+    var app_id = '1519242675033424';
+    var fbcaption = 'The world has pledged 12 years of free education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps.';
+    var fblink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+    var fbUrl = 'https://www.facebook.com/dialog/feed?app_id=' + app_id + '&display=popup&caption='+ encodeURIComponent(fbcaption) + '&link=' + encodeURIComponent(fblink) + '&redirect_uri=' + encodeURIComponent(fblink);
+    $('#takeactionFacebook3').attr("href", fbUrl);
+
+	var twitterlink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+    var via = 'UNESCOstat';
+    var twittercaption = 'Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
+    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + encodeURIComponent(twittercaption);
+    $('#takeactionTwitter3').attr("href", twitterUrl);
+
+
+
+
 });

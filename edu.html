@@ -7,6 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta property="fb:app_id" content="1519242675033424" /> 
+    <meta property="og:type"   content="website" /> 
+    <meta property="og:url"    content="http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/" /> 
+    <meta property="og:description" content="The world has pledged 12 years of free education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps." />
+    <meta property="og:title"  content="UNESCO Institute of Statistics | Education 2030" /> 
+    <meta property="og:image"  content="http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/css/images/UIS_Education2030_TakeAction_En.png" />
+    <script type="text/javascript">
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1519242675033424',
+          xfbml      : true,
+          version    : 'v2.4'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
     <link rel="icon" href="">
 
     <title>Education For All | UNESCO Institute for Statistics</title>
@@ -72,12 +95,13 @@
           </div>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">French</a></li>
+          <!--<li class="active"><a href="#">French</a></li>
           <li class="active"><a href="#">Spanish</a></li>
-          <li class="active"><a href="#">English</a></li>
+          <li class="active"><a href="#">English</a></li>-->
           <li class="active"><a href="#" data-toggle="modal" data-target="#aboutModal">About</a></li>
-          <li class="nav-image"><a href="#"><img src="css/images/SMButton_facebook.png" /></a></li>
-          <li class="nav-image"><a href="#"><img src="css/images/SMButton_Twitter.png" /></a></li>
+          <li class="nav-image"><a id="shareFacebook" href="#" target="_blank"><img src="css/images/SMButton_facebook.png" /></a></li>
+          <li class="nav-image"><a id="shareTwitter" href="#" target="_blank"><img src="css/images/SMButton_Twitter.png" /></a></li>
+          <li class="nav-image"><a href="#" data-toggle="modal" data-target="#embedModal"><img src="css/images/SMButton_Embed.png" /></a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -94,7 +118,7 @@
           <div class="title">
             <!-- <h1 class="titleText">The World has Pledged</h1>
             <h4 class="titleSubText textPosition1">Every child will have the right to 12 years of free education, of which 9 shall be compulsory.</h4> -->
-            <img class="titleImage" src="css/images/Banner1_TheWorldHasPledged.png" />
+            <img class="titleImage img-responsive" src="css/images/Banner1_TheWorldHasPledged.png" />
           </div>
           <div class="loading-white-space"></div>          
           <div id="FCEMap"></div>
@@ -108,7 +132,7 @@
           <div class="title">
             <!-- <h1 class="titleText">Out-of-School Children</h1>
             <h4 class="titleSubText textPosition2">124 million children and adolescents are denied the right to education.</h4> -->
-            <img class="titleImage" src="css/images/Banner2_OutofSchoolChildren.png" />
+            <img class="titleImage img-responsive" src="css/images/Banner2_OutofSchoolChildren.png" />
           </div>          
           <div class="loading-white-space"></div>          
           <div id="OOSCRatesMap"></div>          
@@ -129,7 +153,7 @@
           <div class="title">
            <!--  <h1 class="titleText">Aid to Basic Education</h1>
             <h4 class="titleSubText textPosition3">While millions of children remain excluded from primary school, an extra $39 billion is needed each year to achieve universal primary and secondary education.</h4> -->
-            <img class="titleImage" src="css/images/Banner3_AidtoEducation.png" />
+            <img class="titleImage img-responsive" src="css/images/Banner3_AidtoEducation.png" />
           </div>          
           <div class="loading-white-space"></div>          
           <div id="EducationAidFlowMap"></div>       
@@ -142,9 +166,68 @@
           <div class="title">
             <!-- <h1 class="titleText">Take Action</h1>
             <h4 class="titleSubText textPosition4">Join global citizens and organizations taking up the challenge to provide 12 years of quality education for all. </h4> -->
-            <img class="titleImage" src="css/images/Banner4_TakeAction.png" />
+            <img class="titleImage img-responsive" src="css/images/Banner4_TakeAction.png" />
           </div>          
-          <div class="loading-white-space"></div>          
+          <div class="loading-white-space"></div>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-9 col-sm-offset-1">
+                <h4 class="">Join global citizens and organizations taking up the challenge to provide 12 years of quality education for all. </h4>   
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3 col-sm-offset-1">
+                <img class="img-responsive" src="css/images/UIS_Education2030_TakeAction_En.png" />
+                <a id="takeactionFacebook1" href="#" target="_blank"><img class="takeActionSocial" src="css/images/SMButton_facebook.png" /></a>
+                <a id="takeactionTwitter1" href="#" target="_blank"><img class="takeActionSocial" src="css/images/SMButton_Twitter.png" /></a>
+              </div>
+              <div class="col-sm-3">
+                <img class="img-responsive" src="css/images/UIS_Education2030_TakeAction_En.png" />
+                <a id="takeactionFacebook2" href="#" target="_blank"><img class="takeActionSocial" src="css/images/SMButton_facebook.png" /></a>
+                <a id="takeactionTwitter2" href="#" target="_blank"><img class="takeActionSocial" src="css/images/SMButton_Twitter.png" /></a>
+              </div>
+              <div class="col-sm-3">
+                <img class="img-responsive" src="css/images/UIS_Education2030_TakeAction_En.png" />
+                <a id="takeactionFacebook3" href="#" target="_blank"><img class="takeActionSocial" src="css/images/SMButton_facebook.png" /></a>
+                <a id="takeactionTwitter3" href="#" target="_blank"><img class="takeActionSocial" src="css/images/SMButton_Twitter.png" /></a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-9 col-sm-offset-1">
+                <hr />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-9 col-sm-offset-1">
+                <h2>Partners</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3 col-sm-offset-1">
+                <a href="http://www.right-to-education.org/" target="_blank"><img class="img-responsive" src="css/images/partner_rte.png" /></a>
+                <p><a href="http://www.right-to-education.org/" target="_blank">right-to-education.org</a>
+                <br />
+                <a href="https://twitter.com/rteproject">@RTEProject</a></p>
+              </div>
+              <div class="col-sm-3">
+                <a href="http://www.globalpartnership.org/" target="_blank"><img class="img-responsive" src="css/images/GPE_3Lines_plain_En.png" /></a>
+                <p><a href="http://www.globalpartnership.org/" target="_blank">globalpartnership.org</a>
+                <br />
+                <a href="https://twitter.com/https://twitter.com/GPforEducation">@GPforEducation</a></p>
+              </div>
+              <div class="col-sm-3">
+                <a href="http://www.aworldatschool.org/" target="_blank"><img class="img-responsive" src="css/images/partner_awas.png" /></a>
+                <p><a href="http://www.aworldatschool.org/" target="_blank">aworldatschool.org</a>
+                <br />
+                <a href="https://twitter.com/aworldatschool">@aworldatschool</a></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-9 col-sm-offset-1">
+                <hr />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -177,9 +260,9 @@
               <h2>Map 1: Free and Compulsory Education</h2>
               <h4>Compulsory education:</h4>
               <p>Number of years or age span during which children are legally obliged to attend school.</p>
-              <a href=“http://www.uis.unesco.org/DataCentre/Pages/BrowseEducation.aspx”> Source: UNESCO Institute for Statistics (UIS)</a>
+              <a href="http://www.uis.unesco.org/DataCentre/Pages/BrowseEducation.aspx"> Source: UNESCO Institute for Statistics (UIS)</a>
               <h4>Free education:</h4>
-              <a href=“http://www.unesco.org/education/edurights/index.php?action=home&lng=en”> Source: Global Database on the Right to Education</a>
+              <a href="http://www.unesco.org/education/edurights/index.php?action=home&lng=en"> Source: Global Database on the Right to Education</a>
             </div>
             <div class="Map-2">
               <h2>Map 2: Out-of-School Children</h2>
@@ -189,22 +272,22 @@
               <p><b>Number of out-of-school children of primary school age</p></b>
               <p><b>Number of out-of-school adolescents of lower secondary school age</p></b>
               <p>Out-of-school indicators refer to children, typically 6 to 11 years old, and young adolescents, typically 12 to 155 years old, who are not enrolled in primary or lower secondary education.</p>
-              <a href=“http://www.uis.unesco.org/DataCentre/Pages/BrowseEducation.aspx”> Source: UNESCO Institute for Statistics (UIS)</a>
+              <a href="http://www.uis.unesco.org/DataCentre/Pages/BrowseEducation.aspx"> Source: UNESCO Institute for Statistics (UIS)</a>
             </div>
             <div class"Map-3">
               <h2>Map 3: Aid to Basic Education</h2>
               <h4>Total aid to basic education as disbursements in current USD</h4>
               <p><b> Methodology: </p></b>
               <p> Formula used to calculate total aid to basic education: Direct aid to basic edcucation plus 10% of general budget support, plus 50% of education 'level unspecified'. </p>
-             <p><b> Basic education</p></b>
+              <p><b> Basic education</p></b>
               <p>Basic education, as defined by OECD-DAC, covers primary education, basic life skills for youth and adults, and early childhood education.'Level unspecified' refers to any activity that cannot be attributed solely to the development of a particular level of education, such as teacher training. General education programme support is often reported in this subcategory.</p>
               <p>Total aid to basic education as disbursements in current USD</p>
               <p>A disbursement is a record of an actual international transfer of financial goods and services.</p>
               <p>In the OECD-DAC database current prices are expressed in USD. </p>
-              <a href=“http://stats.oecd.org/”> Source: OECD-DAC Creditor Reporting System (2015):</a>
+              <a href="http://stats.oecd.org/"> Source: OECD-DAC Creditor Reporting System (2015):</a>
               <p>For more information: http://www.oecd.org/dac/stats/crsguide.htm</p>
               <p>The boundary names and designations shown do not imply official endorsement or acceptance by UNESCO.</p>
-              <p>All requests for commercial use and translation rights should be submitted to: uis.publications@unesco.org</p
+              <p>All requests for commercial use and translation rights should be submitted to: uis.publications@unesco.org</p>
              </div>
              <div class"ImageSource">
              <h2>Image courtesy of:</h2>
@@ -215,6 +298,24 @@
         </div><!-- /.modal-content -->
       </div>
     </div>
+
+
+    <!-- Embed Modal -->
+    <div class="modal fade" id="embedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Copy Embed Code</h4>
+          </div>
+          <div class="modal-body">
+           <p>Copy the code below to embed Education 2030 into your website.</p>
+           <pre>&lt;a target="_blank" href="http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/"&gt;&lt;img src="http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/images/embed-en.png" alt="UNESCO - Education 2030" width="720" height="532" /&gt;&lt;/a&gt;</pre>
+          </div>
+        </div><!-- /.modal-content -->
+      </div>
+    </div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
