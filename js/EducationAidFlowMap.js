@@ -349,20 +349,26 @@ function createEducationAidFlowMap() {
                 var recSymbol = "";             
                 var rec = commaFormat(prefix.scale(d.properties.Total_Received));
               }
-              var mprefix = d3.formatPrefix(d.properties.multilateral);
-              if (mprefix.symbol == 'k') {
-                var mrecSymbol = "";
-                var mrec = commaFormat(mprefix.scale(d.properties.multilateral));
-              } else if (mprefix.symbol == 'M') {
-                var mrecSymbol = " million";
-                var mrec = mprefix.scale(d.properties.multilateral).toFixed(1);
-              } else if (mprefix.symbol == 'G') {
-                var mrecSymbol = " billion";
-                var mrec = mprefix.scale(d.properties.multilateral).toFixed(1);
+              if (!isNaN(d.properties.multilateral)) {
+                var mprefix = d3.formatPrefix(d.properties.multilateral);
+                if (mprefix.symbol == 'k') {
+                  var mrecSymbol = "";
+                  var mrec = commaFormat(d.properties.multilateral);
+                } else if (mprefix.symbol == 'M') {
+                  var mrecSymbol = " million";
+                  var mrec = mprefix.scale(d.properties.multilateral).toFixed(1);
+                } else if (mprefix.symbol == 'G') {
+                  var mrecSymbol = " billion";
+                  var mrec = mprefix.scale(d.properties.multilateral).toFixed(1);
+                } else {
+                  var mrecSymbol = "";             
+                  var mrec = commaFormat(d.properties.multilateral);
+                }                 
               } else {
-                var mrecSymbol = "";             
-                var mrec = commaFormat(prefix.scale(d.properties.multilateral));
-              } 
+                  var mrecSymbol = "";             
+                  var mrec = "0";                
+              }
+
               var text = "Bilateral: $" + rec + recSymbol + "<br />Multilateral: $" + mrec + mrecSymbol;
             }
             
