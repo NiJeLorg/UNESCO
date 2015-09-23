@@ -16,7 +16,7 @@ function createEducationAidFlowMap() {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // comma number format
-  var commaFormat = d3.format(",.0");
+  var commaFormat = d3.format(",.6");
 
   var color_donor = d3.scale.threshold()
       color_donor.domain([9.9,19.9,29.9,100]); 
@@ -143,10 +143,12 @@ function createEducationAidFlowMap() {
 
       data.nodes.forEach(function(node) {
         //parse multilateral number
-        if (!node.Multilateral || node.Multilateral == 'a') {
-          node.Multilateral = -99;
+        if (!node.Multilateral2 || node.Multilateral2 == 'a') {
+          node.Multilateral2 = -99;
         } else {
-          node.Multilateral = Math.round(parseFloat(node.Multilateral) * 1000000);
+          node.Multilateral2 = node.Multilateral2.replace(/,/g , '');
+          node.Multilateral2 = parseFloat(node.Multilateral2);
+          console.log(node.Multilateral2);
         }
         //construct lon,lat array for each node and pass to nodeDataByCode
         node.coords = nodeCoords(node);
@@ -201,7 +203,7 @@ function createEducationAidFlowMap() {
           if (feature.properties.adm0_a3 == data.nodes[i].OECD_Country_Code) {
             //Copy the data value into the JSON
             feature.properties.Donor_or_Recipient = data.nodes[i].Donor_or_Recipient; 
-            feature.properties.multilateral = data.nodes[i].Multilateral;
+            feature.properties.multilateral = data.nodes[i].Multilateral2;
             //Stop looking through the JSON
             break;      
           }
@@ -762,19 +764,19 @@ function createEducationAidFlowMap() {
           var rec = commaFormat(recPrefix.scale(d.magnitude));
         }
 
-        var multiPrefix = d3.formatPrefix(d.dest.Multilateral);
+        var multiPrefix = d3.formatPrefix(d.dest.Multilateral2);
         if (multiPrefix.symbol == 'k') {
           var multiSymbol = "";
-          var multi = commaFormat(multiPrefix.scale(d.dest.Multilateral));
+          var multi = commaFormat(d.dest.Multilateral2);
         } else if (multiPrefix.symbol == 'M') {
           var multiSymbol = " million";
-          var multi = multiPrefix.scale(d.dest.Multilateral).toFixed(1);
+          var multi = multiPrefix.scale(d.dest.Multilateral2).toFixed(1);
         } else if (multiPrefix.symbol == 'G') {
           var recSymbol = " billion";
-          var multi = multiPrefix.scale(d.dest.Multilateral).toFixed(1);
+          var multi = multiPrefix.scale(d.dest.Multilateral2).toFixed(1);
         } else {
           var multiSymbol = "";             
-          var multi = commaFormat(multiPrefix.scale(d.dest.Multilateral));
+          var multi = commaFormat(d.dest.Multilateral2);
         }
   
         var text = "Receives $" + rec + recSymbol + " from " + d.origin.Name_of_Country + " and $" + multi + multiSymbol + " in multilateral aid."
@@ -961,19 +963,19 @@ function createEducationAidFlowMap() {
         .attr("y", function(d) { return d.projection[1] + 28 } )
         .text(function(d) {
           if (d.Donor_or_Recipient == 'Recipient') {
-            var prefix = d3.formatPrefix(d.Multilateral);
+            var prefix = d3.formatPrefix(d.Multilateral2);
             if (prefix.symbol == 'k') {
               var recSymbol = "";
-              var rec = commaFormat(prefix.scale(d.Multilateral));
+              var rec = commaFormat(d.Multilateral2);
             } else if (prefix.symbol == 'M') {
               var recSymbol = " million";
-              var rec = prefix.scale(d.Multilateral).toFixed(1);
+              var rec = prefix.scale(d.Multilateral2).toFixed(1);
             } else if (prefix.symbol == 'G') {
               var recSymbol = " billion";
-              var rec = prefix.scale(d.Multilateral).toFixed(1);
+              var rec = prefix.scale(d.Multilateral2).toFixed(1);
             } else {
               var recSymbol = "";             
-              var rec = commaFormat(prefix.scale(d.Multilateral));
+              var rec = commaFormat(d.Multilateral2);
             }            
             return "$" + rec + recSymbol;
           }
