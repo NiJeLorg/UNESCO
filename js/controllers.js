@@ -138,7 +138,7 @@ $( document ).ready(function() {
 	var twitterlink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
     var via = 'UNESCOstat';
     var twittercaption = 'Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
-    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + encodeURIComponent(twittercaption);
+    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/eYmY4vLpjD' + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
 
@@ -152,7 +152,7 @@ $( document ).ready(function() {
 	var twitterlink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
     var via = 'UNESCOstat';
     var twittercaption = 'Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
-    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + encodeURIComponent(twittercaption);
+    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/eYmY4vLpjD' + encodeURIComponent(twittercaption);
     $('#takeactionTwitter1').attr("href", twitterUrl);
 
 
