@@ -427,16 +427,41 @@ svg.svg-loaded {
 	font-size: small;
 }
 
-.col-sm-3{
+#partnerphoto1{
 	padding-left: 25px;
 	padding-bottom: 20px;
 }
-.col-sm-3 img {
-	max-height: 65px;
+
+#partnerphoto2{
+	padding-left: 25px;
+	padding-bottom: 20px;
 }
 
-.col-sm-4 img{
-	max-height: 230px;
+#partnerphoto3{
+	padding-left: 25px;
+	padding-bottom: 20px;
 }
 
+#partnerphoto1 img {
+	max-height: 55px;
+}
 
+#partnerphoto2 img {
+	max-height: 55px;
+}
+
+#partnerphoto3 img {
+	max-height: 55px;
+}
+
+.col-sm-3.actionphotos img{
+	max-height: 200px;
+}
+
+#actionphoto2{
+	padding-top:37px;
+}
+
+#actionphoto3{
+	padding-top:37px;
+}
