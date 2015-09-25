@@ -135,7 +135,7 @@ $( document ).ready(function() {
     var fbUrl = 'https://www.facebook.com/dialog/feed?app_id=' + app_id + '&display=popup&caption='+ encodeURIComponent(fbcaption) + '&link=' + encodeURIComponent(fblink) + '&redirect_uri=' + encodeURIComponent(fblink);
     $('#shareFacebook').attr("href", fbUrl);
 
-	var twitterlink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+	var twitterlink = 'http://bit.ly/1Mu5jzr';
     var via = 'UNESCOstat';
     var twittercaption = 'Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/eYmY4vLpjD' + encodeURIComponent(twittercaption);
@@ -149,7 +149,7 @@ $( document ).ready(function() {
     var fbUrl = 'https://www.facebook.com/dialog/feed?app_id=' + app_id + '&display=popup&caption='+ encodeURIComponent(fbcaption) + '&link=' + encodeURIComponent(fblink) + '&redirect_uri=' + encodeURIComponent(fblink);
     $('#takeactionFacebook1').attr("href", fbUrl);
 
-	var twitterlink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+	var twitterlink = 'http://bit.ly/1Mu5jzr';
     var via = 'UNESCOstat';
     var twittercaption = 'Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/eYmY4vLpjD' + encodeURIComponent(twittercaption);
@@ -163,7 +163,7 @@ $( document ).ready(function() {
     var fbUrl = 'https://www.facebook.com/dialog/feed?app_id=' + app_id + '&display=popup&caption='+ encodeURIComponent(fbcaption) + '&link=' + encodeURIComponent(fblink) + '&redirect_uri=' + encodeURIComponent(fblink);
     $('#takeactionFacebook2').attr("href", fbUrl);
 
-	var twitterlink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+	var twitterlink = 'http://bit.ly/1Mu5jzr';
     var via = 'UNESCOstat';
     var twittercaption = 'Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + encodeURIComponent(twittercaption);
@@ -177,7 +177,7 @@ $( document ).ready(function() {
     var fbUrl = 'https://www.facebook.com/dialog/feed?app_id=' + app_id + '&display=popup&caption='+ encodeURIComponent(fbcaption) + '&link=' + encodeURIComponent(fblink) + '&redirect_uri=' + encodeURIComponent(fblink);
     $('#takeactionFacebook3').attr("href", fbUrl);
 
-	var twitterlink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
+	var twitterlink = 'http://bit.ly/1Mu5jzr';
     var via = 'UNESCOstat';
     var twittercaption = 'Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + encodeURIComponent(twittercaption);
