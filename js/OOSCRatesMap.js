@@ -48,10 +48,14 @@ function createOOSCRatesMap() {
 					} else if (apidata.Indicators[i].Indicator == 'ROFST_2_CP') {
 						geojson.features[j].properties.rate_ROFST_2_CP_Value = value;
 						geojson.features[j].properties.rate_ROFST_2_CP_Year = apidata.Indicators[i].Year;
+					} else if (apidata.Indicators[i].Indicator == 'OFST_1_CP') {
+						geojson.features[j].properties.OFST_1_CP_Value = value;
 					} else if (apidata.Indicators[i].Indicator == 'OFST_1_F_CP') {
 						geojson.features[j].properties.OFST_1_F_CP_Value = value;
 					} else if (apidata.Indicators[i].Indicator == 'OFST_1_M_CP')  {
 						geojson.features[j].properties.OFST_1_M_CP_Value = value;
+					} else if (apidata.Indicators[i].Indicator == 'OFST_2_CP') {
+						geojson.features[j].properties.OFST_2_CP_Value = value;
 					} else if (apidata.Indicators[i].Indicator == 'OFST_2_F_CP') {
 						geojson.features[j].properties.OFST_2_F_CP_Value = value;
 					} else {
@@ -210,10 +214,25 @@ function updateOOSCMap() {
 						var boys = '';
 						var year = '';
 					}
+
+					if (d.properties.OFST_1_CP_Value) {
+						var prefix = d3.formatPrefix(d.properties.OFST_1_CP_Value);
+						var count = prefix.scale(d.properties.OFST_1_CP_Value).toFixed(1);
+						if (prefix.symbol == 'k') {
+							var symbol = " thousand";
+						} else if (prefix.symbol == 'M') {
+							var symbol = " million";
+						} else {
+							var symbol = "";							
+						}
+						var total = "Total: " + count + symbol;
+					}
+
 				} else {
 						var girls = "No data.";
 						var boys = '';
 						var year = '';
+						var total = '';
 				}
 			} else {
 				if (d.properties.rate_ROFST_2_CP_Value) {
@@ -245,10 +264,25 @@ function updateOOSCMap() {
 						var boys = '';
 						var year = '';
 					}
+
+					if (d.properties.OFST_2_CP_Value) {
+						var prefix = d3.formatPrefix(d.properties.OFST_2_CP_Value);
+						var count = prefix.scale(d.properties.OFST_2_CP_Value).toFixed(1);
+						if (prefix.symbol == 'k') {
+							var symbol = " thousand";
+						} else if (prefix.symbol == 'M') {
+							var symbol = " million";
+						} else {
+							var symbol = "";							
+						}
+						var total = "Total: " + count + symbol;
+					}
+
 				} else {
 					var girls = "No data for this country.";
 					var boys = '';
 					var year = '';
+					var total = '';
 				}
 				
 			}
@@ -256,7 +290,8 @@ function updateOOSCMap() {
 			div.html(
 			  '<p class="tooltip-title">' + d.properties.name + year +'</p>' +
 			  '<p class="tooltip-text">' + girls + '</p>' +
-			  '<p class="tooltip-text">' + boys + '</p>'
+			  '<p class="tooltip-text">' + boys + '</p>' +
+			  '<p class="tooltip-text">' + total + '</p>'
 			  )  
 			  .style("left", (d3.event.pageX + left) + "px")     //play around with these to get spacing better
 			  .style("top", (d3.event.pageY - 55) + "px");

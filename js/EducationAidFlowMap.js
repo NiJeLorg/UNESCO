@@ -148,7 +148,6 @@ function createEducationAidFlowMap() {
         } else {
           node.Multilateral2 = node.Multilateral2.replace(/,/g , '');
           node.Multilateral2 = parseFloat(node.Multilateral2);
-          console.log(node.Multilateral2);
         }
         //construct lon,lat array for each node and pass to nodeDataByCode
         node.coords = nodeCoords(node);
