@@ -137,7 +137,7 @@ $( document ).ready(function() {
 
 	var twitterlink = 'http://bit.ly/1Mu5jzr';
     var via = 'UNESCOstat';
-    var twittercaption = ' Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
+    var twittercaption = ' Is aid to #education reaching children who need it most? Explore the data:';
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=http://bit.ly/1JtEmqR' + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
@@ -151,7 +151,7 @@ $( document ).ready(function() {
 
 	var twitterlink = 'http://bit.ly/1Mu5jzr';
     var via = 'UNESCOstat';
-    var twittercaption = ' Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
+    var twittercaption = ' Is aid to #education reaching children who need it most? Explore the data:';
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=http://bit.ly/1JtEmqR' + encodeURIComponent(twittercaption);
     $('#takeactionTwitter1').attr("href", twitterUrl);
 
@@ -165,7 +165,7 @@ $( document ).ready(function() {
 
 	var twitterlink = 'http://bit.ly/1Mu5jzr';
     var via = 'UNESCOstat';
-    var twittercaption = ' Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
+    var twittercaption = ' Is aid to #education reaching children who need it most? Explore the data:';
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/DwouUX595I' + encodeURIComponent(twittercaption);
     $('#takeactionTwitter2').attr("href", twitterUrl);
 
@@ -179,11 +179,9 @@ $( document ).ready(function() {
 
 	var twitterlink = 'http://bit.ly/1Mu5jzr';
     var via = 'UNESCOstat';
-    var twittercaption = ' Is global aid to #education reaching children who need it most? Explore @UNESCOstat\'s data map:';
+    var twittercaption = ' Is aid to #education reaching children who need it most? Explore the data:';
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/DwouUX595I' + encodeURIComponent(twittercaption);
     $('#takeactionTwitter3').attr("href", twitterUrl);
-
-
 
 
 });
