@@ -166,7 +166,7 @@ $( document ).ready(function() {
 	var twitterlink = 'http://bit.ly/1Mu5jzr';
     var via = 'UNESCOstat';
     var twittercaption = ' Is aid to #education reaching children who need it most? Explore the data:';
-    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/DwouUX595I' + encodeURIComponent(twittercaption);
+    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/z4hdJBlRQi' + encodeURIComponent(twittercaption);
     $('#takeactionTwitter2').attr("href", twitterUrl);
 
 
