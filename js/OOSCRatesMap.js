@@ -29,7 +29,7 @@ var activeLayer;
 function createOOSCRatesMap() {
 
 	//Load in GeoJSON data
-	d3.json("../data/world-countries.json", function(json) {
+	d3.json("./data/world-countries.json", function(json) {
 		geojson = json;
 		// add ROFST_1_CP to geojson
 		for (var i = 0; i < apidata.Indicators.length; i++) {

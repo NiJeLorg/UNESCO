@@ -119,9 +119,9 @@ function createEducationAidFlowMap() {
 
 
   d3.loadData()
-    .json('countries', '../data/world-countries.json')
-    .csv('nodes', '../data/OECD_Nodes.csv')
-    .csv('flows', '../data/OECD_Edges.csv')
+    .json('countries', './data/world-countries.json')
+    .csv('nodes', './data/OECD_Nodes.csv')
+    .csv('flows', './data/OECD_Edges.csv')
     .onload(function(data) {
 
       //variable set up

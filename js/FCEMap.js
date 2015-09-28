@@ -4,7 +4,7 @@
 
 function createFCEMap() {
 
-	d3.csv("../data/FCE-data.csv", function(data) {
+	d3.csv("./data/FCE-data.csv", function(data) {
 
 		//Create SVG element
 		var svg1 = d3.select("#FCEMap")
@@ -21,7 +21,7 @@ function createFCEMap() {
 			color.range(["#fff","#ef4136","#f7941e","#73cfc9","#3b6a8f"]);		
 			// "#f4d790", deleted light orange
 		//Load in GeoJSON data
-		d3.json("../data/world-countries.json", function(json) {
+		d3.json("./data/world-countries.json", function(json) {
 
 					for (var i = 0; i < data.length; i++) {
 							
