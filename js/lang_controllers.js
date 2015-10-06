@@ -47,8 +47,6 @@ $( document ).ready(function() {
 	}
 
 	function langSwitch (lang) {
-		// ensure flow map is not showing any text
-
 		// hide all 
 		$( '*:lang("en")' ).addClass('hidden');
 		$( '*:lang("fr")' ).addClass('hidden');
