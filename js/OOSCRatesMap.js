@@ -183,34 +183,55 @@ function updateOOSCMap() {
 			  .duration(250)
 			  .style("opacity", 1);
 
+			// set up vars for language
+			if (lang == 'en') {
+				var male = "Male: ";
+				var female = "Female: ";
+				var nodata = "No data.";
+				var thousand = " thousand";
+				var million = " million";
+			} else if (lang == 'fr') {
+				var male = "Garçons: ";
+				var female = "Filles: ";
+				var nodata = "Aucune donnée.";
+				var thousand = " mille";
+				var million = " million";
+			} else {
+				var male = "Hombres: ";
+				var female = "Mujeres: ";
+				var nodata = "Sin datos.";
+				var thousand = " mil";
+				var million = " millón";
+			}						  
+
 			if (activeLayer == 'ROFST_1_CP') {
 				if (d.properties.rate_ROFST_1_CP_Value) {
 					if (d.properties.OFST_1_F_CP_Value && d.properties.OFST_1_M_CP_Value) {
 						var girlsPrefix = d3.formatPrefix(d.properties.OFST_1_F_CP_Value);
 						var girlsCount = girlsPrefix.scale(d.properties.OFST_1_F_CP_Value).toFixed(1);
 						if (girlsPrefix.symbol == 'k') {
-							var girlsSymbol = " thousand";
+							var girlsSymbol = thousand;
 						} else if (girlsPrefix.symbol == 'M') {
-							var girlsSymbol = " million";
+							var girlsSymbol = million;
 						} else {
 							var girlsSymbol = "";							
 						}
-						var girls = "Female: " + girlsCount + girlsSymbol;
+						var girls = female + girlsCount + girlsSymbol;
 
 						var boysPrefix = d3.formatPrefix(d.properties.OFST_1_M_CP_Value);
 						var boysCount = boysPrefix.scale(d.properties.OFST_1_M_CP_Value).toFixed(1);
 						if (boysPrefix.symbol == 'k') {
-							var boysSymbol = " thousand";
+							var boysSymbol = thousand;
 						} else if (boysPrefix.symbol == 'M') {
-							var boysSymbol = " million";
+							var boysSymbol = million;
 						} else {
 							var boysSymbol = "";							
 						}
-						var boys = "Male: " + boysCount + boysSymbol;
+						var boys = male + boysCount + boysSymbol;
 
 						var year = " (" + d.properties.rate_ROFST_1_CP_Year + ")";
 					} else {
-						var girls = "Data showing gender differences not available.";
+						var girls = nodata;
 						var boys = '';
 						var year = '';
 					}
@@ -229,7 +250,7 @@ function updateOOSCMap() {
 					// }
 
 				} else {
-						var girls = "No data.";
+						var girls = nodata;
 						var boys = '';
 						var year = '';
 						// var total = '';
@@ -240,27 +261,27 @@ function updateOOSCMap() {
 						var girlsPrefix = d3.formatPrefix(d.properties.OFST_2_F_CP_Value);
 						var girlsCount = girlsPrefix.scale(d.properties.OFST_2_F_CP_Value).toFixed(1);
 						if (girlsPrefix.symbol == 'k') {
-							var girlsSymbol = " thousand";
+							var girlsSymbol = thousand;
 						} else if (girlsPrefix.symbol == 'M') {
-							var girlsSymbol = " million";
+							var girlsSymbol = million
 						} else {
 							var girlsSymbol = "";							
 						}
-						var girls = "Female: " + girlsCount + girlsSymbol;
+						var girls = female + girlsCount + girlsSymbol;
 
 						var boysPrefix = d3.formatPrefix(d.properties.OFST_2_M_CP_Value);
 						var boysCount = boysPrefix.scale(d.properties.OFST_2_M_CP_Value).toFixed(1);
 						if (boysPrefix.symbol == 'k') {
-							var boysSymbol = " thousand";
+							var boysSymbol = thousand;
 						} else if (boysPrefix.symbol == 'M') {
-							var boysSymbol = " million";
+							var boysSymbol = million;
 						} else {
 							var boysSymbol = "";							
 						}
-						var boys = "Male: " + boysCount + boysSymbol;
+						var boys = male + boysCount + boysSymbol;
 						var year = " (" + d.properties.rate_ROFST_2_CP_Year + ")";
 					} else {
-						var girls = "Data showing gender differences not available.";
+						var girls = nodata;
 						var boys = '';
 						var year = '';
 					}
@@ -279,16 +300,25 @@ function updateOOSCMap() {
 					// }
 
 				} else {
-					var girls = "No data for this country.";
+					var girls = nodata;
 					var boys = '';
 					var year = '';
 					// var total = '';
 				}
 				
 			}
+
+			if (lang == 'en') {
+				var countryName = d.properties.name_en;
+			} else if (lang == 'fr') {
+				var countryName = d.properties.name_fr;
+			} else {
+				var countryName = d.properties.name_sp;
+			}
+
 			  
 			div.html(
-			  '<p class="tooltip-title">' + d.properties.name + year +'</p>' +
+			  '<p class="tooltip-title">' + countryName + year +'</p>' +
 			  '<p class="tooltip-text">' + girls + '</p>' +
 			  '<p class="tooltip-text">' + boys + '</p>' 
 			  // '<p class="tooltip-text">' + total + '</p>'

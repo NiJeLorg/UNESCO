@@ -124,19 +124,34 @@ function createFCEMap() {
 
 					// conditional statements for text
 					if (typeof d.properties.Duration_compulsory_education !== "undefined" && d.properties.Duration_compulsory_education != -99) {
-						var DCE_text = "Years of compulsory education: " + d.properties.Duration_compulsory_education;
+						if (lang == 'en') {
+							var DCE_text = "Compulsory education: " + d.properties.Duration_compulsory_education + " years.";
+						} else if (lang == 'fr') {
+							var DCE_text = "Scolarité obligatoire: " + d.properties.Duration_compulsory_education + " ans.";
+						} else {
+							var DCE_text = "Educación obligatoria: " + d.properties.Duration_compulsory_education + " años.";
+						}
 					} else {
-						var DCE_text = "No duration data on compulsory education.";
+						if (lang == 'en') {
+							var DCE_text = "No data.";
+						} else if (lang == 'fr') {
+							var DCE_text = "Aucune donnée.";
+						} else {
+							var DCE_text = "Sin datos.";
+						}
 					}
 
-					if (typeof d.properties.Duration_free_education !== "undefined" && d.properties.Duration_free_education != -99) {
-						var DFE_text = "Years of free education: " + d.properties.Duration_free_education;
+					if (lang == 'en') {
+						var countryName = d.properties.name_en;
+					} else if (lang == 'fr') {
+						var countryName = d.properties.name_fr;
 					} else {
-						var DFE_text = "No duration data on free education.";
+						var countryName = d.properties.name_sp;
 					}
+
 					  
 					div.html(
-					  '<p class="tooltip-title">' + d.properties.name + '</p>' +
+					  '<p class="tooltip-title">' + countryName + '</p>' +
 					  '<p class="tooltip-text">' + DCE_text + '</p>' 
 					  )  
 					  .style("left", (d3.event.pageX + left) + "px")     //play around with these to get spacing better

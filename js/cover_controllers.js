@@ -7,7 +7,8 @@ $( document ).ready(function() {
 
 	// roll over menu items
 	$(".explore-swatch").mouseenter(function() {
-		$(this).find(".explore-swatch-element").removeClass("hidden");
+		$(this).find(".swatch2").removeClass("hidden");
+		$(this).find(".swatchText:lang(" + lang +")").removeClass("hidden");
 	});
 	$(".explore-swatch").mouseleave(function() {
 		$(this).find(".swatch2").addClass("hidden");
@@ -15,7 +16,7 @@ $( document ).ready(function() {
 	});
 	$(".explore-swatch").click(function() {
 		// set session cookie for next page
-		$.cookie('visSelected', $(this).attr('id'));
+		Cookies.set('visSelected', $(this).attr('id'));
 		window.location = "edu.html";
 	});
 

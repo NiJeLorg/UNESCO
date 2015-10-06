@@ -52,11 +52,21 @@ function createEducationAidFlowMap() {
         .attr("display", "none");
 
       // show bubble text of selected
-      centroids.selectAll(".bubbleText")
+      centroids.selectAll(".bubbleTextEn")
         .transition()
         .duration(50)
         .attr("display", "none");
 
+      centroids.selectAll(".bubbleTextFr")
+        .transition()
+        .duration(50)
+        .attr("display", "none");
+
+      centroids.selectAll(".bubbleTextEs")
+        .transition()
+        .duration(50)
+        .attr("display", "none");
+ 
       // show arcs of countries that are in source or target
       arcs.selectAll("path")
         .transition()
@@ -318,6 +328,36 @@ function createEducationAidFlowMap() {
               .duration(250)
               .style("opacity", 1);
 
+            // set up vars for language
+            if (lang == 'en') {
+              var aidtoeducaiton = "Aid to Education: ";
+              var dollarSign = "$";
+              var usd = "";
+              var bilateral = "Bilateral: ";
+              var multilateral = "Multilateral: ";
+              var nodata = "No data.";
+              var million = " million";
+              var billion = " billion";
+            } else if (lang == 'fr') {
+              var aidtoeducaiton = "Aid to Education: ";
+              var dollarSign = "";
+              var usd = " USD";
+              var bilateral = "Bilatéral: ";
+              var multilateral = "Multilatéral: ";
+              var nodata = "Aucune donnée.";
+              var million = " million";
+              var billion = " milliard";
+            } else {
+              var aidtoeducaiton = "Aid to Education: ";
+              var dollarSign = "";
+              var usd = " USD";
+              var bilateral = "Bilateral: ";
+              var multilateral = "Multilateral: ";
+              var nodata = "Sin datos.";
+              var million = " millón";
+              var billion = " billón";
+            }   
+
             // conditional statements for text
             if (d.properties.Total_Donated > 0) {
               var prefix = d3.formatPrefix(d.properties.Total_Donated);
@@ -325,26 +365,26 @@ function createEducationAidFlowMap() {
                 var recSymbol = "";
                 var rec = commaFormat(prefix.scale(d.properties.Total_Donated));
               } else if (prefix.symbol == 'M') {
-                var recSymbol = " million";
+                var recSymbol = million;
                 var rec = prefix.scale(d.properties.Total_Donated).toFixed(1);
               } else if (prefix.symbol == 'G') {
-                var recSymbol = " billion";
+                var recSymbol = billion;
                 var rec = prefix.scale(d.properties.Total_Donated).toFixed(1);
               } else {
                 var recSymbol = "";             
                 var rec = commaFormat(prefix.scale(d.properties.Total_Donated));
               } 
-              var text = "Aid to Education: $" + rec + recSymbol;
+              var text = aidtoeducaiton + dollarSign + rec + recSymbol + usd;
             } else {
               var prefix = d3.formatPrefix(d.properties.Total_Received);
               if (prefix.symbol == 'k') {
                 var recSymbol = "";
                 var rec = commaFormat(prefix.scale(d.properties.Total_Received));
               } else if (prefix.symbol == 'M') {
-                var recSymbol = " million";
+                var recSymbol = million;
                 var rec = prefix.scale(d.properties.Total_Received).toFixed(1);
               } else if (prefix.symbol == 'G') {
-                var recSymbol = " billion";
+                var recSymbol = billion;
                 var rec = prefix.scale(d.properties.Total_Received).toFixed(1);
               } else {
                 var recSymbol = "";             
@@ -356,10 +396,10 @@ function createEducationAidFlowMap() {
                   var mrecSymbol = "";
                   var mrec = commaFormat(d.properties.multilateral);
                 } else if (mprefix.symbol == 'M') {
-                  var mrecSymbol = " million";
+                  var mrecSymbol = million;
                   var mrec = mprefix.scale(d.properties.multilateral).toFixed(1);
                 } else if (mprefix.symbol == 'G') {
-                  var mrecSymbol = " billion";
+                  var mrecSymbol = billion;
                   var mrec = mprefix.scale(d.properties.multilateral).toFixed(1);
                 } else {
                   var mrecSymbol = "";             
@@ -370,12 +410,19 @@ function createEducationAidFlowMap() {
                   var mrec = "0";                
               }
 
-              var text = "Bilateral: $" + rec + recSymbol + "<br />Multilateral: $" + mrec + mrecSymbol;
+              var text = bilateral + dollarSign + rec + recSymbol + usd +"<br />" + multilateral + dollarSign + mrec + mrecSymbol + usd;
             }
             
-              
+            if (lang == 'en') {
+              var countryName = d.properties.name_en;
+            } else if (lang == 'fr') {
+              var countryName = d.properties.name_fr;
+            } else {
+              var countryName = d.properties.name_sp;
+            }
+
             div.html(
-              '<p class="tooltip-title">' + d.properties.name + '</p>' +
+              '<p class="tooltip-title">' + countryName + '</p>' +
               '<p class="tooltip-text">' + text + '</p>' +
               '<p class="tooltip-text">Click on this country to see the flow of education aid.</p>' 
               )  
@@ -461,16 +508,41 @@ function createEducationAidFlowMap() {
             });
 
           // show bubble text of selected
-          centroids.selectAll(".bubbleText")
-            .transition()
-            .duration(50)
-            .attr("display", function(j) {
-                if (j.OECD_Country_Code == d.properties.adm0_a3) {
-                  return "block";
-                } else {
-                  return "none";
-                }
-            });
+          if (lang == "en") {
+            centroids.selectAll(".bubbleTextEn")
+              .transition()
+              .duration(50)
+              .attr("display", function(j) {
+                  if (j.OECD_Country_Code == d.properties.adm0_a3) {
+                    return "block";
+                  } else {
+                    return "none";
+                  }
+              });            
+          } else if (lang == "fr") {
+            centroids.selectAll(".bubbleTextFr")
+              .transition()
+              .duration(50)
+              .attr("display", function(j) {
+                  if (j.OECD_Country_Code == d.properties.adm0_a3) {
+                    return "block";
+                  } else {
+                    return "none";
+                  }
+              });
+          } else {
+            centroids.selectAll(".bubbleTextEs")
+              .transition()
+              .duration(50)
+              .attr("display", function(j) {
+                  if (j.OECD_Country_Code == d.properties.adm0_a3) {
+                    return "block";
+                  } else {
+                    return "none";
+                  }
+              });
+          }
+
 
           // show arcs of countries that are in source or target
           arcs.selectAll("path")
@@ -747,16 +819,43 @@ function createEducationAidFlowMap() {
           .duration(50)
           .style("opacity", 1);
 
+        // set up vars for language
+        if (lang == 'en') {
+          var dollarSign = "$";
+          var usd = "";
+          var receives = "Receives ";
+          var from = " from ";
+          var nodata = "No data.";
+          var million = " million";
+          var billion = " billion";
+        } else if (lang == 'fr') {
+          var dollarSign = "";
+          var usd = " USD";
+          var receives = "Reçoit ";
+          var from = " de ";
+          var nodata = "Aucune donnée.";
+          var million = " million";
+          var billion = " milliard";
+        } else {
+          var dollarSign = "";
+          var usd = " USD";
+          var receives = "Recibe ";
+          var from = " de ";
+          var nodata = "Sin datos.";
+          var million = " millón";
+          var billion = " billón";
+        }           
+
         // format dollar figures
         var recPrefix = d3.formatPrefix(d.magnitude);
         if (recPrefix.symbol == 'k') {
           var recSymbol = "";
           var rec = commaFormat(recPrefix.scale(d.magnitude));
         } else if (recPrefix.symbol == 'M') {
-          var recSymbol = " million";
+          var recSymbol = million;
           var rec = recPrefix.scale(d.magnitude).toFixed(1);
         } else if (recPrefix.symbol == 'G') {
-          var recSymbol = " billion";
+          var recSymbol = billion;
           var rec = recPrefix.scale(d.magnitude).toFixed(1);
         } else {
           var recSymbol = "";             
@@ -768,17 +867,17 @@ function createEducationAidFlowMap() {
           var multiSymbol = "";
           var multi = commaFormat(d.dest.Multilateral2);
         } else if (multiPrefix.symbol == 'M') {
-          var multiSymbol = " million";
+          var multiSymbol = million;
           var multi = multiPrefix.scale(d.dest.Multilateral2).toFixed(1);
         } else if (multiPrefix.symbol == 'G') {
-          var recSymbol = " billion";
+          var multiSymbol = billion;
           var multi = multiPrefix.scale(d.dest.Multilateral2).toFixed(1);
         } else {
           var multiSymbol = "";             
           var multi = commaFormat(d.dest.Multilateral2);
         }
   
-        var text = "Receives $" + rec + recSymbol + " from " + d.origin.Name_of_Country + ".";
+        var text = receives + dollarSign + rec + recSymbol + usd + from + d.origin.Name_of_Country + ".";
           
         div.html(
           '<p class="tooltip-title">' + d.dest.Name_of_Country + '</p>' +
@@ -830,14 +929,13 @@ function createEducationAidFlowMap() {
              .style("opacity", 1e-6);
 
       });
-      
 
       centroids.selectAll("circle")
         .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
         .enter().append("circle")
         .attr("cx", function(d) { return d.projection[0] } )
         .attr("cy", function(d) { return d.projection[1] } )
-        .attr("r", 60)
+        .attr("r", 65)
         .attr("fill", "#fff")
         .attr("stroke", "#4d4d4d")
         .attr("stroke-width", 3)
@@ -890,42 +988,54 @@ function createEducationAidFlowMap() {
           } else {
             return '';
           }
-        });        
+        }); 
 
-      var bubbleText = centroids.selectAll(".bubbleText")
+      // draw bubble text three times for each language and show correct one on click
+
+      // English
+      var aidtoeducaiton = "Aid to Education: ";
+      var dollarSign = "$";
+      var usd = "";
+      var bilateral = "Bilateral: ";
+      var multilateral = "Multilateral:";
+      var nodata = "No data.";
+      var million = " million";
+      var billion = " billion";         
+
+      var bubbleTextEn = centroids.selectAll(".bubbleTextEn")
         .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
         .enter().append("text")
-        .attr("class", "bubbleText")
+        .attr("class", "bubbleTextEn")
         .attr("font-size", "10px")
         .attr("text-anchor", "middle")
         .attr("display", "none");
 
-      bubbleText.append('tspan')
+      bubbleTextEn.append('tspan')
         .attr("x", function(d) { return d.projection[0] } )
         .attr("y", function(d) { return d.projection[1] + 4 } )
         .text(function(d) {
           if (d.Donor_or_Recipient == 'Donor') {
-            return "Aid to Education:";
+            return aidtoeducaiton;
           } else {
             var prefix = d3.formatPrefix(d.TotalReceivedFromCountries);
             if (prefix.symbol == 'k') {
               var recSymbol = "";
               var rec = commaFormat(prefix.scale(d.TotalReceivedFromCountries));
             } else if (prefix.symbol == 'M') {
-              var recSymbol = " million";
+              var recSymbol = million;
               var rec = prefix.scale(d.TotalReceivedFromCountries).toFixed(1);
             } else if (prefix.symbol == 'G') {
-              var recSymbol = " billion";
+              var recSymbol = billion;
               var rec = prefix.scale(d.TotalReceivedFromCountries).toFixed(1);
             } else {
               var recSymbol = "";             
               var rec = commaFormat(prefix.scale(d.TotalReceivedFromCountries));
             }            
-            return "Bilateral: $" + rec + recSymbol;
+            return bilateral + dollarSign + rec + recSymbol + usd;
           }
         });
 
-      bubbleText.append('tspan')
+      bubbleTextEn.append('tspan')
         .attr("x", function(d) { return d.projection[0] } )
         .attr("y", function(d) { return d.projection[1] + 16 } )
         .text(function(d) {
@@ -935,29 +1045,29 @@ function createEducationAidFlowMap() {
               var recSymbol = "";
               var rec = commaFormat(prefix.scale(d.TotalContributedToCountries));
             } else if (prefix.symbol == 'M') {
-              var recSymbol = " million";
+              var recSymbol = million;
               var rec = prefix.scale(d.TotalContributedToCountries).toFixed(1);
             } else if (prefix.symbol == 'G') {
-              var recSymbol = " billion";
+              var recSymbol = billion;
               var rec = prefix.scale(d.TotalContributedToCountries).toFixed(1);
             } else {
               var recSymbol = "";             
               var rec = commaFormat(prefix.scale(d.TotalContributedToCountries));
             }           
-            return "$" + rec + recSymbol;
+            return dollarSign + rec + recSymbol + usd;
           }
         });
 
-      bubbleText.append('tspan')
+      bubbleTextEn.append('tspan')
         .attr("x", function(d) { return d.projection[0] } )
         .attr("y", function(d) { return d.projection[1] + 16 } )
         .text(function(d) {
           if (d.Donor_or_Recipient == 'Recipient') {
-            return "Multilateral:";
+            return multilateral;
           }
         });
 
-      bubbleText.append('tspan')
+      bubbleTextEn.append('tspan')
         .attr("x", function(d) { return d.projection[0] } )
         .attr("y", function(d) { return d.projection[1] + 28 } )
         .text(function(d) {
@@ -967,18 +1077,219 @@ function createEducationAidFlowMap() {
               var recSymbol = "";
               var rec = commaFormat(d.Multilateral2);
             } else if (prefix.symbol == 'M') {
-              var recSymbol = " million";
+              var recSymbol = million;
               var rec = prefix.scale(d.Multilateral2).toFixed(1);
             } else if (prefix.symbol == 'G') {
-              var recSymbol = " billion";
+              var recSymbol = billion;
               var rec = prefix.scale(d.Multilateral2).toFixed(1);
             } else {
               var recSymbol = "";             
               var rec = commaFormat(d.Multilateral2);
             }            
-            return "$" + rec + recSymbol;
+            return dollarSign + rec + recSymbol + usd;
           }
         });
+
+
+
+      // French
+      var aidtoeducaiton = "Aid to Education: ";
+      var dollarSign = "";
+      var usd = " USD";
+      var bilateral = "Bilatéral: ";
+      var multilateral = "Multilatéral:";
+      var nodata = "Aucune donnée.";
+      var million = " million";
+      var billion = " milliard";      
+
+      var bubbleTextFr = centroids.selectAll(".bubbleTextFr")
+        .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
+        .enter().append("text")
+        .attr("class", "bubbleTextFr")
+        .attr("font-size", "10px")
+        .attr("text-anchor", "middle")
+        .attr("display", "none");
+
+      bubbleTextFr.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { return d.projection[1] + 4 } )
+        .text(function(d) {
+          if (d.Donor_or_Recipient == 'Donor') {
+            return aidtoeducaiton;
+          } else {
+            var prefix = d3.formatPrefix(d.TotalReceivedFromCountries);
+            if (prefix.symbol == 'k') {
+              var recSymbol = "";
+              var rec = commaFormat(prefix.scale(d.TotalReceivedFromCountries));
+            } else if (prefix.symbol == 'M') {
+              var recSymbol = million;
+              var rec = prefix.scale(d.TotalReceivedFromCountries).toFixed(1);
+            } else if (prefix.symbol == 'G') {
+              var recSymbol = billion;
+              var rec = prefix.scale(d.TotalReceivedFromCountries).toFixed(1);
+            } else {
+              var recSymbol = "";             
+              var rec = commaFormat(prefix.scale(d.TotalReceivedFromCountries));
+            }            
+            return bilateral + dollarSign + rec + recSymbol + usd;
+          }
+        });
+
+      bubbleTextFr.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { return d.projection[1] + 16 } )
+        .text(function(d) {
+          if (d.Donor_or_Recipient == 'Donor') {
+            var prefix = d3.formatPrefix(d.TotalContributedToCountries);
+            if (prefix.symbol == 'k') {
+              var recSymbol = "";
+              var rec = commaFormat(prefix.scale(d.TotalContributedToCountries));
+            } else if (prefix.symbol == 'M') {
+              var recSymbol = million;
+              var rec = prefix.scale(d.TotalContributedToCountries).toFixed(1);
+            } else if (prefix.symbol == 'G') {
+              var recSymbol = billion;
+              var rec = prefix.scale(d.TotalContributedToCountries).toFixed(1);
+            } else {
+              var recSymbol = "";             
+              var rec = commaFormat(prefix.scale(d.TotalContributedToCountries));
+            }           
+            return dollarSign + rec + recSymbol + usd;
+          }
+        });
+
+      bubbleTextFr.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { return d.projection[1] + 16 } )
+        .text(function(d) {
+          if (d.Donor_or_Recipient == 'Recipient') {
+            return multilateral;
+          }
+        });
+
+      bubbleTextFr.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { return d.projection[1] + 28 } )
+        .text(function(d) {
+          if (d.Donor_or_Recipient == 'Recipient') {
+            var prefix = d3.formatPrefix(d.Multilateral2);
+            if (prefix.symbol == 'k') {
+              var recSymbol = "";
+              var rec = commaFormat(d.Multilateral2);
+            } else if (prefix.symbol == 'M') {
+              var recSymbol = million;
+              var rec = prefix.scale(d.Multilateral2).toFixed(1);
+            } else if (prefix.symbol == 'G') {
+              var recSymbol = billion;
+              var rec = prefix.scale(d.Multilateral2).toFixed(1);
+            } else {
+              var recSymbol = "";             
+              var rec = commaFormat(d.Multilateral2);
+            }            
+            return dollarSign + rec + recSymbol + usd;
+          }
+        });
+
+
+      // Spanish
+      var aidtoeducaiton = "Aid to Education: ";
+      var dollarSign = "";
+      var usd = " USD";
+      var bilateral = "Bilateral: ";
+      var multilateral = "Multilateral:";
+      var nodata = "Sin datos.";
+      var million = " millón";
+      var billion = " billón";     
+
+      var bubbleTextEs = centroids.selectAll(".bubbleTextEs")
+        .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
+        .enter().append("text")
+        .attr("class", "bubbleTextEs")
+        .attr("font-size", "10px")
+        .attr("text-anchor", "middle")
+        .attr("display", "none");
+
+      bubbleTextEs.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { return d.projection[1] + 4 } )
+        .text(function(d) {
+          if (d.Donor_or_Recipient == 'Donor') {
+            return aidtoeducaiton;
+          } else {
+            var prefix = d3.formatPrefix(d.TotalReceivedFromCountries);
+            if (prefix.symbol == 'k') {
+              var recSymbol = "";
+              var rec = commaFormat(prefix.scale(d.TotalReceivedFromCountries));
+            } else if (prefix.symbol == 'M') {
+              var recSymbol = million;
+              var rec = prefix.scale(d.TotalReceivedFromCountries).toFixed(1);
+            } else if (prefix.symbol == 'G') {
+              var recSymbol = billion;
+              var rec = prefix.scale(d.TotalReceivedFromCountries).toFixed(1);
+            } else {
+              var recSymbol = "";             
+              var rec = commaFormat(prefix.scale(d.TotalReceivedFromCountries));
+            }            
+            return bilateral + dollarSign + rec + recSymbol + usd;
+          }
+        });
+
+      bubbleTextEs.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { return d.projection[1] + 16 } )
+        .text(function(d) {
+          if (d.Donor_or_Recipient == 'Donor') {
+            var prefix = d3.formatPrefix(d.TotalContributedToCountries);
+            if (prefix.symbol == 'k') {
+              var recSymbol = "";
+              var rec = commaFormat(prefix.scale(d.TotalContributedToCountries));
+            } else if (prefix.symbol == 'M') {
+              var recSymbol = million;
+              var rec = prefix.scale(d.TotalContributedToCountries).toFixed(1);
+            } else if (prefix.symbol == 'G') {
+              var recSymbol = billion;
+              var rec = prefix.scale(d.TotalContributedToCountries).toFixed(1);
+            } else {
+              var recSymbol = "";             
+              var rec = commaFormat(prefix.scale(d.TotalContributedToCountries));
+            }           
+            return dollarSign + rec + recSymbol + usd;
+          }
+        });
+
+      bubbleTextEs.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { return d.projection[1] + 16 } )
+        .text(function(d) {
+          if (d.Donor_or_Recipient == 'Recipient') {
+            return multilateral;
+          }
+        });
+
+      bubbleTextEs.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { return d.projection[1] + 28 } )
+        .text(function(d) {
+          if (d.Donor_or_Recipient == 'Recipient') {
+            var prefix = d3.formatPrefix(d.Multilateral2);
+            if (prefix.symbol == 'k') {
+              var recSymbol = "";
+              var rec = commaFormat(d.Multilateral2);
+            } else if (prefix.symbol == 'M') {
+              var recSymbol = million;
+              var rec = prefix.scale(d.Multilateral2).toFixed(1);
+            } else if (prefix.symbol == 'G') {
+              var recSymbol = billion;
+              var rec = prefix.scale(d.Multilateral2).toFixed(1);
+            } else {
+              var recSymbol = "";             
+              var rec = commaFormat(d.Multilateral2);
+            }            
+            return dollarSign + rec + recSymbol + usd;
+          }
+        });
+
+
 
       // call click with random country
       var randomNumber = Math.floor(Math.random() * data.countries.features.length);
@@ -996,9 +1307,15 @@ function createEducationAidFlowMap() {
           .duration(50)
           .style("opacity", 1);
 
-        divOnboarding.html(
-          '<p class="tooltip-text">Click any country to see the amount of bilateral and multilateral aid contributed or received. Mouse over an arrow to see the flow of bilateral aid between countries.</p>'
-          )  
+        if (lang == 'en') {
+          var onboarding = "<p class=\"tooltip-text\">Click any country to see the amount of bilateral and multilateral aid contributed or received. Mouse over an arrow to see the flow of bilateral aid between countries.</p>";
+        } else if (lang == 'fr') {
+          var onboarding = "<p class=\"tooltip-text\">Click any country to see the amount of bilateral and multilateral aid contributed or received. Mouse over an arrow to see the flow of bilateral aid between countries.</p>";
+        } else {
+          var onboarding = "<p class=\"tooltip-text\">Click any country to see the amount of bilateral and multilateral aid contributed or received. Mouse over an arrow to see the flow of bilateral aid between countries.</p>";
+        }         
+
+        divOnboarding.html(onboarding)  
           .style("left", "30px") 
           .style("top", "85px");
 

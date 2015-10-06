@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,25 +53,44 @@
 
           <div class="masthead clearfix">
             <div class="inner">
-              <div class="masthead-brand"><img src="css/images/Education2030Logo_Big.png" /></div>
+              <div lang="en" class="masthead-brand hidden"><img class="img-responsive" src="css/images/Education2030Logo_Big.png" /></div>
+              <div lang="fr" class="masthead-brand hidden"><img class="img-responsive" src="css/images/Education2030Logo_Big.png" /></div>
+              <div lang="es" class="masthead-brand hidden"><img class="img-responsive" src="css/images/Education2030Logo_Big.png" /></div>
             </div>
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">How far are we from the goal?</h1>
-            <div class="highlight-wrapper">
-              <h2 class="highlight"> With millions of children out of school today, <br>universal primary and secondary education <br>will remain a dream if aid fails to reach those <br> who need it most.</h2>
+            <h1 lang="en" class="cover-heading hidden">How far are we from the goal?</h1>
+            <h1 lang="fr" class="cover-heading hidden">Sommes-nous loin de notre objectif?</h1>
+            <h1 lang="es" class="cover-heading hidden">¿Qué tan lejos estamos de la meta? </h1>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9">
+                  <h2 lang="en" class="highlight hidden"> With millions of children out of school today, universal primary and secondary education will remain a dream if aid fails to reach those who need it most.</h2>
+                  <h2 lang="fr" class="highlight hidden"> Avec des millions d’enfants non scolarisés aujourd’hui, l’enseignement primaire et secondaire universel restera un rêve si l’aide ne parvient pas à atteindre ceux qui en ont le plus besoin.</h2>
+                  <h2 lang="es" class="highlight hidden"> En la actualidad, hay millones de niños fuera de la escuela. Por consiguiente, en la medida que  la ayuda no logre llegar a quienes más la necesitan, la educación primaria y secundaria universal continuará siendo un sueño.</h2>
+                </div>
+              </div>
             </div>
             <div class="clearfix"></div>
-            <h2 class="pull-right">
+            <h2 lang="en" class="pull-right hidden">
               <a href="explore.html">Explore the data &gt;</a>
+            </h2>
+            <h2 lang="fr" class="pull-right hidden">
+              <a href="explore.html">Explorez les données &gt;</a>
+            </h2>
+            <h2 lang="es" class="pull-right hidden">
+              <a href="explore.html">Explora los dato &gt;</a>
             </h2>
             <div class="clearfix"></div>
             <div class="footer">
-              <p class="photo-source">Photo credit: Ami Vitale, Word Bank, 2002</p>
-              <p class="org-source"> &copy UNESCO Institute of Statistics, 2015</p>
+              <p lang="en" class="photo-source hidden">Photo credit: Ami Vitale, The Word Bank, 2002</p>
+              <p lang="fr" class="photo-source hidden">Crédit photo: Ami Vitale/La Banque mondiale, 2002</p>
+              <p lang="es" class="photo-source hidden">Autor de la foto: Ami Vitale/Banco Mundial, 2002</p>
+              <p lang="en" class="org-source hidden"> &copy UNESCO Institute of Statistics, 2015</p>
+              <p lang="fr" class="org-source hidden"> &copy Institut de statistique de l’UNESCO, 2015</p>
+              <p lang="es" class="org-source hidden"> &copy Instituto de Estadística de la UNESCO, 2015</p>
             </div>
-
           </div>
 
         </div>
@@ -82,5 +101,7 @@
 
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/lang_controllers.js"></script>
   </body>
 </html>

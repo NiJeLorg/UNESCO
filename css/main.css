@@ -400,17 +400,47 @@ svg.svg-loaded {
 	width: 200px;
 }
 
-#leftToggleText {
+.leftToggleText {
     position: absolute;	
     top: -27px;
 	left: -25px;
 	font-size:x-small;
 }
 
-#rightToggleText {
+.rightToggleText {
     position: absolute;	
     top: -27px;
 	left: 38px;
+	color: #d1d2d3;
+	font-size:x-small;
+}
+
+.leftToggleTextFr {
+    position: absolute;	
+    top: -40px;
+	left: -25px;
+	font-size:x-small;
+}
+
+.rightToggleTextFr {
+    position: absolute;	
+    top: -40px;
+	left: 38px;
+	color: #d1d2d3;
+	font-size:x-small;
+}
+
+.leftToggleTextEs {
+    position: absolute;	
+    top: -40px;
+	left: -35px;
+	font-size:x-small;
+}
+
+.rightToggleTextEs {
+    position: absolute;	
+    top: -40px;
+	left: 42px;
 	color: #d1d2d3;
 	font-size:x-small;
 }
