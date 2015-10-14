@@ -842,7 +842,7 @@ function createEducationAidFlowMap() {
           var receives = "Recibe ";
           var from = " de ";
           var nodata = "Sin datos.";
-          var million = " millón";
+          var million = " millónes";
           var billion = " billón";
         }           
 
@@ -1198,7 +1198,7 @@ function createEducationAidFlowMap() {
       var bilateral = "Bilateral: ";
       var multilateral = "Multilateral:";
       var nodata = "Sin datos.";
-      var million = " millón";
+      var million = " millónes";
       var billion = " billón";     
 
       var bubbleTextEs = centroids.selectAll(".bubbleTextEs")

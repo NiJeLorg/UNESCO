@@ -200,8 +200,8 @@ function updateOOSCMap() {
 				var male = "Hombres: ";
 				var female = "Mujeres: ";
 				var nodata = "Sin datos.";
-				var thousand = " mil";
-				var million = " millón";
+				var thousand = " miles";
+				var million = " millónes";
 			}						  
 
 			if (activeLayer == 'ROFST_1_CP') {

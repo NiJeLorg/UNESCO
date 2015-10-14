@@ -145,7 +145,7 @@ $( document ).ready(function() {
     } else if (lang == 'fr') {
 	    var fbcaption = 'Le monde a promis 12 années de scolarité pour tous, mais avec des millions d’enfants non scolarisés et une aide à l’éducation qui stagne, sommes-nous loin de notre objectif ? Explorez & partagez les cartes interactives.';
     } else {
-    	var fbcaption = 'El mundo se ha comprometido a brindar 12 años de educación para todos, pero con millones de niños fuera de la escuela y el estancamiento de la ayuda económica. ¿Qué tan lejos estamos de la meta? Explora y comparte los mapas interactivos.';
+    	var fbcaption = 'El mundo se ha comprometido a brindar 12 años de educación para todos, pero con millones de niños fuera de la escuela y el estancamiento de la ayuda económica. ¿qué tan lejos estamos de la meta? Explora y comparte los mapas interactivos.';
     } 
     var fblink = 'http://www.uis.unesco.org/_LAYOUTS/UNESCO/education-2030/';
     var fbUrl = 'https://www.facebook.com/dialog/feed?app_id=' + app_id + '&display=popup&caption='+ encodeURIComponent(fbcaption) + '&link=' + encodeURIComponent(fblink) + '&redirect_uri=' + encodeURIComponent(fblink);
@@ -158,7 +158,7 @@ $( document ).ready(function() {
 	} else if (lang == 'fr') {
 		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin? Explorez les données:';
     } else {
-		var twittercaption = ' ¿Está llegando la ayuda mundial para la educación a los niños que más la necesitan? Explora el mapa de datos:';
+		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
     }     
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=http://bit.ly/1JtEmqR' + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
@@ -184,7 +184,7 @@ $( document ).ready(function() {
 	} else if (lang == 'fr') {
 		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin? Explorez les données:';
     } else {
-		var twittercaption = ' ¿Está llegando la ayuda mundial para la educación a los niños que más la necesitan? Explora el mapa de datos:';
+		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
     } 
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=http://bit.ly/1JtEmqR' + encodeURIComponent(twittercaption);
     $('#takeactionTwitter1').attr("href", twitterUrl);
@@ -210,7 +210,7 @@ $( document ).ready(function() {
 	} else if (lang == 'fr') {
 		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin? Explorez les données:';
     } else {
-		var twittercaption = ' ¿Está llegando la ayuda mundial para la educación a los niños que más la necesitan? Explora el mapa de datos:';
+		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
     } 
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/z4hdJBlRQi' + encodeURIComponent(twittercaption);
     $('#takeactionTwitter2').attr("href", twitterUrl);
@@ -236,7 +236,7 @@ $( document ).ready(function() {
 	} else if (lang == 'fr') {
 		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin? Explorez les données:';
     } else {
-		var twittercaption = ' ¿Está llegando la ayuda mundial para la educación a los niños que más la necesitan? Explora el mapa de datos:';
+		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
     }
     var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/DwouUX595I' + encodeURIComponent(twittercaption);
     $('#takeactionTwitter3').attr("href", twitterUrl);
