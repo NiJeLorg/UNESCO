@@ -1093,13 +1093,13 @@ function createEducationAidFlowMap() {
 
 
       // French
-      var aidtoeducaiton = "Aid to Education: ";
+      var aidtoeducaiton = "Aide à l’éducation de base:";
       var dollarSign = "";
       var usd = " USD";
       var bilateral = "Bilatéral: ";
       var multilateral = "Multilatéral:";
       var nodata = "Aucune donnée.";
-      var million = " million";
+      var million = " millions";
       var billion = " milliard";      
 
       var bubbleTextFr = centroids.selectAll(".bubbleTextFr")
@@ -1192,7 +1192,7 @@ function createEducationAidFlowMap() {
 
 
       // Spanish
-      var aidtoeducaiton = "Aid to Education: ";
+      var aidtoeducaiton = "Ayuda destinada a Educación básica:";
       var dollarSign = "";
       var usd = " USD";
       var bilateral = "Bilateral: ";
@@ -1310,9 +1310,9 @@ function createEducationAidFlowMap() {
         if (lang == 'en') {
           var onboarding = "<p class=\"tooltip-text\">Click any country to see the amount of bilateral and multilateral aid contributed or received. Mouse over an arrow to see the flow of bilateral aid between countries.</p>";
         } else if (lang == 'fr') {
-          var onboarding = "<p class=\"tooltip-text\">Click any country to see the amount of bilateral and multilateral aid contributed or received. Mouse over an arrow to see the flow of bilateral aid between countries.</p>";
+          var onboarding = "<p class=\"tooltip-text\">Cliquez sur un pays pour voir le montant d'aide à l'éducation de base versé ou reçu. Passez la souris sur une flèche pour voir le flux d'aide entre les pays.</p>";
         } else {
-          var onboarding = "<p class=\"tooltip-text\">Click any country to see the amount of bilateral and multilateral aid contributed or received. Mouse over an arrow to see the flow of bilateral aid between countries.</p>";
+          var onboarding = "<p class=\"tooltip-text\">Haga click en cualquier país para visualizar el monto de la ayuda aportada o recibida. Desplace el mouse sobre la flecha para mostrar el flujo de ayuda entre los países.</p>";
         }         
 
         divOnboarding.html(onboarding)  

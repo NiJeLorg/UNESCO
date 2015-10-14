@@ -194,8 +194,8 @@ function updateOOSCMap() {
 				var male = "Garçons: ";
 				var female = "Filles: ";
 				var nodata = "Aucune donnée.";
-				var thousand = " mille";
-				var million = " million";
+				var thousand = " milliers";
+				var million = " millions";
 			} else {
 				var male = "Hombres: ";
 				var female = "Mujeres: ";
