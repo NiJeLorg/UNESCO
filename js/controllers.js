@@ -143,7 +143,7 @@ $( document ).ready(function() {
     if (lang == 'en') {
 	    var fbcaption = 'The world has pledged 12 years of education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps.';
     } else if (lang == 'fr') {
-	    var fbcaption = 'Le monde a promis 12 années de scolarité pour tous, mais avec des millions d’enfants non scolarisés et une aide à l’éducation qui stagne, sommes-nous loin de notre objectif? Explorez & partagez les cartes interactives.';
+	    var fbcaption = 'Le monde a promis 12 années de scolarité pour tous, mais avec des millions d’enfants non scolarisés et une aide à l’éducation qui stagne, sommes-nous loin de notre objectif ? Explorez & partagez les cartes interactives.';
     } else {
     	var fbcaption = 'El mundo se ha comprometido a brindar 12 años de educación para todos, pero con millones de niños fuera de la escuela y el estancamiento de la ayuda económica. ¿Qué tan lejos estamos de la meta? Explora y comparte los mapas interactivos.';
     } 
