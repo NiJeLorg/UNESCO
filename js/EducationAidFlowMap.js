@@ -424,9 +424,9 @@ function createEducationAidFlowMap() {
             if (lang == 'en') {
               var clickon = "Click on this country to see the flow of education aid.";
             } else if (lang == 'fr') {
-              var clickon = "Click on this country to see the flow of education aid.";
+              var clickon = "Cliquez sur un pays pour voir le montant d'aide à l'éducation de base versé ou reçu. ";
             } else {
-              var clickon = "Click on this country to see the flow of education aid.";
+              var clickon = "Haga click en cualquier país para visualizar el monto de la ayuda aportada o recibida.";
             }
 
             div.html(
