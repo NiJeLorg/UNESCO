@@ -1,177 +1,177 @@
-Country_Code,Name_of_Country,Lat,Lon,Donor_or_Recipient,OECD_Country_Code,Multilateral,Multilateral2
-40,Afghanistan,34.427919,67.297715,Recipient,AFG,6.76,"6,764,975 "
-80,Albania,41.115789,20.036435,Recipient,ALB,5.19,"5,187,846 "
-120,Algeria,28.648929,2.550384,Recipient,DZA,0.06,"55,394 "
-240,Angola,-11.553455,17.442383,Recipient,AGO,1.50,"1,502,360 "
-260,Anguilla,18.25,-63.1667,Recipient,AIA,0.47,"474,777 "
-280,Antigua and Barbuda,17.326884,-61.79147,Recipient,ATG,,
-320,Argentina,-34.069346,-64.554019,Recipient,ARG,3.16,"3,158,409 "
-340,Armenia,40.143019,45.185632,Recipient,ARM,6.71,"6,707,907 "
-360,Australia,-25.457025,135.343151,Donor,AUS,a,a
-400,Austria,47.559579,13.460688,Donor,AUT,a,a
-380,Azerbaijan,40.217768,47.780519,Recipient,AZE,2.37,"2,368,532 "
-500,Bangladesh,23.784454,89.963937,Recipient,BGD,179.48,"179,477,824 "
-8050,Belarus,53.460297,27.984375,Recipient,BLR,1.67,"1,674,516 "
-560,Belgium,50.653901,4.625375,Donor,BEL,a,a
-580,Belize,17.299323,-88.550048,Recipient,BLZ,0.27,"269,982 "
-2040,Benin,9.398571,2.331568,Recipient,BEN,7.56,"7,564,885 "
-640,Bhutan,27.394079,90.504295,Recipient,BTN,0.69,"693,034 "
-680,Bolivia,-16.733626,-64.475512,Recipient,BOL,0.82,"817,392 "
-570,Bosnia and Herzegovina,44.133901,17.883773,Recipient,BIH,1.15,"1,146,084 "
-720,Botswana,-22.285449,23.925844,Recipient,BWA,4.37,"4,373,064 "
-760,Brazil,-9.872666,-53.169127,Recipient,BRA,0.91,"911,505 "
-8540,Burkina Faso,12.146713,-1.747007,Recipient,BFA,16.40,"16,401,016 "
-1080,Burundi,-3.241797,29.899848,Recipient,BDI,6.67,"6,670,191 "
-1320,Cabo Verde,16.067023,-23.958685,Recipient,CPV,0.63,"632,607 "
-4060,Cambodia,12.637796,105.047609,Recipient,KHM,11.29,"11,287,723 "
-1200,Cameroon,6.626626,13.030155,Recipient,CMR,2.32,"2,322,304 "
-1240,Canada,58.622302,-102.046052,Donor,CAN,a,a
-1400,Central African Republic,6.342249,20.686201,Recipient,CAF,2.19,"2,190,017 "
-1480,Chad,14.949141,18.460461,Recipient,TCD,3.31,"3,310,566 "
-1520,Chile,-37.616333,-72.198999,Recipient,CHL,0.46,"460,520 "
-1560,China,35.703649,107.400296,Recipient,CHN,0.92,"924,584 "
-1700,Colombia,4.25306,-72.868391,Recipient,COL,0.19,"194,080 "
-1740,Comoros,-11.98023,43.784626,Recipient,COM,0.73,"730,892 "
-1780,Congo,-0.924188,14.768154,Recipient,COG,2.20,"2,202,719 "
-1840,Cook Islands,-20.185403,-159.250086,Recipient,COK,0,0
-1880,Costa Rica,9.746003,-84.100237,Recipient,CRI,0.55,"549,307 "
-3840,Côte d'Ivoire,7.369096,-5.551019,Recipient,CIV,31.40,"31,399,655 "
-1920,Cuba,21.721155,-79.477337,Recipient,CUB,0.08,"78,569 "
-2020,Czech Republic,49.811836,15.49225,Donor,CZE,a,a
-8920,Democratic Rep. of the Congo,-4.015587,23.376716,Recipient,COD,50.73,"50,730,073 "
-2080,Denmark,55.890028,10.392256,Donor,DNK,a,a
-2620,Djibouti,11.73873,42.638766,Recipient,DJI,2.58,"2,578,447 "
-2120,Dominica,15.426026,-61.359058,Recipient,DMA,0.50,"496,881 "
-2140,Dominican Republic,18.81433,-70.277471,Recipient,DOM,10.69,"10,689,081 "
-2180,Ecuador,-1.147179,-78.247751,Recipient,ECU,8.96,"8,961,621 "
-2200,Egypt,27.185703,30.479459,Recipient,EGY,0.64,"635,662 "
-2220,El Salvador,13.726028,-88.822732,Recipient,SLV,0.11,"105,478 "
-2260,Equatorial Guinea,1.98389,10.036472,Recipient,GNQ,0.00,"1,032 "
-2270,Eritrea,14.971691,39.582445,Recipient,ERI,1.70,"1,703,295 "
-2280,Estonia,58.663435,24.607346,Donor,EST,a,a
-2300,Ethiopia,8.842762,39.863899,Recipient,ETH,43.53,"43,530,416 "
-2420,Fiji,-17.341633,158.940593,Recipient,FJI,0.31,"308,139 "
-2460,Finland,64.500053,27.218937,Donor,FIN,a,a
-2500,France,46.336883,2.270183,Donor,FRA,a,a
-2660,Gabon,-0.812692,11.46462,Recipient,GAB,0,0
-2700,Gambia,13.436223,-15.54618,Recipient,GMB,2.84,"2,841,795 "
-2720,Georgia,42.238473,43.427589,Recipient,GEO,5.54,"5,540,310 "
-2760,Germany,51.77387,10.574742,Donor,DEU,a,a
-2880,Ghana,7.824267,-1.081164,Recipient,GHA,19.94,"19,940,089 "
-3000,Greece,38.481022,23.758809,Donor,GRC,a,a
-3080,Grenada,12.109965,-61.683315,Recipient,GRD,0,0
-3200,Guatemala,15.852383,-90.272178,Recipient,GTM,0.15,"145,450 "
-3240,Guinea,10.273416,-11.031226,Recipient,GIN,9.50,"9,500,490 "
-6240,Guinea-Bissau,11.837281,-15.316298,Recipient,GNB,1.37,"1,370,831 "
-3280,Guyana,4.847704,-58.932876,Recipient,GUY,0.42,"421,684 "
-3320,Haiti,18.880726,-72.854611,Recipient,HTI,22.84,"22,844,539 "
-3400,Honduras,14.845997,-86.188591,Recipient,HND,17.44,"17,436,195 "
-3520,Iceland,65.232709,-19.976364,Donor,ISL,a,a
-3560,India,22.606858,79.627816,Recipient,IND,5.59,"5,588,125 "
-3600,Indonesia,-2.974959,119.267292,Recipient,IDN,45.47,"45,472,728 "
-3640,Iran,32.673635,53.738655,Recipient,IRN,0.17,"166,776 "
-3680,Iraq,33.156784,44.021816,Recipient,IRQ,14.97,"14,971,836 "
-3720,Ireland,53.332306,-8.629055,Donor,IRL,a,a
-3800,Italy,42.051185,12.461401,Donor,ITA,a,a
-3880,Jamaica,18.126146,-77.290223,Recipient,JAM,1.41,"1,414,214 "
-3920,Japan,35.992619,137.776432,Donor,JPN,a,a
-4000,Jordan,31.384543,36.995909,Recipient,JOR,108.84,"108,840,632 "
-4020,Kazakhstan,48.286181,66.197373,Recipient,KAZ,0.03,"33,170 "
-4040,Kenya,0.638006,38.025679,Recipient,KEN,31.53,"31,529,714 "
-2960,Kiribati,1.843581,-142.355756,Recipient,KIR,0,0
-4100,Korea,35.861497,127.355541,Donor,RKO,a,a
-4140,Kuwait,29.356321,47.687397,Donor,KWT,a,a
-4160,Kyrgyzstan,41.22812,73.842561,Recipient,KGZ,6.01,"6,013,166 "
-4180,Laos,19.540096,102.491139,Recipient,LAO,8.17,"8,174,110 "
-4220,Lebanon,33.878374,35.881368,Recipient,LBN,54.06,"54,058,615 "
-4260,Lesotho,-29.595733,28.244114,Recipient,LSO,4.82,"4,824,091 "
-4300,Liberia,6.515548,-9.225161,Recipient,LBR,5.30,"5,299,920 "
-4340,Libya,27.224538,18.02617,Recipient,LBY,0.73,"732,648 "
-4420,Luxembourg,49.768616,6.098623,Donor,LUX,a,a
-4480,Macedonia,41.589333,21.697598,Recipient,MKD,1.08,"1,078,319 "
-4500,Madagascar,-18.054455,47.108621,Recipient,MDG,12.89,"12,890,330 "
-4540,Malawi,-13.116067,34.265306,Recipient,MWI,15.69,"15,689,891 "
-4580,Malaysia,3.948639,110.52886,Recipient,MYS,0.00,"3,627 "
-4620,Maldives,3.353159,73.260862,Recipient,MDV,0.13,"132,046 "
-4660,Mali,16.515929,-4.506424,Recipient,MLI,18.21,"18,214,721 "
-5840,Marshall Islands,9,168,Recipient,MHL,0,0
-4780,Mauritania,20.452525,-10.808026,Recipient,MRT,4.76,"4,760,300 "
-4800,Mauritius,-20.163688,58.765571,Recipient,MUS,5.48,"5,478,073 "
-4840,Mexico,24.127293,-103.578389,Recipient,MEX,0.12,"119,565 "
-4845,Micronesia,6.293391,160.009199,Recipient,FSM,0,0
-4960,Mongolia,47.224048,103.803616,Recipient,MNG,3.78,"3,776,370 "
-4990,Montenegro,42.751687,19.296053,Recipient,MNE,0.33,"330,227 "
-5000,Montserrat,16.75,-62.2,Recipient,MSR,0.64,"641,860 "
-5040,Morocco,31.416697,-6.735714,Recipient,MAR,32.83,"32,833,330 "
-5080,Mozambique,-17.646889,35.189844,Recipient,MOZ,24.14,"24,135,180 "
-1040,Myanmar,21.395854,96.297484,Recipient,MMR,15.73,"15,733,363 "
-5160,Namibia,-21.547573,18.124303,Recipient,NAM,8.00,"7,999,100 "
-5200,Nauru,-0.528315,166.923192,Recipient,NRU,0,0
-5240,Nepal,28.195011,84.219606,Recipient,NPL,39.82,"39,818,497 "
-5280,Netherlands,52.160556,5.208745,Donor,NLD,a,a
-5540,New Zealand,-44.818879,169.429133,Donor,NZL,a,a
-5580,Nicaragua,12.905887,-84.953159,Recipient,NIC,15.66,"15,662,644 "
-5620,Niger,16.750195,8.214956,Recipient,NER,11.30,"11,302,163 "
-5660,Nigeria,8.976808,7.987788,Recipient,NGA,5.46,"5,461,027 "
-5700,Niue,-19.0333,-169.8667,Recipient,NIU,0,0
-4090,North Korea,40.076414,127.206462,Recipient,PRK,1.53,"1,529,145 "
-5780,Norway,61.518479,9.50363,Donor,NOR,a,a
-5860,Pakistan,29.656567,68.682852,Recipient,PAK,72.12,"72,119,077 "
-955,Palau,7.506065,134.568944,Recipient,PLW,0,0
-5900,Panama,8.458999,-80.108938,Recipient,PAN,0.01,"14,056 "
-5980,Papua New Guinea,-6.664343,148.160159,Recipient,PNG,1.51,"1,512,751 "
-6000,Paraguay,-23.520255,-58.175581,Recipient,PRY,10.22,"10,219,151 "
-6040,Peru,-9.667213,-75.326728,Recipient,PER,0.23,"225,890 "
-6080,Philippines,11.244724,122.731179,Recipient,PHL,0.26,"263,621 "
-6160,Poland,52.096874,19.183304,Donor,POL,a,a
-6200,Portugal,39.638365,-7.970937,Donor,PRT,a,a
-6220,Republic of Moldova,47.089793,28.503436,Recipient,MDA,5.60,"5,601,178 "
-6460,Rwanda,-2.032464,29.893166,Recipient,RWA,6.68,"6,676,118 "
-6540,Saint Helena,-15.933333,-5.716667,Recipient,SHN,0,0
-6560,Saint Kitts and Nevis,17.313103,-62.736679,Recipient,KNA,1.27,"1,270,984 "
-6620,Saint Lucia,13.903085,-60.9659,Recipient,LCA,1.91,"1,908,687 "
-6700,Saint Vincent and the Grenadines,13.256242,-61.192859,Recipient,VCT,2.17,"2,170,841 "
-8820,Samoa,-13.780031,-172.115116,Recipient,WSM,1.50,"1,503,711 "
-6780,Sao Tome and Principe,0.650952,6.848193,Recipient,STP,1.17,"1,167,917 "
-6860,Senegal,13.848381,-14.866348,Recipient,SEN,8.84,"8,841,559 "
-6880,Serbia,44.092352,20.720026,Recipient,SRB,5.07,"5,065,160 "
-6900,Seychelles,-7.291142,50.434704,Recipient,SYC,0.83,"829,631 "
-6940,Sierra Leone,8.423922,-11.939061,Recipient,SLE,4.40,"4,401,034 "
-6720,Slovakia,48.724856,19.669794,Donor,SVK,a,a
-6760,Slovenia,46.131639,14.872133,Donor,SVN,a,a
-900,Solomon Islands,-8.910545,159.537743,Recipient,SLB,0.10,"102,040 "
-7060,Somalia,6.402382,45.804496,Recipient,SOM,8.18,"8,176,918 "
-7100,South Africa,-28.695832,25.029527,Recipient,ZAF,27.50,"27,499,022 "
-7280,South Sudan,13.197363,30.439371,Recipient,SSD,1.19,"1,188,332 "
-7240,Spain,38.632397,-5.0852,Donor,ESP,a,a
-7340,Sri Lanka,8.173787,80.549014,Recipient,LKA,28.89,"28,890,759 "
-7290,Sudan,13.197363,30.439371,Recipient,SDN,1.21,"1,209,918 "
-7400,Suriname,4.167872,-55.867785,Recipient,SUR,0,0
-7480,Swaziland,-26.574906,31.520087,Recipient,SWZ,4.18,"4,184,225 "
-7520,Sweden,64.545152,16.738748,Donor,SWE,a,a
-7560,Switzerland,46.757811,8.328122,Donor,CHE,a,a
-7600,Syrian Arab Republic,35.104411,38.475003,Recipient,SYR,28.87,"28,865,404 "
-7610,Tajikistan,38.775212,70.833845,Recipient,TJK,5.48,"5,475,032 "
-7620,Tanzania,-6.42256,35.381934,Recipient,TZA,30.75,"30,754,686 "
-7640,Thailand,15.502027,101.199542,Recipient,THA,0.67,"673,404 "
-6260,Timor-Leste,-8.839555,125.7115,Recipient,TLS,1.52,"1,516,069 "
-7680,Togo,8.747135,0.88087,Recipient,TGO,1.41,"1,411,760 "
-7720,Tokelau,-9,-172,Recipient,TKL,0,0
-7760,Tonga,-20.313602,-174.796027,Recipient,TON,0.01,"6,381 "
-7880,Tunisia,34.219543,9.819744,Recipient,TUN,12.54,"12,540,166 "
-7920,Turkey,39.136216,33.36457,Recipient,TUR,0.06,"60,410 "
-7940,Turkmenistan,39.191547,58.766406,Recipient,TKM,0.25,"247,955 "
-7780,Tuvalu,-7.540024,178.283237,Recipient,TUV,,
-8000,Uganda,1.324938,32.233743,Recipient,UGA,11.99,"11,990,678 "
-8070,Ukraine,48.074673,31.752265,Recipient,UKR,0.04,"38,287 "
-8120,United Arab Emirates,24.154436,54.363366,Donor,ARE,a,a
-8260,United Kingdom,52.597352,-1.534873,Donor,GBR,a,a
-8400,United States,40.252636,-100.999161,Donor,USA,a,a
-8580,Uruguay,-32.721374,-56.024798,Recipient,URY,0.19,"185,974 "
-8600,Uzbekistan,41.447353,64.79929,Recipient,UZB,2.31,"2,305,009 "
-5480,Vanuatu,-16.308522,167.89617,Recipient,VUT,0.26,"260,635 "
-8620,Venezuela,7.80464,-65.891969,Recipient,VEN,0.15,"153,514 "
-8680,Viet Nam,12.344649,108.343625,Recipient,VNM,55.45,"55,445,406 "
-8850,Yemen,15.563412,47.950477,Recipient,YEM,16.08,"16,080,418 "
-8940,Zambia,-13.047165,28.051606,Recipient,ZMB,4.30,"4,295,662 "
-7160,Zimbabwe,-18.931388,29.676439,Recipient,ZWE,4.85,"4,852,366 "
+Country_Code,Name_of_Country,Name_of_Country_es,Name_of_Country_fr,Lat,Lon,Donor_or_Recipient,OECD_Country_Code,Multilateral,Multilateral2
+40,Afghanistan,Afganistán,Afghanistan,34.427919,67.297715,Recipient,AFG,6.76,6764975
+80,Albania,Albania,Albanie,41.115789,20.036435,Recipient,ALB,5.19,5187846
+120,Algeria,Argelia,Algérie,28.648929,2.550384,Recipient,DZA,0.06,55394
+240,Angola,Angola,Angola,-11.553455,17.442383,Recipient,AGO,1.5,1502360
+260,Anguilla,Anguila,Anguilla,18.25,-63.1667,Recipient,AIA,0.47,474777
+280,Antigua and Barbuda,Antigua y Barbuda,Antigua-et-Barbuda,17.326884,-61.79147,Recipient,ATG,,
+320,Argentina,Argentina,Argentine,-34.069346,-64.554019,Recipient,ARG,3.16,3158409
+340,Armenia,Armenia,Arménie,40.143019,45.185632,Recipient,ARM,6.71,6707907
+360,Australia,Australia,Australie,-25.457025,135.343151,Donor,AUS,a,a
+400,Austria,Austria,Autriche,47.559579,13.460688,Donor,AUT,a,a
+380,Azerbaijan,Azerbaiyán,Azerbaïdjan,40.217768,47.780519,Recipient,AZE,2.37,2368532
+500,Bangladesh,Bangladesh,Bangladesh,23.784454,89.963937,Recipient,BGD,179.48,179477824
+8050,Belarus,Belarús,Bélarus,53.460297,27.984375,Recipient,BLR,1.67,1674516
+560,Belgium,Bélgica,Belgique,50.653901,4.625375,Donor,BEL,a,a
+580,Belize,Belice,Belize,17.299323,-88.550048,Recipient,BLZ,0.27,269982
+2040,Benin,Benin,Bénin,9.398571,2.331568,Recipient,BEN,7.56,7564885
+640,Bhutan,Bhután,Bhoutan,27.394079,90.504295,Recipient,BTN,0.69,693034
+680,Bolivia,Bolivia,Bolivie,-16.733626,-64.475512,Recipient,BOL,0.82,817392
+570,Bosnia and Herzegovina,Bosnia y Herzegovina,Bosnie-Herzégovine,44.133901,17.883773,Recipient,BIH,1.15,1146084
+720,Botswana,Botswana,Botswana,-22.285449,23.925844,Recipient,BWA,4.37,4373064
+760,Brazil,Brasil,Brésil,-9.872666,-53.169127,Recipient,BRA,0.91,911505
+8540,Burkina Faso,Burkina Faso,Burkina Faso,12.146713,-1.747007,Recipient,BFA,16.4,16401016
+1080,Burundi,Burundi,Burundi,-3.241797,29.899848,Recipient,BDI,6.67,6670191
+1320,Cabo Verde,Cabo Verde,Cabo Verde,16.067023,-23.958685,Recipient,CPV,0.63,632607
+4060,Cambodia,Camboya,Cambodge,12.637796,105.047609,Recipient,KHM,11.29,11287723
+1200,Cameroon,Camerún,Cameroun,6.626626,13.030155,Recipient,CMR,2.32,2322304
+1240,Canada,Canadá,Canada,58.622302,-102.046052,Donor,CAN,a,a
+1400,Central African Republic,Rep. Centroafricana,Rép. centrafricaine,6.342249,20.686201,Recipient,CAF,2.19,2190017
+1480,Chad,Chad,Tchad,14.949141,18.460461,Recipient,TCD,3.31,3310566
+1520,Chile,Chile,Chili,-37.616333,-72.198999,Recipient,CHL,0.46,460520
+1560,China,China,Chine,35.703649,107.400296,Recipient,CHN,0.92,924584
+1700,Colombia,Colombia,Colombie,4.25306,-72.868391,Recipient,COL,0.19,194080
+1740,Comoros,Comoras,Comores,-11.98023,43.784626,Recipient,COM,0.73,730892
+1780,Congo,Congo,Congo,-0.924188,14.768154,Recipient,COG,2.2,2202719
+1840,Cook Islands,Islas Cook,Îles Cook,-20.185403,-159.250086,Recipient,COK,0,0
+1880,Costa Rica,Costa Rica,Costa Rica,9.746003,-84.100237,Recipient,CRI,0.55,549307
+3840,Côte d'Ivoire,Côte d'Ivoire,Côte d'Ivoire,7.369096,-5.551019,Recipient,CIV,31.4,31399655
+1920,Cuba,Cuba,Cuba,21.721155,-79.477337,Recipient,CUB,0.08,78569
+2020,Czech Republic,República Checa,République tchèque,49.811836,15.49225,Donor,CZE,a,a
+8920,"Congo, DR","Congo, RD","Congo, RD",-4.015587,23.376716,Recipient,COD,50.73,50730073
+2080,Denmark,Dinamarca,Danemark,55.890028,10.392256,Donor,DNK,a,a
+2620,Djibouti,Djibouti,Djibouti,11.73873,42.638766,Recipient,DJI,2.58,2578447
+2120,Dominica,Dominica,Dominique,15.426026,-61.359058,Recipient,DMA,0.5,496881
+2140,Dominican Republic,República Dominicana,Rép. dominicaine,18.81433,-70.277471,Recipient,DOM,10.69,10689081
+2180,Ecuador,Ecuador (el),Équateur,-1.147179,-78.247751,Recipient,ECU,8.96,8961621
+2200,Egypt,Egipto,Égypte,27.185703,30.479459,Recipient,EGY,0.64,635662
+2220,El Salvador,El Salvador,El Salvador,13.726028,-88.822732,Recipient,SLV,0.11,105478
+2260,Equatorial Guinea,Guinea Ecuatorial,Guinée équatoriale,1.98389,10.036472,Recipient,GNQ,0,1032
+2270,Eritrea,Eritrea,Érythrée,14.971691,39.582445,Recipient,ERI,1.7,1703295
+2280,Estonia,Estonia,Estonie,58.663435,24.607346,Donor,EST,a,a
+2300,Ethiopia,Etiopía,Éthiopie,8.842762,39.863899,Recipient,ETH,43.53,43530416
+2420,Fiji,Fiji,Fidji,-17.341633,158.940593,Recipient,FJI,0.31,308139
+2460,Finland,Finlandia,Finlande,64.500053,27.218937,Donor,FIN,a,a
+2500,France,Francia,France,46.336883,2.270183,Donor,FRA,a,a
+2660,Gabon,Gabón,Gabon,-0.812692,11.46462,Recipient,GAB,0,0
+2700,Gambia,Gambia,Gambie,13.436223,-15.54618,Recipient,GMB,2.84,2841795
+2720,Georgia,Georgia,Géorgie,42.238473,43.427589,Recipient,GEO,5.54,5540310
+2760,Germany,Alemania,Allemagne,51.77387,10.574742,Donor,DEU,a,a
+2880,Ghana,Ghana,Ghana,7.824267,-1.081164,Recipient,GHA,19.94,19940089
+3000,Greece,Grecia,Grèce,38.481022,23.758809,Donor,GRC,a,a
+3080,Grenada,Granada,Grenade,12.109965,-61.683315,Recipient,GRD,0,0
+3200,Guatemala,Guatemala,Guatemala,15.852383,-90.272178,Recipient,GTM,0.15,145450
+3240,Guinea,Guinea,Guinée,10.273416,-11.031226,Recipient,GIN,9.5,9500490
+6240,Guinea-Bissau,Guinea-Bissau,Guinée-Bissau,11.837281,-15.316298,Recipient,GNB,1.37,1370831
+3280,Guyana,Guyana,Guyana,4.847704,-58.932876,Recipient,GUY,0.42,421684
+3320,Haiti,Haití,Haïti,18.880726,-72.854611,Recipient,HTI,22.84,22844539
+3400,Honduras,Honduras,Honduras,14.845997,-86.188591,Recipient,HND,17.44,17436195
+3520,Iceland,Islandia,Islande,65.232709,-19.976364,Donor,ISL,a,a
+3560,India,India,Inde,22.606858,79.627816,Recipient,IND,5.59,5588125
+3600,Indonesia,Indonesia,Indonésie,-2.974959,119.267292,Recipient,IDN,45.47,45472728
+3640,"Iran, Islamic Rep.","Irán, Rep. Islámica","Iran, Rép. islamique",32.673635,53.738655,Recipient,IRN,0.17,166776
+3680,Iraq,Iraq (el),Iraq,33.156784,44.021816,Recipient,IRQ,14.97,14971836
+3720,Ireland,Irlanda,Irlande,53.332306,-8.629055,Donor,IRL,a,a
+3800,Italy,Italia,Italie,42.051185,12.461401,Donor,ITA,a,a
+3880,Jamaica,Jamaica,Jamaïque,18.126146,-77.290223,Recipient,JAM,1.41,1414214
+3920,Japan,Japón,Japon,35.992619,137.776432,Donor,JPN,a,a
+4000,Jordan,Jordania,Jordanie,31.384543,36.995909,Recipient,JOR,108.84,108840632
+4020,Kazakhstan,Kazajstán,Kazakhstan,48.286181,66.197373,Recipient,KAZ,0.03,33170
+4040,Kenya,Kenya,Kenya,0.638006,38.025679,Recipient,KEN,31.53,31529714
+2960,Kiribati,Kiribati,Kiribati,1.843581,-142.355756,Recipient,KIR,0,0
+4100,"Korea, Rep.","Corea, Rep.","Corée, Rép.",35.861497,127.355541,Donor,RKO,a,a
+4140,Kuwait,Kuwait,Koweït,29.356321,47.687397,Donor,KWT,a,a
+4160,Kyrgyzstan,Kirguistán,Kirghizistan,41.22812,73.842561,Recipient,KGZ,6.01,6013166
+4180,Lao PDR,Lao RDP,Lao RDP,19.540096,102.491139,Recipient,LAO,8.17,8174110
+4220,Lebanon,Líbano,Liban,33.878374,35.881368,Recipient,LBN,54.06,54058615
+4260,Lesotho,Lesotho,Lesotho,-29.595733,28.244114,Recipient,LSO,4.82,4824091
+4300,Liberia,Liberia,Libéria,6.515548,-9.225161,Recipient,LBR,5.3,5299920
+4340,Libya,Libia,Libye,27.224538,18.02617,Recipient,LBY,0.73,732648
+4420,Luxembourg,Luxemburgo,Luxembourg,49.768616,6.098623,Donor,LUX,a,a
+4480,TFYR Macedonia,ARY Macedonia,ERY Macédoine,41.589333,21.697598,Recipient,MKD,1.08,1078319
+4500,Madagascar,Madagascar,Madagascar,-18.054455,47.108621,Recipient,MDG,12.89,12890330
+4540,Malawi,Malawi,Malawi,-13.116067,34.265306,Recipient,MWI,15.69,15689891
+4580,Malaysia,Malasia,Malaisie,3.948639,110.52886,Recipient,MYS,0,3627
+4620,Maldives,Maldivas,Maldives,3.353159,73.260862,Recipient,MDV,0.13,132046
+4660,Mali,Malí,Mali,16.515929,-4.506424,Recipient,MLI,18.21,18214721
+5840,Marshall Islands,Islas Marshall,Îles Marshall,9,168,Recipient,MHL,0,0
+4780,Mauritania,Mauritania,Mauritanie,20.452525,-10.808026,Recipient,MRT,4.76,4760300
+4800,Mauritius,Mauricio,Maurice,-20.163688,58.765571,Recipient,MUS,5.48,5478073
+4840,Mexico,México,Mexique,24.127293,-103.578389,Recipient,MEX,0.12,119565
+4845,Micronesia,Micronesia,Micronésie,6.293391,160.009199,Recipient,FSM,0,0
+4960,Mongolia,Mongolia,Mongolie,47.224048,103.803616,Recipient,MNG,3.78,3776370
+4990,Montenegro,Montenegro,Monténégro,42.751687,19.296053,Recipient,MNE,0.33,330227
+5000,Montserrat,Montserrat,Montserrat,16.75,-62.2,Recipient,MSR,0.64,641860
+5040,Morocco,Marruecos,Maroc,31.416697,-6.735714,Recipient,MAR,32.83,32833330
+5080,Mozambique,Mozambique,Mozambique,-17.646889,35.189844,Recipient,MOZ,24.14,24135180
+1040,Myanmar,Myanmar,Myanmar,21.395854,96.297484,Recipient,MMR,15.73,15733363
+5160,Namibia,Namibia,Namibie,-21.547573,18.124303,Recipient,NAM,8,7999100
+5200,Nauru,Nauru,Nauru,-0.528315,166.923192,Recipient,NRU,0,0
+5240,Nepal,Nepal,Népal,28.195011,84.219606,Recipient,NPL,39.82,39818497
+5280,Netherlands,Países Bajos,Pays-Bas,52.160556,5.208745,Donor,NLD,a,a
+5540,New Zealand,Nueva Zelandia,Nouvelle-Zélande,-44.818879,169.429133,Donor,NZL,a,a
+5580,Nicaragua,Nicaragua,Nicaragua,12.905887,-84.953159,Recipient,NIC,15.66,15662644
+5620,Niger,Níger,Niger,16.750195,8.214956,Recipient,NER,11.3,11302163
+5660,Nigeria,Nigeria,Nigéria,8.976808,7.987788,Recipient,NGA,5.46,5461027
+5700,Niue,Niue,Nioué,-19.0333,-169.8667,Recipient,NIU,0,0
+4090,North Korea,"Corea, RPD","Corée, RPD",40.076414,127.206462,Recipient,PRK,1.53,1529145
+5780,Norway,Noruega,Norvège,61.518479,9.50363,Donor,NOR,a,a
+5860,Pakistan,Pakistán,Pakistan,29.656567,68.682852,Recipient,PAK,72.12,72119077
+955,Palau,Palau,Palaos,7.506065,134.568944,Recipient,PLW,0,0
+5900,Panama,Panamá,Panama,8.458999,-80.108938,Recipient,PAN,0.01,14056
+5980,Papua New Guinea,Papua NG,Papouasie-Nlle-Guinée,-6.664343,148.160159,Recipient,PNG,1.51,1512751
+6000,Paraguay,Paraguay,Paraguay,-23.520255,-58.175581,Recipient,PRY,10.22,10219151
+6040,Peru,Perú,Pérou,-9.667213,-75.326728,Recipient,PER,0.23,225890
+6080,Philippines,Filipinas,Philippines,11.244724,122.731179,Recipient,PHL,0.26,263621
+6160,Poland,Polonia,Pologne,52.096874,19.183304,Donor,POL,a,a
+6200,Portugal,Portugal,Portugal,39.638365,-7.970937,Donor,PRT,a,a
+6220,Republic of Moldova,Moldova,Moldova,47.089793,28.503436,Recipient,MDA,5.6,5601178
+6460,Rwanda,Rwanda,Rwanda,-2.032464,29.893166,Recipient,RWA,6.68,6676118
+6540,Saint Helena,Santa Elena,Sainte Hélène,-15.933333,-5.716667,Recipient,SHN,0,0
+6560,Saint Kitts and Nevis,Saint Kitts y Nevis,Saint-Kitts-et-Nevis,17.313103,-62.736679,Recipient,KNA,1.27,1270984
+6620,Saint Lucia,Santa Lucía,Sainte-Lucie,13.903085,-60.9659,Recipient,LCA,1.91,1908687
+6700,Saint Vincent and the Grenadines,San Vicente/Granad.,St Vincent/Grenadines,13.256242,-61.192859,Recipient,VCT,2.17,2170841
+8820,Samoa,Samoa,Samoa,-13.780031,-172.115116,Recipient,WSM,1.5,1503711
+6780,Sao Tome and Principe,Sao Tomé y Príncipe,Sao Tomé-et-Principe,0.650952,6.848193,Recipient,STP,1.17,1167917
+6860,Senegal,Senegal,Sénégal,13.848381,-14.866348,Recipient,SEN,8.84,8841559
+6880,Serbia,Serbia,Serbie,44.092352,20.720026,Recipient,SRB,5.07,5065160
+6900,Seychelles,Seychelles,Seychelles,-7.291142,50.434704,Recipient,SYC,0.83,829631
+6940,Sierra Leone,Sierra Leona,Sierra Leone,8.423922,-11.939061,Recipient,SLE,4.4,4401034
+6720,Slovakia,Eslovaquia,Slovaquie,48.724856,19.669794,Donor,SVK,a,a
+6760,Slovenia,Eslovenia,Slovénie,46.131639,14.872133,Donor,SVN,a,a
+900,Solomon Islands,Islas Salomón,Îles Salomon,-8.910545,159.537743,Recipient,SLB,0.1,102040
+7060,Somalia,Somalia,Somalie,6.402382,45.804496,Recipient,SOM,8.18,8176918
+7100,South Africa,Sudáfrica,Afrique du Sud,-28.695832,25.029527,Recipient,ZAF,27.5,27499022
+7280,South Sudan,Sudán del Sur,Soudan du Sud,13.197363,30.439371,Recipient,SSD,1.19,1188332
+7240,Spain,España,Espagne,38.632397,-5.0852,Donor,ESP,a,a
+7340,Sri Lanka,Sri Lanka,Sri Lanka,8.173787,80.549014,Recipient,LKA,28.89,28890759
+7290,Sudan,Sudán,Soudan,13.197363,30.439371,Recipient,SDN,1.21,1209918
+7400,Suriname,Suriname,Suriname,4.167872,-55.867785,Recipient,SUR,0,0
+7480,Swaziland,Swazilandia,Swaziland,-26.574906,31.520087,Recipient,SWZ,4.18,4184225
+7520,Sweden,Suecia,Suède,64.545152,16.738748,Donor,SWE,a,a
+7560,Switzerland,Suiza,Suisse,46.757811,8.328122,Donor,CHE,a,a
+7600,Syrian Arab Republic,República Árabe Siria,Rép. arabe syrienne,35.104411,38.475003,Recipient,SYR,28.87,28865404
+7610,Tajikistan,Tayikistán,Tadjikistan,38.775212,70.833845,Recipient,TJK,5.48,5475032
+7620,Tanzania,Tanzania,Tanzanie,-6.42256,35.381934,Recipient,TZA,30.75,30754686
+7640,Thailand,Tailandia,Thaïlande,15.502027,101.199542,Recipient,THA,0.67,673404
+6260,Timor-Leste,Timor-Leste,Timor-Leste,-8.839555,125.7115,Recipient,TLS,1.52,1516069
+7680,Togo,Togo,Togo,8.747135,0.88087,Recipient,TGO,1.41,1411760
+7720,Tokelau,Tokelau,Tokelau,-9,-172,Recipient,TKL,0,0
+7760,Tonga,Tonga,Tonga,-20.313602,-174.796027,Recipient,TON,0.01,6381
+7880,Tunisia,Túnez,Tunisie,34.219543,9.819744,Recipient,TUN,12.54,12540166
+7920,Turkey,Turquía,Turquie,39.136216,33.36457,Recipient,TUR,0.06,60410
+7940,Turkmenistan,Turkmenistán,Turkménistan,39.191547,58.766406,Recipient,TKM,0.25,247955
+7780,Tuvalu,Tuvalu,Tuvalu,-7.540024,178.283237,Recipient,TUV,,
+8000,Uganda,Uganda,Ouganda,1.324938,32.233743,Recipient,UGA,11.99,11990678
+8070,Ukraine,Ucrania,Ukraine,48.074673,31.752265,Recipient,UKR,0.04,38287
+8120,United Arab Emirates,Emiratos AU,Émirats arabes unis,24.154436,54.363366,Donor,ARE,a,a
+8260,United Kingdom,Reino Unido,Royaume-Uni,52.597352,-1.534873,Donor,GBR,a,a
+8400,United States,Estados Unidos,États-Unis,40.252636,-100.999161,Donor,USA,a,a
+8580,Uruguay,Uruguay,Uruguay,-32.721374,-56.024798,Recipient,URY,0.19,185974
+8600,Uzbekistan,Uzbekistán,Ouzbékistan,41.447353,64.79929,Recipient,UZB,2.31,2305009
+5480,Vanuatu,Vanuatu,Vanuatu,-16.308522,167.89617,Recipient,VUT,0.26,260635
+8620,Venezuela,Venezuela,Venezuela,7.80464,-65.891969,Recipient,VEN,0.15,153514
+8680,Viet Nam,Viet Nam,Viet Nam,12.344649,108.343625,Recipient,VNM,55.45,55445406
+8850,Yemen,Yemen,Yémen,15.563412,47.950477,Recipient,YEM,16.08,16080418
+8940,Zambia,Zambia,Zambie,-13.047165,28.051606,Recipient,ZMB,4.3,4295662
+7160,Zimbabwe,Zimbabwe,Zimbabwe,-18.931388,29.676439,Recipient,ZWE,4.85,4852366
