@@ -2,19 +2,17 @@
  * lang_controllers.js: language switcher
  */
 
-// global variable lang
-var lang;
 
 $( document ).ready(function() {
 
 	// get language var from url if one exists
-	var langURL = getUrlVars()["lang"];
 	var langCookie = Cookies.get('lang');
+	var langURL = getUrlVars()["lang"];
 
-	if (langURL) {
-		lang = langURL;
-	} else if (langCookie) {
+	if (langCookie) {
 		lang = langCookie;
+	} else if (langURL) {
+		lang = langURL;
 	} else {
 		lang = 'en';
 	}
