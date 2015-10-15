@@ -5,7 +5,7 @@
 function createEducationAidFlowMap() {
 
   var highlighted;
-  var clicked = false;
+  clicked = false;
 
   var svg3 = d3.select("#EducationAidFlowMap")
       .append("svg")
@@ -77,17 +77,17 @@ function createEducationAidFlowMap() {
         .attr("stroke", "#111")
         .attr("display", "none");
 
-        //highlight the countries that are donors or recipients
-        countries.selectAll("path")
-          .transition()
-          .duration(50)
-          .style("stroke-width", "1px")
-          .style("fill-opacity", 1);
+      //highlight the countries that are donors or recipients
+      countries.selectAll("path")
+        .transition()
+        .duration(50)
+        .style("stroke-width", "1px")
+        .style("fill-opacity", 1);
     });
 
-  var countries = svg3.append("g").attr("id", "countries");
-  var arcs = svg3.append("g").attr("id", "arcs");
-  var centroids = svg3.append("g").attr("id", "centroids");
+  countries = svg3.append("g").attr("id", "countries");
+  arcs = svg3.append("g").attr("id", "arcs");
+  centroids = svg3.append("g").attr("id", "centroids");
 
 
   d3.loadData = function() {
@@ -421,10 +421,18 @@ function createEducationAidFlowMap() {
               var countryName = d.properties.name_sp;
             }
 
+            if (lang == 'en') {
+              var clickon = "Click on this country to see the flow of education aid.";
+            } else if (lang == 'fr') {
+              var clickon = "Click on this country to see the flow of education aid.";
+            } else {
+              var clickon = "Click on this country to see the flow of education aid.";
+            }
+
             div.html(
               '<p class="tooltip-title">' + countryName + '</p>' +
               '<p class="tooltip-text">' + text + '</p>' +
-              '<p class="tooltip-text">Click on this country to see the flow of education aid.</p>' 
+              '<p class="tooltip-text">' + clickon + '</p>' 
               )  
               .style("left", (d3.event.pageX + left) + "px")     //play around with these to get spacing better
               .style("top", (d3.event.pageY - 55) + "px");
@@ -823,24 +831,30 @@ function createEducationAidFlowMap() {
         if (lang == 'en') {
           var dollarSign = "$";
           var usd = "";
-          var receives = "Receives ";
-          var from = " from ";
+          //var receives = "Receives ";
+          var receives = "";
+          //var from = " from ";
+          var from = " <span class=\"glyphicon glyphicon-arrow-right\" aria-hidden=\"true\"></span> ";
           var nodata = "No data.";
           var million = " million";
           var billion = " billion";
         } else if (lang == 'fr') {
           var dollarSign = "";
           var usd = " USD";
-          var receives = "Reçoit ";
-          var from = " de ";
+          //var receives = "Reçoit ";
+          var receives = "";
+          //var from = " de ";
+          var from = " <span class=\"glyphicon glyphicon-arrow-right\" aria-hidden=\"true\"></span> ";
           var nodata = "Aucune donnée.";
           var million = " million";
           var billion = " milliard";
         } else {
           var dollarSign = "";
           var usd = " USD";
-          var receives = "Recibe ";
-          var from = " de ";
+          //var receives = "Recibe ";
+          var receives = "";
+          //var from = " de ";
+          var from = " <span class=\"glyphicon glyphicon-arrow-right\" aria-hidden=\"true\"></span> ";
           var nodata = "Sin datos.";
           var million = " millónes";
           var billion = " billón";
@@ -876,8 +890,21 @@ function createEducationAidFlowMap() {
           var multiSymbol = "";             
           var multi = commaFormat(d.dest.Multilateral2);
         }
+
+        if (lang == 'en') {
+          d.origin.Name_of_Country = d.origin.Name_of_Country;
+          d.dest.Name_of_Country = d.dest.Name_of_Country;
+        } else if (lang == 'fr') {
+          d.origin.Name_of_Country = d.origin.Name_of_Country_fr;
+          d.dest.Name_of_Country = d.dest.Name_of_Country_fr;
+        } else {
+          d.origin.Name_of_Country = d.origin.Name_of_Country_es;
+          d.dest.Name_of_Country = d.dest.Name_of_Country_es;
+        }
+
+
   
-        var text = receives + dollarSign + rec + recSymbol + usd + from + d.origin.Name_of_Country + ".";
+        var text = d.origin.Name_of_Country + from + d.dest.Name_of_Country + ": " + dollarSign + rec + recSymbol + usd + ".";
           
         div.html(
           '<p class="tooltip-title">' + d.dest.Name_of_Country + '</p>' +
@@ -950,6 +977,7 @@ function createEducationAidFlowMap() {
         .attr("text-anchor", "middle")
         .attr("display", "none");
 
+
       countryNames.append('tspan')
         .attr("x", function(d) { return d.projection[0] } )
         .attr("y", function(d) { 
@@ -961,11 +989,19 @@ function createEducationAidFlowMap() {
           
         } )
         .text(function(d) {
+          if (lang == 'en') {
+            d.Name_of_Country = d.Name_of_Country;
+          } else if (lang == 'fr') {
+            d.Name_of_Country = d.Name_of_Country_fr;
+          } else {
+            d.Name_of_Country = d.Name_of_Country_es;
+          }
+
           if (d.Name_of_Country.length > 17) {
             var splitString = d.Name_of_Country.split(' ', 1);
             return splitString[0];
           } else {
-            return d.Name_of_Country
+            return d.Name_of_Country;
           }
         });
 
@@ -981,6 +1017,14 @@ function createEducationAidFlowMap() {
         } )
         .text(function(d) {
           if (d.Name_of_Country.length > 17) {
+            if (lang == 'en') {
+              d.Name_of_Country = d.Name_of_Country;
+            } else if (lang == 'fr') {
+              d.Name_of_Country = d.Name_of_Country_fr;
+            } else {
+              d.Name_of_Country = d.Name_of_Country_es;
+            }
+
             var splitString = d.Name_of_Country.split(' ');
             // remove first word from array
             splitString.splice(0, 1);
@@ -1192,7 +1236,8 @@ function createEducationAidFlowMap() {
 
 
       // Spanish
-      var aidtoeducaiton = "Ayuda destinada a Educación básica:";
+      var aidtoeducaiton1 = "Ayuda destinada";
+      var aidtoeducaiton2 = "a Educación básica:";
       var dollarSign = "";
       var usd = " USD";
       var bilateral = "Bilateral: ";
@@ -1214,7 +1259,7 @@ function createEducationAidFlowMap() {
         .attr("y", function(d) { return d.projection[1] + 4 } )
         .text(function(d) {
           if (d.Donor_or_Recipient == 'Donor') {
-            return aidtoeducaiton;
+            return aidtoeducaiton1;
           } else {
             var prefix = d3.formatPrefix(d.TotalReceivedFromCountries);
             if (prefix.symbol == 'k') {
@@ -1237,6 +1282,15 @@ function createEducationAidFlowMap() {
       bubbleTextEs.append('tspan')
         .attr("x", function(d) { return d.projection[0] } )
         .attr("y", function(d) { return d.projection[1] + 16 } )
+        .text(function(d) {
+          if (d.Donor_or_Recipient == 'Donor') {         
+            return aidtoeducaiton2;
+          }
+        });
+
+      bubbleTextEs.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { return d.projection[1] + 28 } )
         .text(function(d) {
           if (d.Donor_or_Recipient == 'Donor') {
             var prefix = d3.formatPrefix(d.TotalContributedToCountries);

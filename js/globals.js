@@ -36,3 +36,10 @@ var path = d3.geo.path()
 
 // variable for storing apidata
 var apidata;
+
+// globals for lang switching on button click for the svg
+var centroids;
+var arcs;
+var countries;
+var clicked;
+

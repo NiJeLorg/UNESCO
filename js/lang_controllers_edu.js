@@ -17,22 +17,22 @@ $( document ).ready(function() {
 		lang = 'en';
 	}
 
-	langSwitch(lang);
+	langSwitchIni(lang);
 
 	// listen for language button clicks
 	$(".english").click(function() {
 		lang = 'en';
-		langSwitch(lang);
+		langSwitchClick(lang);
 	});
 
 	$(".french").click(function() {
 		lang = 'fr';
-		langSwitch(lang);
+		langSwitchClick(lang);
 	});
 
 	$(".spanish").click(function() {
 		lang = 'es';
-		langSwitch(lang);
+		langSwitchClick(lang);
 	});
 
 	// function to get variable from url if one exists
@@ -44,7 +44,7 @@ $( document ).ready(function() {
 		return vars;
 	}
 
-	function langSwitch (lang) {
+	function langSwitchIni (lang) {
 		// hide all 
 		$( '*:lang("en")' ).addClass('hidden');
 		$( '*:lang("fr")' ).addClass('hidden');
@@ -70,6 +70,62 @@ $( document ).ready(function() {
 		// set a cookie
 		Cookies.set('lang', lang);
 
+
 	}
+
+	function langSwitchClick (lang) {
+
+		langSwitchIni(lang);
+
+		// reset the aid flow map
+		  clicked = false;
+		  console.log(centroids);
+		  // show circle of selected
+		  centroids.selectAll('circle')
+		    .transition()
+		    .duration(50)
+		    .attr("display", "none");
+
+		  // show country name of selected
+		  centroids.selectAll(".countryName")
+		    .transition()
+		    .duration(50)
+		    .attr("display", "none");
+
+		  // show bubble text of selected
+		  centroids.selectAll(".bubbleTextEn")
+		    .transition()
+		    .duration(50)
+		    .attr("display", "none");
+
+		  centroids.selectAll(".bubbleTextFr")
+		    .transition()
+		    .duration(50)
+		    .attr("display", "none");
+
+		  centroids.selectAll(".bubbleTextEs")
+		    .transition()
+		    .duration(50)
+		    .attr("display", "none");
+
+		  // show arcs of countries that are in source or target
+		  arcs.selectAll("path")
+		    .transition()
+		    .duration(0)
+		    .attr("fill", "#111")
+		    .attr("fill-opacity", 0.75)
+		    .attr("stroke-opacity", 0.75)
+		    .attr("stroke", "#111")
+		    .attr("display", "none");
+
+		  //highlight the countries that are donors or recipients
+		  countries.selectAll("path")
+		    .transition()
+		    .duration(50)
+		    .style("stroke-width", "1px")
+		    .style("fill-opacity", 1);
+
+	}
+
 
 });
