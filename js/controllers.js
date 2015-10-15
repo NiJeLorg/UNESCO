@@ -143,7 +143,7 @@ $( document ).ready(function() {
     if (lang == 'en') {
 	    var fbcaption = 'The world has pledged 12 years of education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps.';
     } else if (lang == 'fr') {
-	    var fbcaption = 'Le monde a promis 12 années de scolarité pour tous, mais avec des millions d’enfants non scolarisés et une aide à l’éducation qui stagne, sommes-nous loin de notre objectif ? Explorez & partagez les cartes interactives.';
+	    var fbcaption = 'Le monde a promis 12 années de scolarité pour tous, mais avec des millions d’enfants non scolarisés et une aide à l’éducation qui stagne, sommes-nous loin de notre objectif? Explorez & partagez les cartes interactives.';
     } else {
     	var fbcaption = 'El mundo se ha comprometido a brindar 12 años de educación para todos, pero con millones de niños fuera de la escuela y el estancamiento de la ayuda económica. ¿qué tan lejos estamos de la meta? Explora y comparte los mapas interactivos.';
     } 
@@ -156,11 +156,11 @@ $( document ).ready(function() {
     if (lang == 'en') {
 		var twittercaption = ' Is aid to #education reaching children who need it most? Explore the data:';
 	} else if (lang == 'fr') {
-		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin? Explorez les données:';
+		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin?';
     } else {
 		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
     }     
-    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=http://bit.ly/1JtEmqR' + encodeURIComponent(twittercaption);
+    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/z4hdJBlRQi' + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
 
@@ -182,11 +182,11 @@ $( document ).ready(function() {
     if (lang == 'en') {
 		var twittercaption = ' Is aid to #education reaching children who need it most? Explore the data:';
 	} else if (lang == 'fr') {
-		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin? Explorez les données:';
+		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin?';
     } else {
 		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
     } 
-    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=http://bit.ly/1JtEmqR' + encodeURIComponent(twittercaption);
+    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/z4hdJBlRQi' + encodeURIComponent(twittercaption);
     $('#takeactionTwitter1').attr("href", twitterUrl);
 
 
@@ -208,7 +208,7 @@ $( document ).ready(function() {
     if (lang == 'en') {
 		var twittercaption = ' Girls are the first to be excluded. #FundEducation Explore the data:';
 	} else if (lang == 'fr') {
-		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin? Explorez les données:';
+		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin?';
     } else {
 		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
     } 
