@@ -159,8 +159,17 @@ $( document ).ready(function() {
 		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin?';
     } else {
 		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
+    }
+         
+    if (lang == 'en') {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+	} else if (lang == 'fr') {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+    } else {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
     }     
-    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/z4hdJBlRQi' + encodeURIComponent(twittercaption);
+
+    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
 
