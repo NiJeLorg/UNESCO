@@ -169,8 +169,22 @@ $( document ).ready(function() {
 		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
     }     
 
-    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    if (lang == 'en') {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
+
+	} else if (lang == 'fr') {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+    } else {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+    }   
+
+    // var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    // $('#shareTwitter').attr("href", twitterUrl);
 
 
     // facebook and twitter link creation for take action page -- first image
@@ -195,8 +209,31 @@ $( document ).ready(function() {
     } else {
 		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
     } 
-    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/z4hdJBlRQi' + encodeURIComponent(twittercaption);
-    $('#takeactionTwitter1').attr("href", twitterUrl);
+
+    if (lang == 'en') {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+	} else if (lang == 'fr') {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+    } else {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+    }     
+
+    if (lang == 'en') {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+	} else if (lang == 'fr') {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+    } else {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+    }
+
+    // var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    // $('#takeactionTwitter1').attr("href", twitterUrl);
 
 
     // facebook and twitter link creation for take action page -- second image
@@ -221,8 +258,31 @@ $( document ).ready(function() {
     } else {
 		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
     } 
-    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/z4hdJBlRQi' + encodeURIComponent(twittercaption);
-    $('#takeactionTwitter2').attr("href", twitterUrl);
+
+    if (lang == 'en') {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+	} else if (lang == 'fr') {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+    } else {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+    }     
+
+    if (lang == 'en') {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+	} else if (lang == 'fr') {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+    } else {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+    }
+
+    // var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl  + encodeURIComponent(twittercaption);
+    // $('#takeactionTwitter2').attr("href", twitterUrl);
 
 
     // facebook and twitter link creation for take action page -- third image
@@ -247,8 +307,31 @@ $( document ).ready(function() {
     } else {
 		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
     }
-    var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=pic.twitter.com/DwouUX595I' + encodeURIComponent(twittercaption);
-    $('#takeactionTwitter3').attr("href", twitterUrl);
+
+    if (lang == 'en') {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+	} else if (lang == 'fr') {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+    } else {
+		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+    }     
+
+	if (lang == 'en') {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+	} else if (lang == 'fr') {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+    } else {
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    $('#shareTwitter').attr("href", twitterUrl);
+
+    }
+
+    // var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+    // $('#takeactionTwitter3').attr("href", twitterUrl);
 
 
 });
