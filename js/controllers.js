@@ -162,11 +162,11 @@ $( document ).ready(function() {
     }
          
     if (lang == 'en') {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+		var imgurl = 'pic.twitter.com/eYmY4vLpjD';
 	} else if (lang == 'fr') {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+		var imgurl = 'pic.twitter.com/S5XL6R2h4T';
     } else {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+		var imgurl = 'pic.twitter.com/nPs1Qe3ejy';
     }     
 
     if (lang == 'en') {
@@ -211,12 +211,12 @@ $( document ).ready(function() {
     } 
 
     if (lang == 'en') {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+		var imgurl = 'pic.twitter.com/eYmY4vLpjD';
 	} else if (lang == 'fr') {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+		var imgurl = 'pic.twitter.com/S5XL6R2h4T';
     } else {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
-    }     
+		var imgurl = 'pic.twitter.com/nPs1Qe3ejy';
+    }       
 
     if (lang == 'en') {
 		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
@@ -236,7 +236,7 @@ $( document ).ready(function() {
     // $('#takeactionTwitter1').attr("href", twitterUrl);
 
 
-    // facebook and twitter link creation for take action page -- second image OOSC Map
+    // facebook and twitter link creation for take action page -- second image FCEMap
     var app_id = '1519242675033424';
     if (lang == 'en') {
 	    var fbcaption = 'The world has pledged 12 years of education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps.';
@@ -262,9 +262,9 @@ $( document ).ready(function() {
     if (lang == 'en') {
 		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
 	} else if (lang == 'fr') {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+		var imgurl = 'pic.twitter.com/JdRitsmxK8';
     } else {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+		var imgurl = 'pic.twitter.com/mhYv3Ogyr8';
     }     
 
     if (lang == 'en') {
@@ -309,11 +309,11 @@ $( document ).ready(function() {
     }
 
     if (lang == 'en') {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+		var imgurl = 'pic.twitter.com/DwouUX595I';
 	} else if (lang == 'fr') {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+		var imgurl = 'pic.twitter.com/AEQ2cF3Lzz';
     } else {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+		var imgurl = 'pic.twitter.com/XibasbMLaU';
     }     
 
 	if (lang == 'en') {
