@@ -500,13 +500,13 @@ function createEducationAidFlowMap() {
 
           // set clicked for later
           highlighted = d;
-          clicked = true;
           // show circle of selected
           centroids.selectAll('circle')
             .transition()
             .duration(50)
             .attr("display", function(j) {
                 if (j.OECD_Country_Code == d.properties.adm0_a3) {
+                  clicked = true;
                   return "block";
                 } else {
                   return "none";
