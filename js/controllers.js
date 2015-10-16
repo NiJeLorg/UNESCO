@@ -138,7 +138,7 @@ $( document ).ready(function() {
 
 	});
 
-    // facebook and twitter link creation and appending nav bar on top
+    // facebook and twitter link creation and appending nav bar on top - Default to Child's Eyes
     var app_id = '1519242675033424';
     if (lang == 'en') {
 	    var fbcaption = 'The world has pledged 12 years of education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps.';
@@ -187,7 +187,7 @@ $( document ).ready(function() {
     // $('#shareTwitter').attr("href", twitterUrl);
 
 
-    // facebook and twitter link creation for take action page -- first image
+    // facebook and twitter link creation for take action page -- first image - Child's Eyes
     var app_id = '1519242675033424';
     if (lang == 'en') {
 	    var fbcaption = 'The world has pledged 12 years of education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps.';
@@ -236,7 +236,7 @@ $( document ).ready(function() {
     // $('#takeactionTwitter1').attr("href", twitterUrl);
 
 
-    // facebook and twitter link creation for take action page -- second image
+    // facebook and twitter link creation for take action page -- second image OOSC Map
     var app_id = '1519242675033424';
     if (lang == 'en') {
 	    var fbcaption = 'The world has pledged 12 years of education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps.';
@@ -285,7 +285,7 @@ $( document ).ready(function() {
     // $('#takeactionTwitter2').attr("href", twitterUrl);
 
 
-    // facebook and twitter link creation for take action page -- third image
+    // facebook and twitter link creation for take action page -- third image FLOW MAP
     var app_id = '1519242675033424';
     if (lang == 'en') {
 	    var fbcaption = 'The world has pledged 12 years of education for all, but with millions of children out of school and aid to education stalling, how far are we from the goal? Explore & share @UNESCOstat\'s interactive maps.';

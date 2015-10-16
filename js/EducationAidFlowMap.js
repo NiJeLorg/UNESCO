@@ -962,7 +962,7 @@ function createEducationAidFlowMap() {
         .enter().append("circle")
         .attr("cx", function(d) { return d.projection[0] } )
         .attr("cy", function(d) { return d.projection[1] } )
-        .attr("r", 65)
+        .attr("r", 68)
         .attr("fill", "#fff")
         .attr("stroke", "#4d4d4d")
         .attr("stroke-width", 3)
