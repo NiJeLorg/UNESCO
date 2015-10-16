@@ -46,7 +46,17 @@ function createEducationAidFlowMap() {
         .attr("display", "none");
 
       // show country name of selected
-      centroids.selectAll(".countryName")
+      centroids.selectAll(".countryNameEn")
+        .transition()
+        .duration(50)
+        .attr("display", "none");
+
+      centroids.selectAll(".countryNameFr")
+        .transition()
+        .duration(50)
+        .attr("display", "none");
+
+      centroids.selectAll(".countryNameEs")
         .transition()
         .duration(50)
         .attr("display", "none");
@@ -503,8 +513,9 @@ function createEducationAidFlowMap() {
                 }
             });
 
-          // show country name of selected
-          centroids.selectAll(".countryName")
+        // show country name of selected
+        if (lang == "en") {
+          centroids.selectAll(".countryNameEn")
             .transition()
             .duration(50)
             .attr("display", function(j) {
@@ -514,6 +525,30 @@ function createEducationAidFlowMap() {
                   return "none";
                 }
             });
+        } else if (lang == "fr") {
+          centroids.selectAll(".countryNameFr")
+            .transition()
+            .duration(50)
+            .attr("display", function(j) {
+                if (j.OECD_Country_Code == d.properties.adm0_a3) {
+                  return "block";
+                } else {
+                  return "none";
+                }
+            });
+        } else {
+          centroids.selectAll(".countryNameEs")
+            .transition()
+            .duration(50)
+            .attr("display", function(j) {
+                if (j.OECD_Country_Code == d.properties.adm0_a3) {
+                  return "block";
+                } else {
+                  return "none";
+                }
+            });
+        }
+
 
           // show bubble text of selected
           if (lang == "en") {
@@ -901,8 +936,6 @@ function createEducationAidFlowMap() {
           d.origin.Name_of_Country = d.origin.Name_of_Country_es;
           d.dest.Name_of_Country = d.dest.Name_of_Country_es;
         }
-
-
   
         var text = d.origin.Name_of_Country + from + d.dest.Name_of_Country + ": " + dollarSign + rec + recSymbol + usd + ".";
           
@@ -968,17 +1001,18 @@ function createEducationAidFlowMap() {
         .attr("stroke-width", 3)
         .attr("display", "none");
 
-      var countryNames = centroids.selectAll(".countryName")
+      // English Country Name
+      var countryNameEn = centroids.selectAll(".countryNameEn")
         .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
         .enter().append("text")
-        .attr("class", "countryName")
+        .attr("class", "countryNameEn")
         .attr("font-size", "12px")
         .attr("font-weight", 600)
         .attr("text-anchor", "middle")
         .attr("display", "none");
 
 
-      countryNames.append('tspan')
+      countryNameEn.append('tspan')
         .attr("x", function(d) { return d.projection[0] } )
         .attr("y", function(d) { 
           if (d.Name_of_Country.length > 17) {
@@ -989,14 +1023,6 @@ function createEducationAidFlowMap() {
           
         } )
         .text(function(d) {
-          if (lang == 'en') {
-            d.Name_of_Country = d.Name_of_Country;
-          } else if (lang == 'fr') {
-            d.Name_of_Country = d.Name_of_Country_fr;
-          } else {
-            d.Name_of_Country = d.Name_of_Country_es;
-          }
-
           if (d.Name_of_Country.length > 17) {
             var splitString = d.Name_of_Country.split(' ', 1);
             return splitString[0];
@@ -1005,7 +1031,7 @@ function createEducationAidFlowMap() {
           }
         });
 
-      countryNames.append('tspan')
+      countryNameEn.append('tspan')
         .attr("x", function(d) { return d.projection[0] } )
         .attr("y", function(d) { 
           if (d.Name_of_Country.length > 17) {
@@ -1014,17 +1040,9 @@ function createEducationAidFlowMap() {
             return d.projection[1];
           }
           
-        } )
+        })
         .text(function(d) {
           if (d.Name_of_Country.length > 17) {
-            if (lang == 'en') {
-              d.Name_of_Country = d.Name_of_Country;
-            } else if (lang == 'fr') {
-              d.Name_of_Country = d.Name_of_Country_fr;
-            } else {
-              d.Name_of_Country = d.Name_of_Country_es;
-            }
-
             var splitString = d.Name_of_Country.split(' ');
             // remove first word from array
             splitString.splice(0, 1);
@@ -1033,6 +1051,112 @@ function createEducationAidFlowMap() {
             return '';
           }
         }); 
+
+
+      // French Country Name
+      var countryNameFr = centroids.selectAll(".countryNameFr")
+        .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
+        .enter().append("text")
+        .attr("class", "countryNameFr")
+        .attr("font-size", "12px")
+        .attr("font-weight", 600)
+        .attr("text-anchor", "middle")
+        .attr("display", "none");
+
+
+      countryNameFr.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { 
+          if (d.Name_of_Country_fr.length > 17) {
+            return d.projection[1] - 22;
+          } else {
+            return d.projection[1] - 10;
+          }
+          
+        } )
+        .text(function(d) {
+          if (d.Name_of_Country_fr.length > 17) {
+            var splitString = d.Name_of_Country_fr.split(' ', 1);
+            return splitString[0];
+          } else {
+            return d.Name_of_Country_fr;
+          }
+        });
+
+      countryNameFr.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { 
+          if (d.Name_of_Country_fr.length > 17) {
+            return d.projection[1] - 8;
+          } else {
+            return d.projection[1];
+          }
+          
+        })
+        .text(function(d) {
+          if (d.Name_of_Country_fr.length > 17) {
+            var splitString = d.Name_of_Country_fr.split(' ');
+            // remove first word from array
+            splitString.splice(0, 1);
+            return splitString.join(' ');
+          } else {
+            return '';
+          }
+        }); 
+
+
+      // Spanish Country Name
+      var countryNameEs = centroids.selectAll(".countryNameEs")
+        .data(data.nodes.filter(function(node) { return node.projection ? true : false }))
+        .enter().append("text")
+        .attr("class", "countryNameEs")
+        .attr("font-size", "12px")
+        .attr("font-weight", 600)
+        .attr("text-anchor", "middle")
+        .attr("display", "none");
+
+
+      countryNameEs.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { 
+          if (d.Name_of_Country_es.length > 17) {
+            return d.projection[1] - 22;
+          } else {
+            return d.projection[1] - 10;
+          }
+          
+        } )
+        .text(function(d) {
+          if (d.Name_of_Country_es.length > 17) {
+            var splitString = d.Name_of_Country_es.split(' ', 1);
+            return splitString[0];
+          } else {
+            return d.Name_of_Country_es;
+          }
+        });
+
+      countryNameEs.append('tspan')
+        .attr("x", function(d) { return d.projection[0] } )
+        .attr("y", function(d) { 
+          if (d.Name_of_Country_fr.length > 17) {
+            return d.projection[1] - 8;
+          } else {
+            return d.projection[1];
+          }
+          
+        })
+        .text(function(d) {
+          if (d.Name_of_Country_es.length > 17) {
+            var splitString = d.Name_of_Country_es.split(' ');
+            // remove first word from array
+            splitString.splice(0, 1);
+            return splitString.join(' ');
+          } else {
+            return '';
+          }
+        }); 
+
+
 
       // draw bubble text three times for each language and show correct one on click
 
