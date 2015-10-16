@@ -174,11 +174,11 @@ $( document ).ready(function() {
     $('#shareTwitter').attr("href", twitterUrl);
 
 	} else if (lang == 'fr') {
-		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&text=' + imgurl + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
     } else {
-		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&text=' + imgurl + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
     }   
@@ -223,11 +223,11 @@ $( document ).ready(function() {
     $('#shareTwitter').attr("href", twitterUrl);
 
 	} else if (lang == 'fr') {
-		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&text=' + imgurl + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
     } else {
-		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&text=' + imgurl + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
     }
@@ -260,11 +260,11 @@ $( document ).ready(function() {
     } 
 
     if (lang == 'en') {
-		var imgurl = 'pic.twitter.com/z4hdJBlRQi';
+		var imgurl = 'pic.twitter.com/DwouUX595I';
 	} else if (lang == 'fr') {
-		var imgurl = 'pic.twitter.com/JdRitsmxK8';
+		var imgurl = 'pic.twitter.com/AEQ2cF3Lzz';
     } else {
-		var imgurl = 'pic.twitter.com/mhYv3Ogyr8';
+		var imgurl = 'pic.twitter.com/XibasbMLaU';
     }     
 
     if (lang == 'en') {
@@ -272,11 +272,11 @@ $( document ).ready(function() {
     $('#shareTwitter').attr("href", twitterUrl);
 
 	} else if (lang == 'fr') {
-		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&text=' + imgurl + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
     } else {
-		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&text=' + imgurl + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
     }
@@ -303,7 +303,7 @@ $( document ).ready(function() {
     if (lang == 'en') {
 		var twittercaption = ' Where is aid to #education going today? #FundEducation';
 	} else if (lang == 'fr') {
-		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin? Explorez les données:';
+		var twittercaption = ' L\'aide à l\'éducation atteint-elle les enfants qui en ont le plus besoin?';
     } else {
 		var twittercaption = ' ¿Está llegando la ayuda destinada a educación a los niños que más lo necesitan?';
     }
@@ -321,11 +321,11 @@ $( document ).ready(function() {
     $('#shareTwitter').attr("href", twitterUrl);
 
 	} else if (lang == 'fr') {
-		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&text=' + imgurl + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
     } else {
-		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&via='+ encodeURIComponent(via) + '&text=' + imgurl + encodeURIComponent(twittercaption);
+		var twitterUrl = 'https://twitter.com/share?url=' + encodeURIComponent(twitterlink) + '&text=' + imgurl + encodeURIComponent(twittercaption);
     $('#shareTwitter').attr("href", twitterUrl);
 
     }
