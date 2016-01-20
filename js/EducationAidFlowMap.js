@@ -373,7 +373,7 @@ function createEducationAidFlowMap() {
               var prefix = d3.formatPrefix(d.properties.Total_Donated);
               if (prefix.symbol == 'k') {
                 var recSymbol = "";
-                var rec = commaFormat(prefix.scale(d.properties.Total_Donated));
+                var rec = commaFormat(d.properties.Total_Donated);
               } else if (prefix.symbol == 'M') {
                 var recSymbol = million;
                 var rec = prefix.scale(d.properties.Total_Donated).toFixed(1);
@@ -389,7 +389,7 @@ function createEducationAidFlowMap() {
               var prefix = d3.formatPrefix(d.properties.Total_Received);
               if (prefix.symbol == 'k') {
                 var recSymbol = "";
-                var rec = commaFormat(prefix.scale(d.properties.Total_Received));
+                var rec = commaFormat(d.properties.Total_Received);
               } else if (prefix.symbol == 'M') {
                 var recSymbol = million;
                 var rec = prefix.scale(d.properties.Total_Received).toFixed(1);
@@ -899,7 +899,7 @@ function createEducationAidFlowMap() {
         var recPrefix = d3.formatPrefix(d.magnitude);
         if (recPrefix.symbol == 'k') {
           var recSymbol = "";
-          var rec = commaFormat(recPrefix.scale(d.magnitude));
+          var rec = commaFormat(d.magnitude);
         } else if (recPrefix.symbol == 'M') {
           var recSymbol = million;
           var rec = recPrefix.scale(d.magnitude).toFixed(1);
@@ -1188,7 +1188,7 @@ function createEducationAidFlowMap() {
             var prefix = d3.formatPrefix(d.TotalReceivedFromCountries);
             if (prefix.symbol == 'k') {
               var recSymbol = "";
-              var rec = commaFormat(prefix.scale(d.TotalReceivedFromCountries));
+              var rec = commaFormat(d.TotalReceivedFromCountries);
             } else if (prefix.symbol == 'M') {
               var recSymbol = million;
               var rec = prefix.scale(d.TotalReceivedFromCountries).toFixed(1);
@@ -1211,7 +1211,7 @@ function createEducationAidFlowMap() {
             var prefix = d3.formatPrefix(d.TotalContributedToCountries);
             if (prefix.symbol == 'k') {
               var recSymbol = "";
-              var rec = commaFormat(prefix.scale(d.TotalContributedToCountries));
+              var rec = commaFormat(d.TotalContributedToCountries);
             } else if (prefix.symbol == 'M') {
               var recSymbol = million;
               var rec = prefix.scale(d.TotalContributedToCountries).toFixed(1);
@@ -1288,7 +1288,7 @@ function createEducationAidFlowMap() {
             var prefix = d3.formatPrefix(d.TotalReceivedFromCountries);
             if (prefix.symbol == 'k') {
               var recSymbol = "";
-              var rec = commaFormat(prefix.scale(d.TotalReceivedFromCountries));
+              var rec = commaFormat(d.TotalReceivedFromCountries);
             } else if (prefix.symbol == 'M') {
               var recSymbol = million;
               var rec = prefix.scale(d.TotalReceivedFromCountries).toFixed(1);
@@ -1311,7 +1311,7 @@ function createEducationAidFlowMap() {
             var prefix = d3.formatPrefix(d.TotalContributedToCountries);
             if (prefix.symbol == 'k') {
               var recSymbol = "";
-              var rec = commaFormat(prefix.scale(d.TotalContributedToCountries));
+              var rec = commaFormat(d.TotalContributedToCountries);
             } else if (prefix.symbol == 'M') {
               var recSymbol = million;
               var rec = prefix.scale(d.TotalContributedToCountries).toFixed(1);
@@ -1388,7 +1388,7 @@ function createEducationAidFlowMap() {
             var prefix = d3.formatPrefix(d.TotalReceivedFromCountries);
             if (prefix.symbol == 'k') {
               var recSymbol = "";
-              var rec = commaFormat(prefix.scale(d.TotalReceivedFromCountries));
+              var rec = commaFormat(d.TotalReceivedFromCountries);
             } else if (prefix.symbol == 'M') {
               var recSymbol = million;
               var rec = prefix.scale(d.TotalReceivedFromCountries).toFixed(1);
@@ -1420,7 +1420,7 @@ function createEducationAidFlowMap() {
             var prefix = d3.formatPrefix(d.TotalContributedToCountries);
             if (prefix.symbol == 'k') {
               var recSymbol = "";
-              var rec = commaFormat(prefix.scale(d.TotalContributedToCountries));
+              var rec = commaFormat(d.TotalContributedToCountries);
             } else if (prefix.symbol == 'M') {
               var recSymbol = million;
               var rec = prefix.scale(d.TotalContributedToCountries).toFixed(1);
